@@ -27,8 +27,15 @@
     "options_page": "html/options.html",
     "homepage_url": "http://yourdomainhere.com/",
 
+    //allows cross-origin
+
     //override newtab
     "chrome_url_overrides" : {
-    "newtab": "newtab.html"
-  }
+    "newtab": "html/newtab.html"
+  },
+    //permission needed to access topsites
+    "permissions": [
+          "topSites",
+          "http://*/*", "https://*/*"
+        ]
 }
