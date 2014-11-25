@@ -7,32 +7,307 @@ body, html {
 
 #main {
 	width: 90%;
-	margin: 5%;
+	margin: 2% 5%;
 	height: 90%;
 }
 
 .container {
+	position: relative;
 	width: 18em;
-	height: 25em;
-	border-left: .7em solid #eee;
-	border-bottom: .7em solid #eee;
-	border-right: .7em solid #eee;
-	display: inline-block;
+	height: 37em;
+	border-left: 0.4em solid #eee;
+	border-right: 0.4em solid #eee;
+	float: left;
 	margin: 1em;
+	overflow: hidden;
+	-webkit-transition: height 0.6s ease;
+}
+
+.mostVisitedLinks .smallContainer {
+	margin-top: 3em;
+}
+
+.mostVisitedLinks .smallContainer div {
+	text-align: center;
+	font-family: sans-serif;
+	line-height: 1.5em;
+	font-size: 1.2em;
+}
+
+.mostVisitedLinks .smallFoot span {
+	display: none;
+}
+
+.tallContainer {
+	height: 74em;
+	-webkit-transition: height 0.6s ease;
 }
 
 .smallContainer {
-	height: 100%;
-	width: 100%;
-	padding: 1em;
+	margin-top: 0.5em;
+	width: 95%;
+	padding: 0 .3em;
+	overflow: hidden;
 }
 
-.title {
+.tttitle {
 	height: 1.4em;
 	font-size: 1.2em;
 	line-height: 1.3em;
-	padding-left: 1em;
 	padding-top: .5em;
 	overflow: hidden;
 	background-color: #eee;
+	text-align: center
 }
+
+.tttitle a {
+	text-decoration: none;
+	color: #222;
+
+}
+
+.tttitle:hover {
+	text-decoration: underline;
+}
+
+.smallFoot {
+	position: absolute;
+	bottom: 0;
+	font-size: 2em;
+	line-height: 100%;
+	width: 100%;
+	height: 1em;
+	text-align: center;
+	background-color: #eee;
+}
+
+.smallFoot:hover {
+	cursor: pointer;
+}
+
+.smallFoot span {
+	font-size: 1.5em;
+	line-height: .2em;
+	color: #333;
+}
+
+.rotated {
+	-webkit-transform: rotate(180deg);
+}
+
+.rawURL {
+	overflow: hidden;
+	margin-right: 2em;
+}
+
+.oLive .smallContainer a {
+	font-family: prelo-slab, Tahoma, Geneva, sans-serif;
+	color: rgb(54, 54, 54);
+	font-weight: bold;
+	display: block;
+	text-decoration: none;
+	font-size: 1em;
+	margin-bottom: .7em;
+}
+
+.oLive a:hover {
+	text-decoration: underline
+}
+
+.qz {
+	border-color: black;
+	color: rgb(76, 76, 76);
+}
+
+.qz .tttitle {
+	background-color: black;
+}
+
+.qz .tttitle a {
+	color: white;
+}
+
+.qz .note-summary {
+	margin-bottom: 0.5em
+}
+
+.qz h2 {
+	color: rgb(51, 51, 51);
+	font-family: AdelleBold,Helvetica,sans-serif;
+	font-weight: 700;
+	margin: 0em;
+	font-size: 1em;
+}
+
+.qz a {
+	color: rgb(22, 141, 217);
+	text-decoration: none;
+}
+
+.qz a:hover {
+	text-decoration: underline;
+}
+
+.reddit {
+	border-color: #CEE3F8;
+}
+
+.reddit .tttitle {
+	background-color: #CEE3F8
+}
+
+.reddit .smallFoot {
+	background-color: #CEE3F8
+}
+
+.reddit .redditChunk {
+	margin-bottom: .5em;
+}
+
+.reddit .redditChunk > * {
+	margin-right: .5em;
+}
+
+.reddit .domain * {
+	color: rgb(136, 136, 136);
+	font-size: 0.7em;
+}
+
+.reddit .subreddit {
+	color: rgb(51, 102, 153);
+	font-size: 0.7em;
+}
+
+.reddit .comments {
+	color: rgb(136, 136, 136);
+	font-size: 0.7em;
+}
+
+.reddit .title {
+	display: inherit;
+	text-decoration: none;
+	color: #551a8b;
+	font-family: verdana, arial, helvetica, sans-serif;
+}
+
+.twitter {
+	border-color: #55ACEE;
+	font-family: Arial, sans-serif;
+}
+
+
+
+.twitter s {
+	text-decoration: none;
+	margin-left: 0.3em;
+}
+
+.twitter .smallContainer a {
+	color: rgb(0, 132, 180);
+	text-decoration: none;
+}
+
+.twitter a:hover {
+	text-decoration: underline;
+}
+
+.twitter .tttitle, .twitter .smallFoot {
+	background-color: #55ACEE;
+}
+
+.reddit .smallFoot {
+	background-color: #55ACEE;
+}
+
+.tweetText {
+	margin-bottom: 0.5em;
+	padding-bottom: 0.5em;	
+	border-bottom: 1px solid rgb(225, 232, 237);
+}
+
+.twitter .username {
+	color: rgb(136, 153, 166)
+}
+
+.oLive {
+	border-color: #EBE0D2
+}
+
+.oLive .tttitle, .oLive .smallFoot	 {
+	background-color: #EBE0D2
+}
+
+
+
+.hackerNews {
+	border-color: #FF6600;
+	background-color: #F6F6EF;
+	text-decoration: none;
+	color: black;
+}
+
+.hackerNews a {
+	text-decoration: none;
+	color: black;
+}
+
+.hackerNews .hComLink {
+	color: #828282;
+	font-size: .8em;
+}
+
+.hackerNews a:hover {
+	text-decoration: underline;
+}
+
+.hackerNews .tttitle, .hackerNews .smallFoot {
+		background-color: #FF6600;
+}
+
+.hackerNews .title {
+	font-family: Verdana, Geneva, sans-serif;
+}
+
+
+.hackerNews .smallContainer {
+	font-size: .9em;
+	padding: 0px;
+	background-color: #F6F6EF;
+
+}
+
+
+
+.hackerNews .comhead {
+	color: #828282
+}
+
+@media screen and (min-width: 1100px) {
+  .container {
+  	width: 21.5%;
+  	margin: 1%;
+  }
+}
+
+@media screen and (min-width: 750px) and (max-width: 1099px) {
+  .container {
+  	width: 29%;
+  	margin: 1%;
+  }
+}
+
+@media screen and (min-width: 500px) and (max-width: 749px) {
+  .container {
+  	width: 44%;
+  	margin: 1%;
+  }
+}
+
+@media screen and (max-width: 499px) {
+  .container {
+  	width: 90%;
+  	margin: 1%;
+  }
+}
+
+
