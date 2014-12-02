@@ -23,6 +23,18 @@ body, html {
 	-webkit-transition: height 0.6s ease;
 }
 
+.mostVisitedLinks .tttitleLink {
+	text-decoration: none;
+}
+
+.mostVisitedLinks .tttitle {
+	color: #333
+}
+
+.mostVisitedLinks .tttitle {
+
+}
+
 .mostVisitedLinks .smallContainer {
 	margin-top: 3em;
 }
@@ -39,12 +51,12 @@ body, html {
 }
 
 .tallContainer {
-	height: 74em;
+	height: 75.7em;
 	-webkit-transition: height 0.6s ease;
 }
 
 .smallContainer {
-	margin-top: 0.5em;
+	margin: 0.5em;
 	width: 95%;
 	padding: 0 .3em;
 	overflow: hidden;
@@ -57,17 +69,21 @@ body, html {
 	padding-top: .5em;
 	overflow: hidden;
 	background-color: #eee;
-	text-align: center
+	text-align: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position-x: 50%;
+	background-position-y: center;
 }
 
 .tttitle a {
 	text-decoration: none;
 	color: #222;
-
 }
 
 .tttitle:hover {
 	text-decoration: underline;
+	cursor: pointer;
 }
 
 .smallFoot {
@@ -100,187 +116,7 @@ body, html {
 	margin-right: 2em;
 }
 
-.oLive .smallContainer a {
-	font-family: prelo-slab, Tahoma, Geneva, sans-serif;
-	color: rgb(54, 54, 54);
-	font-weight: bold;
-	display: block;
-	text-decoration: none;
-	font-size: 1em;
-	margin-bottom: .7em;
-}
 
-.oLive a:hover {
-	text-decoration: underline
-}
-
-.qz {
-	border-color: black;
-	color: rgb(76, 76, 76);
-}
-
-.qz .tttitle {
-	background-color: black;
-}
-
-.qz .tttitle a {
-	color: white;
-}
-
-.qz .note-summary {
-	margin-bottom: 0.5em
-}
-
-.qz h2 {
-	color: rgb(51, 51, 51);
-	font-family: AdelleBold,Helvetica,sans-serif;
-	font-weight: 700;
-	margin: 0em;
-	font-size: 1em;
-}
-
-.qz a {
-	color: rgb(22, 141, 217);
-	text-decoration: none;
-}
-
-.qz a:hover {
-	text-decoration: underline;
-}
-
-.reddit {
-	border-color: #CEE3F8;
-}
-
-.reddit .tttitle {
-	background-color: #CEE3F8
-}
-
-.reddit .smallFoot {
-	background-color: #CEE3F8
-}
-
-.reddit .redditChunk {
-	margin-bottom: .5em;
-}
-
-.reddit .redditChunk > * {
-	margin-right: .5em;
-}
-
-.reddit .domain * {
-	color: rgb(136, 136, 136);
-	font-size: 0.7em;
-}
-
-.reddit .subreddit {
-	color: rgb(51, 102, 153);
-	font-size: 0.7em;
-}
-
-.reddit .comments {
-	color: rgb(136, 136, 136);
-	font-size: 0.7em;
-}
-
-.reddit .title {
-	display: inherit;
-	text-decoration: none;
-	color: #551a8b;
-	font-family: verdana, arial, helvetica, sans-serif;
-}
-
-.twitter {
-	border-color: #55ACEE;
-	font-family: Arial, sans-serif;
-}
-
-
-
-.twitter s {
-	text-decoration: none;
-	margin-left: 0.3em;
-}
-
-.twitter .smallContainer a {
-	color: rgb(0, 132, 180);
-	text-decoration: none;
-}
-
-.twitter a:hover {
-	text-decoration: underline;
-}
-
-.twitter .tttitle, .twitter .smallFoot {
-	background-color: #55ACEE;
-}
-
-.reddit .smallFoot {
-	background-color: #55ACEE;
-}
-
-.tweetText {
-	margin-bottom: 0.5em;
-	padding-bottom: 0.5em;	
-	border-bottom: 1px solid rgb(225, 232, 237);
-}
-
-.twitter .username {
-	color: rgb(136, 153, 166)
-}
-
-.oLive {
-	border-color: #EBE0D2
-}
-
-.oLive .tttitle, .oLive .smallFoot	 {
-	background-color: #EBE0D2
-}
-
-
-
-.hackerNews {
-	border-color: #FF6600;
-	background-color: #F6F6EF;
-	text-decoration: none;
-	color: black;
-}
-
-.hackerNews a {
-	text-decoration: none;
-	color: black;
-}
-
-.hackerNews .hComLink {
-	color: #828282;
-	font-size: .8em;
-}
-
-.hackerNews a:hover {
-	text-decoration: underline;
-}
-
-.hackerNews .tttitle, .hackerNews .smallFoot {
-		background-color: #FF6600;
-}
-
-.hackerNews .title {
-	font-family: Verdana, Geneva, sans-serif;
-}
-
-
-.hackerNews .smallContainer {
-	font-size: .9em;
-	padding: 0px;
-	background-color: #F6F6EF;
-
-}
-
-
-
-.hackerNews .comhead {
-	color: #828282
-}
 
 @media screen and (min-width: 1100px) {
   .container {

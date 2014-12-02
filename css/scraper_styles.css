@@ -1,0 +1,512 @@
+.googleNews .tttitle {
+	background-image: url('../images/googlenews.png');
+	background-size: 7.5em;
+}
+
+.googleNews .smallContainer a {
+	color: rgb(17, 85, 204);
+	font-family: arial, sans-serif;
+	text-decoration: none;
+}
+
+.googleNews .smallContainer h2 {
+	font-size: 1em;
+	margin: 0.5em 0;
+}
+
+.googleNews .smallContainer a:hover {
+	text-decoration: underline;
+}
+
+.buzzfeed .tttitle {
+	background-image: url('../images/buzzfeed.png')
+
+}
+
+.buzzfeed img {
+	display: none;
+}
+
+.buzzfeed ol {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.buzzfeed h2 {
+	font-family: ProximaNovaSemibold, Helvetica, Arial, sans-serif;
+	margin: 0.6em 0;
+	font-size: 1em;
+}
+
+.buzzfeed ol div {
+	display: none;
+}
+
+.buzzfeed ol a {
+	text-decoration: none;
+	color: #333;
+}
+
+.buzzfeed a:hover {
+	color: #555;
+	text-decoration: underline;
+}
+
+.cnn {
+	border-color: #CA0002;
+}
+
+.cnn .tttitle {
+	background-color: #CA0002;
+	background-image: url('../images/cnn.png')
+}
+
+.cnn .smallFoot {
+	background-color: #CA0002;
+}
+
+.cnn .smallFoot span {
+	color: white;
+}
+
+.cnn .cnn_bulletbin {
+	padding: 0;
+	margin: 0;
+}
+
+.cnn .cnn_bulletbin li {
+	color: rgb(90, 82, 77);
+	font-family: arial;
+	margin: 0.5em 0;
+	font-weight: bold;
+}
+
+.cnn .cnn_bulletbin a {
+	text-decoration: none;
+	color: rgb(90, 82, 77);
+	font-family: arial;
+	font-weight: bold;
+}
+
+.cnn .cnn_bulletbin a:hover {
+	color: darkblue;
+	text-decoration: underline;
+}
+
+.huffpo .tttitle {
+	background-image: url('../images/huffingtonpost.gif');
+	background-color: white;
+}
+
+.huffpo .smallContainer h5 div {
+	display: none;
+}
+
+.huffpo h5,
+.huffpo h4, 
+.huffpo h3,
+.huffpo h2,
+.huffpo h1,
+.huffpo .smallContainer #splash_block {
+	display: block;
+	margin: 0.5em 0;
+	color: rgb(26, 26, 26);
+	font-family: arial;
+	width: 100% !important;
+
+}
+
+.huffpo .smallContainer * {
+	font-size: 1em !important;
+	color: rgb(26, 26, 26);
+	text-decoration: none;
+}
+
+.espn .tttitle {
+	background-color: #7F0200;
+	background-size: 80px, 20px;
+	background-position-y: 0.3em;
+	background-image: url('../images/espn.png')
+}
+
+.espn {
+	border-color: #7F0200;
+}
+
+.espn .smallFoot {
+	background-color: #7F0200;
+}
+
+.espn .smallFoot span {
+	color: white;
+}
+
+.espn .headlines {
+	margin: 0;
+	padding: 1em 2em;
+	width: 85%;
+}
+
+.espn .smallContainer a {
+	font-family: verdana, helvetica, arial, sans-serif;
+	margin: 0;
+	color: #222;
+	text-decoration: none;
+}
+
+.espn .smallContainer a:hover {
+	text-decoration: underline;
+	color: darkblue;
+}
+
+.nytimes .tttitle {
+	background-color: white;
+	border-top: 1px solid #eee;
+	border-bottom: 1px solid #eee;
+	background-position-x: 2em;
+	background-image: url('../images/nytimes.png')
+}
+
+.nytimes .smallContainer h2,
+.nytimes .smallContainer h1,
+.nytimes .smallContainer h3
+ {
+	margin: 0.5em 0 0.8em 0;
+	font-size: 1.1em;
+	font-family: nyt-cheltenham, georgia, 'times new roman', times, serif;
+	font-style: italic;
+	font-weight: bold;
+}
+
+.nytimes .smallContainer a {
+	text-decoration: none;
+	color: black;
+}
+
+.nytimes .smallContainer a:hover {
+	text-decoration: underline;
+}
+
+.nytimes .smallContainer span {
+	display: none;
+}
+.blazersEdge .smallContainer .article span,
+.blazersEdge .smallContainer .article div p,
+.blazersEdge .smallContainer .article div div,
+.blazersEdge .smallContainer .m-block__image,
+.blazersEdge .smallContainer .m-hero-block .article,
+.half,
+.quarter {
+	display: none;
+}
+
+.blazersEdge .tttitle {
+	font-family: 'Ziggurat A', 'Ziggurat B', Georgia, serif;
+	font-weight: bold;
+
+}
+
+.blazersEdge .smallContainer .article div p {
+	display: none;
+}
+
+.blazersEdge .smallContainer .post div header {
+	font-size: 0.8em; 
+	display: block;
+	font-family: 'Sentinel SSm A', 'Sentinel SSm B', Georgia, serif;
+	color: rgb(41,41,41);
+}
+
+.blazersEdge .smallContainer div h2 {
+	margin: 0.5em 0;
+}
+
+.blazersEdge .smallContainer div a {
+	color: black;
+	text-decoration: none;
+}
+
+.blazersEdge .smallContainer div a:hover {
+	color: black;
+	text-decoration: underline;
+}
+
+.fiveThirtyEight .tttitle {
+	background-position-y: .3em;
+	background-image: url
+}
+
+.fiveThirtyEight .tttitle:hover {
+	cursor: pointer;
+}
+
+.fiveThirtyEight .smallContainer h2, .fiveThirtyEight .smallContainer h3 {
+	margin: 0.5em 0;
+	font-size: 1em;
+	color: black;
+	text-decoration: none;
+	font-family: ArnhemPro, Georgia, 'Times New Roman', 
+}
+
+.fiveThirtyEight .smallContainer a {
+	color: black;
+	text-decoration: none;
+}
+
+.fiveThirtyEight .smallContainer a:hover {
+	text-decoration: underline;
+}
+
+.theAtlantic .tttitle {
+	font-style: italic;
+}
+
+.theAtlantic .smallContainer dd {
+	margin: 0.5em 0.8em;
+	font-family: 'times new roman', times, serif;
+	font-weight: bold;
+	font-size: 1.1em;
+}
+
+.theAtlantic .smallContainer dd a {
+	text-decoration: none;
+	color: black;
+}
+
+.theAtlantic .smallContainer dd a:hover {
+	text-decoration: underline;
+}
+
+.oLive .smallContainer a {
+	font-family: prelo-slab, Tahoma, Geneva, sans-serif;
+	color: rgb(54, 54, 54);
+	font-weight: bold;
+	display: block;
+	text-decoration: none;
+	font-size: 1em;
+	margin-bottom: .7em;
+}
+
+.oLive a:hover {
+	text-decoration: underline
+}
+
+.qz {
+	border-color: black;
+	color: rgb(76, 76, 76);
+}
+
+.qz .tttitle {
+	background-color: black;
+	background-image: url('../images/quartz.png');
+	background-size: 9em;
+}
+
+.qz .tttitle a {
+	color: white;
+	font-family: AdelleBold, sans-serif;
+	font-size: 1.1em;
+	letter-spacing: .1em;
+}
+
+.qz .note-summary {
+	margin-bottom: 0.5em
+}
+
+.qz h2 {
+	color: rgb(51, 51, 51);
+	font-family: AdelleBold,Helvetica,sans-serif;
+	font-weight: 700;
+	margin: 0em;
+	font-size: 1em;
+}
+
+.qz a {
+	color: rgb(22, 141, 217);
+	text-decoration: none;
+}
+
+.qz a:hover {
+	text-decoration: underline;
+}
+
+.reddit {
+	border-color: #CEE3F8;
+}
+
+.reddit .tttitle {
+	background-color: #CEE3F8
+}
+
+.reddit .smallFoot {
+	background-color: #CEE3F8
+}
+
+.reddit .redditChunk {
+	margin-bottom: .5em;
+}
+
+.reddit .redditChunk > * {
+	margin-right: .5em;
+}
+
+.reddit .domain * {
+	color: rgb(136, 136, 136);
+	font-size: 0.7em;
+}
+
+.reddit .subreddit {
+	color: rgb(51, 102, 153);
+	font-size: 0.7em;
+}
+
+.reddit .comments {
+	color: rgb(136, 136, 136);
+	font-size: 0.7em;
+}
+
+.reddit .title {
+	display: inherit;
+	text-decoration: none;
+	color: #551a8b;
+	font-family: verdana, arial, helvetica, sans-serif;
+}
+
+.twitter {
+	border-color: #55ACEE;
+	font-family: Arial, sans-serif;
+}
+
+.twitter .tttitle  {
+	background-image: url('../images/twitter.png');
+	background-color: white;
+	background-color: #55ACEE;
+	background-position-y: center;
+	background-size: 1.7em;
+}
+
+.twitter s {
+	text-decoration: none;
+	margin-left: 0.3em;
+}
+
+.twitter .smallContainer .tweet-text a {
+	color: rgb(0, 132, 180);
+	text-decoration: none;
+}
+
+.twitter .smallContainer .tweet-text-outer {
+	text-decoration: none;
+	color: #333;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.twitter .stream-item-header a {
+	text-decoration: none;
+}
+
+.twitter a:hover {
+	text-decoration: underline;
+}
+
+.twitter .smallFoot {
+	background-color: #55ACEE;
+}
+
+.twitter .fullname {
+	font-weight: bold;
+	color: #292f33;
+}
+
+.twitter .js-retweet-text,
+.twitter .pretty-link b {
+	color: #8899a6;
+	font-size: 0.9em;
+	
+}
+
+.tweet {
+	margin-bottom: 0.5em;
+	padding-bottom: 0.5em;	
+	border-bottom: 1px solid rgb(225, 232, 237);
+}
+
+.tweet .avatar,
+.tweet .cards-media-container,
+.tweet .expanded-content,
+.tweet .tweet-details-fixer,
+.tweet .bottom-tweet-actions,
+.tweet .stream-item-footer,
+.tweet .u-hiddenVisually {
+	display: none;
+}
+
+.tweet .tweet-text {
+	margin: 0;
+}
+
+.twitter .username {
+	color: rgb(136, 153, 166)
+}
+
+.reddit .smallFoot {
+	background-color: #55ACEE;
+}
+
+
+
+.oLive {
+	border-color: #EBE0D2
+}
+
+.oLive .tttitle, .oLive .smallFoot	 {
+	background-color: #EBE0D2
+}
+
+
+
+.hackerNews {
+	border-color: #FF6600;
+	background-color: #F6F6EF;
+	text-decoration: none;
+	color: black;
+}
+
+.hackerNews .tttitle {
+	background-image: url('../images/hacker-news.jpg'); 
+}
+
+.hackerNews a {
+	text-decoration: none;
+	color: black;
+}
+
+.hackerNews .hComLink {
+	color: #828282;
+	font-size: .8em;
+}
+
+.hackerNews a:hover {
+	text-decoration: underline;
+}
+
+.hackerNews .tttitle, .hackerNews .smallFoot {
+		background-color: #FF6600;
+}
+
+.hackerNews .title {
+	font-family: Verdana, Geneva, sans-serif;
+}
+
+
+.hackerNews .smallContainer {
+	font-size: .9em;
+	padding: 0px;
+	background-color: #F6F6EF;
+
+}
+
+.hackerNews .comhead {
+	color: #828282
+}
