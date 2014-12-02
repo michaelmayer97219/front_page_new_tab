@@ -22,15 +22,21 @@ function scrape(url, responseFunction, targetClass) {
 
 //function for filling container
 function handle_url(url) {
-	if (scrapers.hasOwnProperty(url)) {
-		var newClass = scrapers[url]['class']
-		var blah = scrapers[url]['callback']
+	var pretty = prettyURL(url)
+	var scraped = alreadyScraped.indexOf(pretty)
+	alreadyScraped.push(pretty)
+	if (scraped != -1) {
+		
+		return null
+	} else if (scrapers.hasOwnProperty(pretty)) {
+		var newClass = scrapers[pretty]['class']
+		var blah = scrapers[pretty]['callback']
 		scrape(url, blah, newClass)
 		return newClass
 
-	} else if (non_scrapers.hasOwnProperty(url)) { 
-		var newClass = non_scrapers[url]['class']
-		var blah = non_scrapers[url]['callback']
+	} else if (non_scrapers.hasOwnProperty(pretty)) { 
+		var newClass = non_scrapers[pretty]['class']
+		var blah = non_scrapers[pretty]['callback']
 		setTimeout(function(){ //timout because container isn't created
 								//yet. 
 			blah(newClass)},150)
@@ -38,6 +44,7 @@ function handle_url(url) {
 	} else {
 		return null
 	}
+	
 }
 
 function newContainer (url, title, conClass) {
@@ -97,6 +104,7 @@ function onClickCallback() {
 
 
 $( document ).ready(function() {
+	alreadyScraped = [] //make sure duplicate scrapes don't happen
     chrome.topSites.get(top_sites_callback)
     //top_sites_callback(test_sites)
 

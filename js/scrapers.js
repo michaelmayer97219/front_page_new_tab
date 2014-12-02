@@ -1,47 +1,42 @@
 //list of scrapers
 scrapers = {
-	"http://news.ycombinator.com/": 
+	"news.ycombinator.com": 
 		{'callback': hackerNewsResponse,
 		'class': 'hackerNews'},
-	/*	
-	"http://www.oregonlive.com/": 
-		{'callback': oLive,
-		'class': 'oLive'},
-	*/
-	"http://www.blazersedge.com/":
+	"blazersedge.com":
 		{'callback': blazersEdge,
 		'class': 'blazersEdge'},
-	"https://twitter.com/": 
+	"twitter.com": 
 		{'callback': twitter,
 		'class': 'twitter'},
-	"http://fivethirtyeight.com/":
+	"fivethirtyeight.com":
 		{'callback': fiveThirtyEight,
 		'class': 'fiveThirtyEight'},
-	"http://www.theatlantic.com/":
+	"theatlantic.com":
 		{'callback': theAtlantic,
 		'class': 'theAtlantic'},
-	"http://www.reddit.com/": 
+	"reddit.com": 
 		{'callback': reddit,
 		'class': 'reddit'},
-	"http://qz.com/": 
+	"qz.com": 
 		{'callback': quartz,
 		'class': 'qz'},
-	"http://www.nytimes.com/": 
+	"nytimes.com": 
 		{'callback': nytimes,
 		'class': 'nytimes'},
-	"http://www.espn.go.com/": 
+	"espn.go.com": 
 		{'callback': espn,
 		'class': 'espn'},
-	"http://www.huffingtonpost.com/": 
+	"huffingtonpost.com": 
 		{'callback': huffpo,
 		'class': 'huffpo'},
-	"http://www.cnn.com/":
+	"cnn.com":
 		{'callback': cnn,
 		'class': 'cnn'},
-	"http://www.buzzfeed.com/":
+	"buzzfeed.com":
 		{'callback':buzzfeed,
 		'class': 'buzzfeed'},
-	"http://news.google.com/":
+	"news.google.com":
 		{'callback':googleNews,
 		'class': 'googleNews'}
 }
@@ -85,6 +80,19 @@ function fixRelativeLinks(targetClass, url, innerClass) {
 	})
 }
 
+function universalLinkFix(targetClass, newURL) {
+	var relLinks = $('.'+targetClass+' .smallContainer').find('a')
+	relLinks.each(function(ind) {
+		var $this = $(this)
+		var href = $this.attr('href')
+		var isRel = href.split('//')[0][0] == '/'
+		if (isRel) {
+			$this.attr('href', newURL+href)
+		}
+		//console.log(isRel)
+	})
+}
+
 function replaceTitleWithImage(targetClass, imageLink, url) {
 	var $baseClass = $('.'+targetClass).children('.tttitle')
 	$baseClass.find('a').text('') //hide link to use image
@@ -108,13 +116,14 @@ function googleNews(response, targetClass) {
 function buzzfeed(response, targetClass) {
 	$html = $.parseHTML(response)
 	basicScrape($html, targetClass, '.hot_list', 1)
-	fixRelativeLinks(targetClass, 'http://www.buzzfeed.com', 'a')
+	//fixRelativeLinks(targetClass, 'http://www.buzzfeed.com', 'a')
+	universalLinkFix(targetClass, 'http://buzzfeed.com')
 }
 
 function cnn(response, targetClass) {
 	$html = $.parseHTML(response)
 	basicScrape($html, targetClass, '.cnn_bulletbin', 2)
-	fixRelativeLinks(targetClass, 'http://www.cnn.com', 'a')
+	universalLinkFix(targetClass, 'http://www.cnn.com')
 }
 
 function huffpo(response, targetClass) {
@@ -137,7 +146,7 @@ function blazersEdge(response, targetClass) {
 
 function theAtlantic(response, targetClass)	{
 	basicContainerScrape(response, targetClass, '#module-most-popular', 'dd', 30)
-	fixRelativeLinks(targetClass, 'http://www.theatlantic.com', 'a')
+	universalLinkFix(targetClass, 'http://www.theatlantic.com')
 
 }
 
@@ -186,7 +195,9 @@ function hackerNewsResponse(response, targetClass) {
 function twitter(response, targetClass) {
 	basicScrape(response, targetClass, '.tweet', 15)
 	var newTarget = targetClass+' .stream-item-header'
-	fixRelativeLinks(targetClass, 'http://twitter.com', '.stream-item-header a')
+	//fixRelativeLinks(targetClass, 'http://twitter.com', '.stream-item-header a')
+	universalLinkFix(targetClass, 'http://twitter.comments')
+
 	//create link to tweet item around tweet text
 	var tweets = $('.tweet')
 	tweets.each(function(ind) {
@@ -195,6 +206,8 @@ function twitter(response, targetClass) {
 		var tweetText = $this.find('.tweet-text')
 		tweetText.wrap("<a class='tweet-text-outer' href='"+tweetHref+"'></a>")
 	})
+
+
 	/*
 	var $html = $(response)
 	var contentContainers = $html.find('.content').slice(1,12) //pick 10 tweets

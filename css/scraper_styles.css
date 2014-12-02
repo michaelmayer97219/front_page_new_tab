@@ -202,8 +202,7 @@
 }
 
 .blazersEdge .tttitle {
-	font-family: 'Ziggurat A', 'Ziggurat B', Georgia, serif;
-	font-weight: bold;
+	background-image: url('../images/bedge.png');
 
 }
 
@@ -423,7 +422,7 @@
 .twitter .pretty-link b {
 	color: #8899a6;
 	font-size: 0.9em;
-	
+
 }
 
 .tweet {
