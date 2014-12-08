@@ -26,7 +26,6 @@ function handle_url(url) {
 	var scraped = alreadyScraped.indexOf(pretty)
 	alreadyScraped.push(pretty)
 	if (scraped != -1) {
-		
 		return null
 	} else if (scrapers.hasOwnProperty(pretty)) {
 		var newClass = scrapers[pretty]['class']
@@ -68,11 +67,11 @@ function newContainer (url, title, conClass) {
 
 
 function top_sites_callback(obj) {
-
 	var main_contain = $('#main')
 	//create empty box for most visted links
 	var linkHolder = newContainer('', 'Most Visited Links', 'mostVisitedLinks')
-
+	main_contain.prepend(linkHolder)
+	$('.mostVisitedLinks .smallContainer').append("<div id='linkBox'></div>")
 	//loop through each topsite and build container
 	$.each(obj, function(key, val) {
 		var url = val.url
@@ -84,15 +83,20 @@ function top_sites_callback(obj) {
 			var cleanURL = prettyURL(url)
 			//make sure it's not too long
 			var cleanURL = ellipsify(cleanURL, 20)
-			$('.mostVisitedLinks .smallContainer').append("<div class='linkHolderLink'><a href='"+url+"'>"+cleanURL+"</a></div>")
+			$('.mostVisitedLinks .smallContainer #linkBox').append("<div class='linkHolderLink'><a href='"+url+"'>"+cleanURL+"</a></div>")
 		} else {
 			var newContent = newContainer(url,title,assClass)
 			main_contain.append(newContent)
 		}
-		main_contain.prepend(linkHolder)
+		
 	})
 	$('.mostVisitedLinks').find('.tttitle').text('Most Visited Links')
-
+	//center linkBox
+	var $linkbox = linkHolder.find('#linkBox')
+	var linkBoxHeight = $linkbox.height()
+	var outerBoxHeight = linkHolder.height()
+	var topMargin = (outerBoxHeight - linkBoxHeight)/4
+	$linkbox.css('margin-top', topMargin)
 }
 
 function onClickCallback() {
@@ -106,7 +110,7 @@ function onClickCallback() {
 $( document ).ready(function() {
 	alreadyScraped = [] //make sure duplicate scrapes don't happen
     chrome.topSites.get(top_sites_callback)
-    //top_sites_callback(test_sites)
+   // top_sites_callback(test_sites)
 
     chrome.browserAction.onClicked.addListener(onClickCallback)
 });

@@ -1,3 +1,886 @@
+.newyorker .tttitle {
+	background-image: url('../images/newyorker.jpeg');
+	background-color: white;
+}
+
+.newyorker p {
+	margin: 0 0 1em 0
+}
+
+.newyorker .smallContainer {
+	text-align: center;
+	margin: 0;
+	font-family: Georgia, serif;
+	padding-top: 0.5em;
+}
+
+.newyorker .smallContainer a {
+	color: black;
+	font-weight: 500;
+	font-size: 1.3em;
+	margin:0;
+}
+
+.newyorker h4,
+.newyorker h3,
+.newyorker #cartoons,
+.newyorker .featured-video {
+	display: none;
+}
+
+.ft .tttitle {
+	background-image: url('../images/ft.jpg');
+	background-size: 10em;
+}
+
+.ft  {
+	background-color: #FFF1E0
+
+}
+
+.ft a {
+	color: black;
+	margin-bottom: 0.3em;
+}
+
+.ft .smallContainer div div > *,
+.ft .smallContainer .ft-list {
+	display: none;
+}
+
+.ft .smallContainer h3 {
+	display: block;
+	font-family: Georgia, 'Times New Roman';
+	font-size: 1.2em;
+	color: black;
+	font-weight: normal; 
+}
+
+.ft .smallContainer h4 {
+	display: block;
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size: 1.1em;
+	font-weight: normal; 
+	color: rgb(80, 80, 80);
+	margin-bottom: 1em;
+}
+
+.nypost .tttitle {
+	background-image: url('../images/nypost.jpeg');
+	background-color: white;
+}
+
+.nypost .smallContainer a {
+	font-family: Helvetica, sans-serif;
+	font-style: 1.1em;
+	color: rgb(40,40,40);
+	font-weight: 600;
+}
+
+.sfgate .tttitle  {
+	background-image: url('../images/sfgate.jpeg');
+	background-color: white;
+	background-size: 5em;
+}
+
+.sfgate .smallContainer a {
+	color: rgb(34, 34, 34);
+	font-family: 'Gotham SSm', Helvetica, Arial, sans-serif;
+	font-weight: bold;
+}
+
+.sfgate .smallContainer span {
+	display: none;
+}
+
+.latimes .tttitle {
+	background-image: url('../images/latimes.png');
+	background-color: white;
+}
+
+.latimes .smallContainer a {
+	font-family: Georgia, serif;
+	color: black;
+	font-weight: bold;
+	font-size: 1em;
+}
+
+.techreview .tttitle  {
+	background-image: url('../images/techreview.png')
+}
+
+.techreview .smallContainer a {
+	border-bottom: 1px solid rgb(209, 215, 215);
+	font-size: 1em;
+	color: rgb(39, 39, 40);
+	padding-bottom: 0.5em;
+}
+
+.techreview .smallContainer img,
+.techreview h3,
+.techreview p,
+.techreview .cta {
+	display: none;
+}
+
+.rstone .tttitle {
+	background-image: url('../images/rstone.svg');
+	background-color: white;
+}
+
+.rstone .smallContainer a {
+	font-family: Georgia, serif;
+	font-weight: bold;
+	color: black;
+	font-size: 1.1em;
+}
+
+
+.rstone .smallContainer img,
+.rstone .picks-tagline,
+.rstone .label-text {
+	display: none;
+}
+
+.nymag .tttitle {
+	background-image: url('../images/nymag.png');
+	background-color: white;
+}
+
+.nymag .smallContainer a {
+	background-image: none !important;
+}
+
+.nymag .hed {
+	font-size: 1.1em;
+	margin: 0;
+	color: rgb(17, 17, 17)
+}
+
+.nymag .dek,
+.nymag p {
+	font-weight: 100;
+	font-family: arial, sans-serif;
+	margin: 0;
+	color: rgb(85, 85, 85);
+
+}
+
+.nymag .stripe,
+.nymag .author,
+.nymag .listItem,
+.nymag cite,
+.nymag time,
+.nymag img {
+	display: none;
+}
+
+.economist .tttitle {
+	background-image: url('../images/economist.png');
+	background-position-x: 0;
+	background-size: 5em;
+}
+
+.economist p {
+	margin: 0;
+	font-family: Arial, sans-serif;
+	font-weight: bold;
+	color: rgb(91, 91, 91);
+}
+
+.economist h1,
+.economist h2,
+.economist h3,
+.economist h4 {
+	margin: 0;
+	color: rgb(74, 74, 74);
+	font-family: Georgia, serif;
+	font-weight: 500;
+	font-size: 1.3em;
+}
+
+.economist .smallContainer span {
+	display: none;
+}
+
+.variety .tttitle {
+	background-color: white;
+	background-image: url('../images/variety.jpg');
+	background-size 5em;
+}
+
+.variety .smallContainer a {
+	font-family: 'Droid Serif', Georgia, Cambria, 'Times New Roman', Times, serif;
+	font-weight: bold;
+	font-style: italic;
+	color: black;
+	font-size: 1.1em;
+}
+
+.variety .smallContainer img,
+.variety .category,
+.variety .url {
+	display: none;
+}
+
+.aeon .tttitle {
+	background-color: white;
+	background-image: url('../images/aeon.png');
+	box-shadow: rgba(50, 50, 50, 0.34902) 0px 1px 5px 0px;
+	border-top: 1px solid #eee;
+}
+
+.aeon .panel p {
+	margin: 0 0 1em 0;
+	color: rgb(0, 0, 0);
+	font-family: Georgia, serif;
+}
+
+.aeon .panel a * {
+	display: none;
+}
+
+.aeon .panel .standfirst {
+	display: block;
+}
+
+.bizinsider .tttitle {
+	background-image: url('../images/bizinsider.jpeg')
+}
+
+.bizinsider .smallContainer a {
+	color: rgb(34, 34, 34);
+	font-family: helvetica;
+	font-weight: bold;
+}
+
+.medium .tttitle {
+	background-image: url('../images/medium.png');
+	background-color: white;
+	background-size: 6em;
+}
+
+.medium .smallContainer a {
+	font-family: Verdana, sans-serif;
+	color: rgba(0, 0, 0, 0.8);
+	font-weight: bold;
+}
+
+.arstech .tttitle {
+	background-image: url('../images/arstechlight.png');
+	background-color: white;
+}
+
+.arstech .smallContainer a {
+	color: rgb(38, 48, 52);
+	font-family: NoticiaBold, 'Times New Roman', serif;
+	font-weight: bold;
+	font-size: 1.1em
+}
+
+.arstech .smallContainer img,
+.arstech .smallContainer p
+.arstech .smallContainer [itemprop="url"] {
+	display: none;
+}
+
+.vice .tttitle {
+	background-image: url('../images/vice.png');
+	background-color: white;
+}
+
+.vice .smallContainer a {
+	font-family: helvetica;
+	color: black;
+	font-weight: bold;
+	font-size: 
+}
+
+.tcrunch .tttitle {
+	background-image: url('../images/tcrunch.png');
+	background-color: white;
+}
+
+.tcrunch .smallContainer img,
+.tcrunch .smallContainer p,
+.tcrunch .smallContainer .byline {
+	display: none;
+}
+
+.tcrunch .smallContainer h1,
+.tcrunch .smallContainer h2,
+.tcrunch .smallContainer h3,
+.tcrunch .smallContainer h4,
+.tcrunch .smallContainer a {
+	margin: 0;
+	padding: 0;
+	color: #3e433e;
+	font-weight: bold;
+	font-size: inherit;
+}
+
+.tcrunch .smallContainer a {
+	margin: 0 0 0.5em 0;
+		font-size: 1em;
+}
+
+
+.deadspin .tttitle {
+	background-image: url('../images/deadspin.jpeg');
+	background-color: white;
+}
+
+.deadspin .smallContainer a {
+	font-family: helvetica;
+	font-weight: bold;
+	color: black;
+}
+
+.slate .tttitle {
+	background-image: url('../images/slate.gif');
+	background-size: 4.5em;
+}
+
+.slate .smallContainer a {
+	font-family: helvetica;
+	color: rgb(40, 27, 33);
+	font-weight: bold;
+}
+
+.slate small {
+	display: none;
+
+}
+
+.drudge .tttitle {
+	background-color: white;
+	background-image: url('../images/drudge.jpeg');
+}
+
+.drudge .smallContainer a {
+	font-family: monospace;
+	color: black;
+	text-decoration: underline !important;
+	font-size: 1.1em;
+	font-weight: bold;
+}
+
+.drudge .smallContainer img {
+	display: none;
+}
+
+.verge .tttitle {
+	background-image: url('../images/verge.jpeg')
+}
+
+.verge h1,
+.verge h2, 
+.verge h3,
+.verge h4 {
+	margin: 0;
+	padding: 0;
+	font-family: Adelle, Georgia, serif;
+	font-weight: 400;
+	font-size: 1.1em;
+	color: black;
+}
+
+.verge p {
+	display: none;
+}
+
+.npr .tttitle {
+	background-image: url('../images/npr.jpeg');
+
+}
+
+.npr h1,
+.npr h2,
+.npr h3,
+.npr h4 {
+	margin: 0;
+	padding: 0;
+	font-size: 1.1em;
+	color: rgb(51, 51, 51);
+	font-family: 'Gotham SSm', Helvetica, Arial, sans-serif;
+	font-weight: 400;
+}
+
+.npr .smallContainer p {
+	display: none;
+}
+
+.mashable .tttitle {
+	background-image: url('../images/mashable.png');
+	background-size: 7em;
+}
+
+.mashable .smallContainer a {
+	color: rgb(51, 51, 51);
+	font-family: MuseoSlabRegular,'Proxima Nova', serif;
+	font-weight: 500;
+	font-size: 1.1em;
+}
+
+.tmz .tttitle {
+	background-image: url('../images/tmz.png');
+	background-size: 4em;
+}
+
+.tmz .smallContainer h1,
+.tmz .smallContainer h2,
+.tmz .smallContainer h3,
+.tmz .smallContainer h4 {
+	margin: 0;
+	padding: 0;
+	font-size: 1.1em;
+	display: inline;
+	font-family: 'Source Sans Pro', arial, sans-serif;
+	color: black;
+	font-weight: 600;
+}
+
+.engadget .tttitle {
+	background-image: url('../images/engadget.png');
+	background-size: 5em;
+}
+
+.engadget .smallContainer a {
+	font-family: 'Segoe UI', proxima-nova, proxima-nova-1, proxima-nova-2, 'Proxima Nova', Helvetica, Arial; 
+	color: rgb(51, 51, 51);
+	font-size: 1.1em;
+	letter-spacing: 0.1px;
+}
+
+.cbssports .tttitle {
+	background-image: url('../images/cbssports.png');
+	background-color: white;
+	border-bottom: 1px solid #efefef;
+	border-top: 1px solid #eee;
+}
+
+.cbssports .smallContainer a {
+	color: rgb(13, 58, 128);
+	font-family: proxima-nova, Arial, Helvetica, sans-serif;
+	font-size: 1.1em;
+}
+
+.ign .smallContainer img {
+	display: none;
+}
+
+.ign .tttitle {
+	background-image: url('../images/ign.png');
+	background-color: white;
+	border-bottom: 1px solid #efefef;
+	border-top: 1px solid #eee;
+}
+
+.ign .smallContainer a {
+	color: rgb(0, 51, 153);
+	font-family: 'proxima nova', sans-serif;
+	font-weight: bold;
+}
+
+.bleacher .tttitle {
+	background-image: url('../images/bleacher.jpeg');
+}
+
+.bleacher .smallContainer img {
+	display: none;
+}
+
+.bleacher .smallContainer a {
+	color: rgb(0, 51, 102);
+	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+}
+
+.gizmodo .tttitle {
+	background-image: url('../images/gizmodo.png');
+	background-color: white;
+	background-size: 9em;
+	border-top: 1px solid #eee;
+	border-bottom: 1px solid #eee;
+}
+
+.gizmodo .smallContainer a {
+	display: block;
+	text-decoration: none;
+	font-family: ProximaNovaCond, Proxima Nova Georgia, serif;
+	font-weight: bold;
+	margin-bottom: 0.5em;
+	color: black;
+	font-size: 1.1em
+}
+
+.gizmodo .smallContainer a:hover {
+	text-decoration: underline;
+}
+
+.usatoday .tttitle {
+	background-image: url('../images/usatoday.png');
+	background-color: black;
+	background-position-x: 0;
+}
+
+.usatoday {
+	border-color: black;
+}
+
+.usatoday .smallFoot {
+	background-color: black;
+}
+
+.usatoday .smallFoot span {
+	color: white;
+}
+
+.usatoday .smallContainer {
+	margin: 0;
+	width: 100%;
+}
+
+.usatoday .smallContainer a {
+	display: block;
+	padding: 0.5em 1em;
+	text-decoration: none;
+	background-color: rgb(249, 249, 249);
+	border-bottom: 1px solid rgb(220, 220, 220);
+	border-top: 1px solid rgb(255, 255, 255);
+}
+
+.usatoday .smallContainer span {
+	font-family: Arial, sans-serif;
+	font-weight: bold;
+	color: rgb(40,40,40);
+}
+
+.usatoday .smallContainer p {
+	padding: 0;
+	margin: 0;
+}
+
+.usatoday .smallContainer img {
+	display: none;
+}
+
+.hreporter .tttitle {
+	background-image: url('../images/hreporter.jpeg');
+	background-color: white;
+}
+
+.hreporter .smallContainer a {
+	display: block;
+	text-decoration: none;
+	color: black;
+	font-family: Roboto, Arial, sans-serif;
+	font-weight: bold;
+	margin: 0.5em 0;
+}
+
+.hreporter .smallContainer a:hover {
+	color: red;
+}
+
+.businessweek .tttitle {
+	background-image: url('../images/businessweek.png');
+	background-color: white;
+	border-top: 2px solid #eee;
+	border-bottom: 2px solid #eee;
+	background-size: 7em;
+}
+
+.businessweek .smallContainer a {
+	display: block;
+	text-decoration: none;
+	color: rgb(85, 85, 85);
+	font-family: sans-serif;
+	border-bottom: 1px solid rgb(224, 224, 224);
+	padding: 0.25em 0;
+}
+
+.businessweek .smallContainer a:hover {
+	text-decoration: underline;
+}
+
+.cnbc .tttitle {
+	background-image: url('../images/cnbc.png');
+	background-color: #146195;
+	background-size: 8em;
+}
+
+.cnbc {
+	border-color: #146195
+}
+
+.cnbc .smallFoot {
+	background-color: #146195
+}
+
+.cnbc .smallFoot span {
+	color: white;
+}
+
+.cnbc .smallContainer a {
+	display: block;
+	text-decoration: none;
+	color: rgb(35, 80, 118);
+	font-family: 'Gotham Narrow SSm 4r';
+	font-size: 1.15em;
+	margin: 0.5em 0;
+}
+
+.wsj .tttitle {
+	background-image: url('../images/wsj.png');
+	background-color: #3F4345
+}
+
+.wsj {
+	border-color: #3F4345
+}
+
+.wsj .smallFoot {
+	background-color: #3F4345;
+}
+
+.wsj .smallFoot span {
+	color: white;
+}
+
+.wsj .smallContainer a {
+	display: block;
+	text-decoration: none;
+	color: rgb(9, 61, 114);
+	font-family: Georgia, 'Century Schoolbook', 'Times New Roman', Times, serif;
+	font-size: 1.1em;
+	margin: 0.5em 0;
+}
+
+.bloomberg .tttitle {
+	background-color: black;
+	background-image: url('../images/bloomberg.svg');
+	background-size: 7em;
+	background-position-y: 4px;
+}
+
+.bloomberg {
+	border-color: black;
+}
+
+.bloomberg .smallFoot {
+	background-color: black;
+}
+
+.bloomberg .smallFoot span {
+	color: white;
+}
+
+.bloomberg li {
+	list-style: none;
+}
+
+.bloomberg .smallContainer a {
+	text-decoration: none;
+	color: rgb(0, 0, 0);
+	font-family: akzidenz-grotesk-std-bloom, Arial, Helvetica, sans-serif;
+	margin: 0.5em 0;
+	display: block;
+}
+
+.bloomberg .smallContainer a:hover {
+	color: #555;
+	text-decoration: underline;
+}
+
+.time .tttitle {
+	background-color: #E90606;
+	background-image: url('../images/time.png');
+	background-size: 4.5em;
+}
+
+.time {
+	border-color: #E90606
+}
+
+.time .smallFoot {
+	background-color: #E90606;
+}
+
+.time .smallFoot span {
+	color: white;
+}
+
+.time .smallContainer a {
+	text-decoration: none;
+	color: rgb(24, 24, 24);
+}
+
+.time h1,
+.time h2,
+.time h3,
+.time h4 {
+	 font-family: franklin-gothic-urw, sans-serif;
+	 font-weight: bold;
+	 font-size: 1em;
+	 margin: 0.5em 0;
+}
+
+
+.bbc .tttitle {
+	background-image: url('../images/bbc.gif');
+}
+
+.bbc .livestats-icon {
+	display: none;
+}
+
+.bbc ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.bbc img {
+	display: none;
+}
+
+.bbc .smallContainer a {
+	text-decoration: none;
+	font-family: arial, sans-serif;
+	color: black;
+	font-weight: bold;
+}
+
+.bbc li {
+	margin: 0.5em 0;
+}
+
+.bbc .media_link {
+	display: block;
+	margin: 0.5em 0;
+}
+
+.theguardian .tttitle {
+	background-image: url('../images/theguardian.jpg');
+	background-color: #00417B;
+	background-size: 9em;
+}
+
+.theguardian {
+	border-color: #00417B
+}
+
+.theguardian .smallFoot {
+	background-color: #00417B;
+}
+
+.theguardian .smallFoot span {
+	color: white;
+}
+
+.theguardian .headline-list__count {
+	display: none;
+}
+
+.theguardian a {
+	text-decoration: none;
+	color: rgb(51, 51, 51);
+}
+
+.theguardian h2 {
+	font-family: 'Guardian Egyptian Web', 'Guardian Text Egyptian Web', Georgia, serif;
+	font-size: 1em;
+	margin: 0.5em 0;
+	line-height: 1.25em;
+}
+
+.theguardian h2 {
+
+}
+
+.wapo .tttitle {
+	background-color: white;
+	background-image: url('../images/wapo.jpg');
+	border-top: 2px solid #eee;
+	border-bottom: 2px solid #eee;
+	background-position-y : 2px 
+}
+
+.wapo h1,
+.wapo h2,
+.wapo h3,
+.wapo .headline {
+	color: black;
+	font-size: 1em;
+	margin: 0.5em 0;
+	font-family: arial;
+	font-weight: bold;
+}
+
+.wapo a {
+	text-decoration: none;
+	color: black;
+}
+
+.wapo ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.wapo .number,
+.wapo p,
+.wapo img {
+	display: none;
+}
+
+.foxnews .tttitle {
+	background-image: url('../images/foxnews.jpeg');
+	background-color: #022960;
+}
+
+.foxnews {
+	border-color: #022960
+}
+
+.foxnews .smallFoot {
+	background-color: #022960;
+}
+
+.foxnews .smallFoot span {
+	color: white;
+}
+
+.foxnews .smallContainer a {
+	text-decoration: none;
+	color: rgb(24, 58, 82);
+	font-family: arial, sans-serif;
+}
+
+.foxnews img {
+	display: none;
+}
+
+.foxnews .smallContainer h1,
+.foxnews .smallContainer h2,
+.foxnews .smallContainer h3,
+.foxnews .smallContainer h4 {
+	font-size: 1em;
+}
+
+.foxnews ul {
+	padding: 0;
+	margin: 0;
+}
+
+.foxnews li {
+	list-style: none;
+}
+
+.foxnews li p {
+	display: none;
+}
+
 .googleNews .tttitle {
 	background-image: url('../images/googlenews.png');
 	background-size: 7.5em;
@@ -390,7 +1273,9 @@
 	margin-left: 0.3em;
 }
 
-.twitter .smallContainer .tweet-text a {
+.twitter .smallContainer .tweet-text a,
+.twitter .twitter-atreply s,
+.twitter .twitter-atreply b {
 	color: rgb(0, 132, 180);
 	text-decoration: none;
 }
@@ -399,6 +1284,10 @@
 	text-decoration: none;
 	color: #333;
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.twitter .invisible {
+	display: none;
 }
 
 .twitter .stream-item-header a {
@@ -422,7 +1311,10 @@
 .twitter .pretty-link b {
 	color: #8899a6;
 	font-size: 0.9em;
+}
 
+.twitter .js-retweet-text a {
+	text-decoration: none;
 }
 
 .tweet {
@@ -437,7 +1329,9 @@
 .tweet .tweet-details-fixer,
 .tweet .bottom-tweet-actions,
 .tweet .stream-item-footer,
-.tweet .u-hiddenVisually {
+.tweet .u-hiddenVisually,
+.tweet .js-disclosure,
+.tweet .js-action-profile-promoted {
 	display: none;
 }
 
@@ -445,7 +1339,8 @@
 	margin: 0;
 }
 
-.twitter .username {
+.twitter .username,
+.twitter ._timestamp {
 	color: rgb(136, 153, 166)
 }
 

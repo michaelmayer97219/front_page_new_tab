@@ -1,30 +1,30 @@
 {
     //manifest spec: http://developer.chrome.com/extensions/manifest.html
     //required
-    "name": "Chrome Extension Template",
-    "version": "1.0",
+    "name": "Front Page New Tab (Beta)",
+    "version": "0.1",
     "manifest_version": 2,
 
     //recommended
-    "description": "Chrome extension description written here.",
+    "description": "Your front page to the internet.",
     "icons": {
-        "19": "images/icon_19.png",
-        "38": "images/icon_38.png",
-        "128": "images/icon_128.png"
+        "19": "images/fp.png",
+        "38": "images/fp64.png",
+        "128": "images/fp64.png"
     },
 
     //required
-    "browser_action": {
-        "default_title": "browser_action: default_title",
-        "default_icon": {
-            "19": "images/icon_19.png",
-            "38": "images/icon_38.png"
-        }
-    },
+   //"browser_action": {
+    //    "default_title": "browser_action: default_title",
+      //  "default_icon": {
+        //    "19": "images/fp.png",
+          //  "38": "images/fp64.png"
+        //}
+    //},
 
     //additional
-    "options_page": "html/options.html",
-    "homepage_url": "http://yourdomainhere.com/",
+    //"options_page": "html/options.html",
+    //"homepage_url": "http://yourdomainhere.com/",
 
     //allows cross-origin
 

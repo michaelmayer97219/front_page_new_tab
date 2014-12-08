@@ -38,75 +38,394 @@ scrapers = {
 		'class': 'buzzfeed'},
 	"news.google.com":
 		{'callback':googleNews,
-		'class': 'googleNews'}
+		'class': 'googleNews'},
+	"foxnews.com":
+		{'callback':foxnews,
+		'class': 'foxnews'},
+	"washingtonpost.com":
+		{'callback':wapo,
+		'class': 'wapo'},
+	"theguardian.com":
+		{'callback':theguardian,
+		'class': 'theguardian'},
+	"bbc.com":
+		{'callback':bbc,
+		'class': 'bbc'},
+	"time.com":
+		{'callback': time,
+		'class': 'time'},
+	"bloomberg.com":
+		{'callback': bloomberg,
+		'class': 'bloomberg'},
+	"wsj.com":
+		{'callback': wsj,
+		'class': 'wsj'},
+	"cnbc.com":
+		{'callback': cnbc,
+		'class': 'cnbc'},
+	"businessweek.com":
+		{'callback': businessweek,
+		'class': 'businessweek'},
+	"hollywoodreporter.com":
+		{'callback': hreporter,
+		'class': 'hreporter'},
+	"usatoday.com":
+		{'callback': usatoday,
+		'class': 'usatoday'},
+	"gizmodo.com":
+		{'callback': gizmodo,
+		'class': 'gizmodo'},
+	"bleacherreport.com":
+		{'callback': bleacher,
+		'class': 'bleacher'},
+	"ign.com":
+		{'callback': ign,
+		'class': 'ign'},
+	"cbssports.com":
+		{'callback': cbssports,
+		'class': 'cbssports'},
+	"engadget.com":
+		{'callback': engadget,
+		'class': 'engadget'},
+	"tmz.com":
+		{'callback': tmz,
+		'class': 'tmz'},
+	"mashable.com":
+		{'callback': mashable,
+		'class': 'mashable'},
+	"npr.org":
+		{'callback': npr,
+		'class': 'npr'},
+	"theverge.com":
+		{'callback':verge,
+		'class': 'verge'},
+	"drudgereport.com":
+		{'callback': drudge,
+		'class': 'drudge'},
+	"slate.com":
+		{'callback': slate,
+		'class': 'slate'},
+	"deadspin.com":
+		{'callback': deadspin,
+		'class': 'deadspin'},
+	"techcrunch.com":
+		{'callback': tcrunch,
+		'class': 'tcrunch'},
+	"vice.com":
+		{'callback': vice,
+		'class': 'vice'},
+	"arstechnica.com":
+		{'callback': arstech,
+		'class': 'arstech'},
+	"medium.com":
+		{'callback': medium,
+		'class': 'medium'},
+	"businessinsider.com":
+		{'callback': bizinsider,
+		'class': 'bizinsider'},
+	"aeon.co":
+		{'callback': aeon,
+		'class': 'aeon'},
+	"variety.com":
+		{'callback': variety,
+		'class': 'variety'},
+	"economist.com":
+		{'callback': economist,
+		'class': 'economist'},
+	"nymag.com":
+		{'callback': nymag,
+		'class': 'nymag'},
+	"rollingstone.com":
+		{'callback': rstone,
+		'class': 'rstone'},
+	"technologyreview.com":
+		{'callback': techreview,
+		'class': 'techreview'},
+	"sfgate.com":
+		{'callback': sfgate,
+		'class': 'sfgate'},
+	"ft.com":
+		{'callback': ft,
+		'class': 'ft'},
+	"latimes.com":
+		{'callback': latimes,
+		'class': 'latimes'},
+	"nypost.com":
+		{'callback': nypost,
+		'class': 'nypost'},
+	"newyorker.com":
+		{'callback': newyorker,
+		'class': 'newyorker'}
 }
 
 non_scrapers =  {
-	/*
-	"http://mail.google.com/": 
-		{'callback': gmail,
-		'class': 'gmail'}
-	*/
+	"weather.com":
+		{'callback':weather,
+		'class': 'weather'},
 }
 
-//function for the most simple scrapes
-function basicScrape(response, targetClass, scrapeClassString ,scrapeLength) {
-	var $html = $(response)
-	var targetContainer = $('.'+targetClass+' .smallContainer')
-	var contentContainers = $html.find(scrapeClassString).slice(0,scrapeLength)
-	$.each(contentContainers, function(ind,val) {
-		targetContainer.append(val)
-	})
+function toAllCap(targetClass) {
+
 }
 
-//basic scrape but using a box instead of whole page
-function basicContainerScrape(response, targetClass, containElement, scrapeClassString ,scrapeLength) {
-	var content = $.parseHTML(response)
-	var $html = $(response)
-	var $smallHTML = $html.find(containElement)
-	console.log($smallHTML)
-	basicScrape($smallHTML, targetClass, scrapeClassString ,scrapeLength)
-}
-
-function fixRelativeLinks(targetClass, url, innerClass) {
-	var relLinks = $('.'+targetClass+' .smallContainer').find(innerClass)
-	relLinks.each(function(ind) {
-		$this = $(this)
-		var link = $this.attr('href')
-		$this.attr('href', url+link)
-		//var linkText = $this.text()
-		//newHTML = "<a href='"+url+link+"'>"+linkText+"</a>"
-		//$this.html(newHTML)
-	})
-}
-
-function universalLinkFix(targetClass, newURL) {
-	var relLinks = $('.'+targetClass+' .smallContainer').find('a')
-	relLinks.each(function(ind) {
+function newyorker(response, targetClass) {
+	basicScrape(response, targetClass, 'section section', 30)
+	unlinkStyle(targetClass)
+	//allcap headers
+	$('.'+targetClass).find('.smallContainer a').each(function(ind) {
 		var $this = $(this)
-		var href = $this.attr('href')
-		var isRel = href.split('//')[0][0] == '/'
-		if (isRel) {
-			$this.attr('href', newURL+href)
-		}
-		//console.log(isRel)
+		var $text = $this.text()
+		var NEWTEXT = $text.toUpperCase($text)
+		$this.text(NEWTEXT)
 	})
+	unHeaderStyle(targetClass)
 }
 
-function replaceTitleWithImage(targetClass, imageLink, url) {
-	var $baseClass = $('.'+targetClass).children('.tttitle')
-	$baseClass.find('a').text('') //hide link to use image
-	//turn tttitle into link
-	$baseClass.click(function() {
-		$this = $(this)
-		$this.wrap("<a href='"+url+"'></a>")
-	})
-	//styling 
-	$baseClass.css({
-		'background-image': 'url('+imageLink+')',
-		'background-repeat': 'no-repeat',
-		'background-position-x': '50%'
-	})
+function ft(response, targetClass) {
+	var $html = $.parseHTML(response)
+	basicScrape($html, targetClass, '.article', 25)
+	unlinkStyle(targetClass)
+	unHeaderStyle(targetClass)
+	colorate(targetClass, '#F6E9D8', false)
+}
+
+function sfgate(response, targetClass) {
+	var $html = $.parseHTML(response)
+	basicScrape($html, targetClass, '.caption a', 25)
+	unlinkStyle(targetClass)
+}
+function latimes(response, targetClass) {
+	basicScrape(response, targetClass, '.trb_outfit_featuredArticleTitle', 1)
+	basicScrape(response, targetClass, '.trb_outfit_list_headline_a', 5)
+	basicScrape(response, targetClass, '.trb_outfit_relatedListTitle', 15)
+	unlinkStyle(targetClass)
+}
+function nypost(response, targetClass) {
+	basicScrape(response, targetClass, 'article > h3 > a', 30)
+	unlinkStyle(targetClass)
+}
+
+function techreview(response, targetClass) {
+	basicScrape(response, targetClass, '.top-stories-list a', 10)
+	unlinkStyle(targetClass)
+	unHeaderStyle(targetClass)
+	universalLinkFix(targetClass, 'http://technologyreview.com')
+}
+
+function rstone(response, targetClass) {
+	var $html = $.parseHTML(response)
+	basicScrape($html, targetClass, '.lead-link', 3)
+	basicScrape($html, targetClass, '.rs-picks .rs-pick a', 120)
+	unlinkStyle(targetClass)
+	unHeaderStyle(targetClass)
+	universalLinkFix(targetClass, 'http://rollingstone.com')
+}
+
+function nymag(response, targetClass) {
+	basicScrape(response, targetClass, 'article .ledeLink', 10)
+	basicScrape(response, targetClass, '.feedLink', 10)
+	unlinkStyle(targetClass)
+}
+
+function economist(response, targetClass) {
+	basicScrape(response, targetClass, '.hero-tab', 10)
+	basicScrape(response, targetClass, 'article', 10)
+	unlinkStyle(targetClass)
+	universalLinkFix(targetClass, 'http://economist.com')
+}
+
+function variety(response, targetClass) {
+	basicScrape(response, targetClass, '.slide a', 10)
+	basicScrape(response, targetClass, '.story a', 50)
+	unlinkStyle(targetClass)
+}
+
+function aeon(response, targetClass) {
+	basicScrape(response, targetClass, '.panel', 15)
+	unlinkStyle(targetClass)
+}
+
+function bizinsider(response, targetClass) {
+	basicScrape(response, targetClass, '.title', 20)
+	unlinkStyle(targetClass)
+	colorate(targetClass, '#2E5262', true)
+}
+
+function medium(response, targetClass) {
+	basicScrape(response, targetClass, '.block-title a', 20)
+	universalLinkFix(targetClass, 'http://medium.com')
+	unlinkStyle(targetClass)
+}
+
+function arstech(response, targetClass) {
+	basicScrape(response, targetClass, '.top-stories li a', 10)
+	unlinkStyle(targetClass)
+	//colorate(targetClass, '#242424', true)
+}
+
+function vice(response, targetClass) {
+	var $html = $.parseHTML(response)
+	basicScrape($html, targetClass, '.item-title a', 15)
+	unlinkStyle(targetClass)
+	universalLinkFix(targetClass, 'http://vice.com')
+}
+
+function tcrunch(response, targetClass) {
+	basicScrape(response, targetClass, '.plain-feature a', 1)
+	basicScrape(response, targetClass, '.plain-item a', 5)
+	basicScrape(response, targetClass, '.post-title a', 10)
+	unlinkStyle(targetClass)
+}
+
+function deadspin(response, targetClass) {
+		var $html = $.parseHTML(response)
+	basicScrape($html, targetClass, '.entry-title a', 20)
+	unlinkStyle(targetClass)
+}
+
+function slate(response, targetClass) {
+	var $html = $.parseHTML(response)
+	basicScrape($html, targetClass, '.popular li a', 10)
+	basicScrape($html, targetClass, '.mostshared li a', 10)
+	removeDupeLinks(targetClass)
+	unlinkStyle(targetClass)
+	colorate(targetClass, '#670032', true)
+}
+
+function drudge(response, targetClass) {
+	basicScrape(response, targetClass, '#drudgeTopHeadlines a', 20)
+	basicScrape(response, targetClass, 'b a', 10)
+	unlinkStyle(targetClass)
+}
+
+function verge(response, targetClass) {
+	basicScrape(response, targetClass, '.m-hero__slot-link', 10)
+	unlinkStyle(targetClass)
+}
+
+function npr(response, targetClass) {
+	basicScrape(response, targetClass, '.story-text > a', 10)
+	unlinkStyle(targetClass)
+}
+
+function mashable(response, targetClass) {
+	var $html = $.parseHTML(response)
+	basicScrape($html, targetClass, '.big-stories h1 a', 10)
+	basicScrape($html, targetClass, '.hot-stories h1 a', 10)
+	unlinkStyle(targetClass)
+	colorate(targetClass, '#00AEEF', true)
+}
+
+function tmz(response, targetClass) {
+	basicScrape(response, targetClass, '.headline ', 10)
+	unlinkStyle(targetClass)
+	colorate(targetClass, '#464646', true)
+}
+
+function engadget(response, targetClass) {
+
+	var $html = $.parseHTML(response)
+	basicScrape($html, targetClass, '.headline a', 20)
+	unlinkStyle(targetClass)
+	colorate(targetClass, '#444444', true)
+}
+
+function cbssports(response, targetClass) {
+	basicScrape(response, targetClass, '.topStories li > a', 20)
+	unlinkStyle(targetClass)
+}
+
+function ign(response, targetClass) {
+	basicScrape(response, targetClass, '.listElmnt-storyHeadline', 30)
+	unlinkStyle(targetClass)
+}
+
+function bleacher(response, targetClass) {
+	basicScrape(response, targetClass, '#headlines li a', 5)
+	basicScrape(response, targetClass, '#bleacher-buzz-module li > a', 5)
+	basicScrape(response, targetClass, '.line-up-title a', 10)
+	unlinkStyle(targetClass)
+	colorate(targetClass, '#5A5A5A', true)
+	universalLinkFix(targetClass, 'http://bleacherreport.com')
+
+}
+
+function gizmodo(response, targetClass) {
+	var $html = $.parseHTML(response)
+	basicScrape($html, targetClass, '.entry-title a', 10)
+}
+
+function usatoday(response, targetClass) {
+	basicScrape(response, targetClass, '.mpsm-item a', 5)
+	basicScrape(response, targetClass, '.hfwmm-item a', 10)
+	universalLinkFix(targetClass, 'http://usatoday.com')
+}
+
+function hreporter(response, targetClass) {
+	basicScrape(response, targetClass, '.panel a', 5)
+	basicScrape(response, targetClass, '.title a', 10)
+	universalLinkFix(targetClass, 'http://hollywoodreporter.com')
+}
+
+function businessweek(response, targetClass) {
+	var $html = $.parseHTML(response)
+	basicScrape($html, targetClass, '.tab_panel li a', 20)
+}
+
+function cnbc(response, targetClass) {
+	var $html = $.parseHTML(response)
+	basicScrape($html, targetClass, '#tab_contents_tab_1 .headline a', 10)
+	basicScrape($html, targetClass, '#tab_contents_tab_1 .headline a', 10)
+	removeDupeLinks(targetClass)
+	universalLinkFix(targetClass, 'http://cnbc.com')
+}
+
+function wsj(response, targetClass) {
+	basicScrape(response, targetClass, '.tipTarget a', 5)
+	basicScrape(response, targetClass, '.trendingNow li h2 a', 30)
+}
+
+function bloomberg(response, targetClass) {
+	basicScrape(response, targetClass, '.icon-article-headline', 10)
+	basicScrape(response, targetClass, '.most_popular_block li', 10)
+	universalLinkFix(targetClass, 'http://www.bloomberg.com')
+	removeDupeLinks(targetClass)
+}
+
+function time(response, targetClass) {
+	basicScrape(response, targetClass, '.home-icons-article', 5)
+	basicScrape(response, targetClass, '.home-popular-title', 10)
+}
+
+function bbc(response, targetClass) {
+	var $html = $.parseHTML(response)
+	basicScrape($html, targetClass, '#most_popular_tabs_read', 1)
+	basicScrape($html, targetClass, '#most_popular_tabs_shared', 1)
+	basicScrape($html, targetClass, '.media_link', 10)
+	removeDupeLinks(targetClass)
+}
+
+function theguardian(response, targetClass) {
+	$html = $.parseHTML(response)
+	basicScrape($html, targetClass, '.headline-list__link', 10)
+}
+
+function wapo(response, targetClass) {
+		basicScrape(response, targetClass, '.headline', 2)
+		basicScrape(response, targetClass, '.no-left', 2)
+		basicScrape(response, targetClass, '#post_most', 1)
+		universalLinkFix(targetClass, 'http://washingtonpost.com')
+}
+
+function weather(response, targetClass) {
+	$('.'+targetClass).hide()
+}
+
+function foxnews(response, targetClass) {
+	$html = $.parseHTML(response)
+	basicScrape($html, targetClass, '.section-first', 1)
+	basicScrape($html, targetClass, '.dv-item', 5)
+	
 }
 
 function googleNews(response, targetClass) {
@@ -162,8 +481,7 @@ function quartz(response, targetClass) {
 }
 
 function hackerNewsResponse(response, targetClass) {
-	var backImage = '../images/hacker-news.jpg'
-	//replaceTitleWithImage(targetClass, backImage, 'http:/news.ycombinator.com')
+
 	var innerContent = '<table><tbody>'
 	var $html = $(response)
 	var table = $html.find('table')[2] //contains table with all links
