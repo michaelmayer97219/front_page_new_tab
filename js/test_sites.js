@@ -3,9 +3,16 @@ var test_sites = [
 	{'title': 'newyorker',
 	'url': 'http://newyorker.com/'},
 
+	{'title': 'Dbeast',
+	'url': 'http://thedailybeast.com'},
+
+	{'title': 'Newsweek',
+	'url': 'http://newsweek.com'},
+
 	{'title': 'ESPN',
 	'url':'http://espn.go.com/'},
 
+/*
 	{'title': 'CNN',
 	'url':'http://cnn.com/'},
 
@@ -18,7 +25,7 @@ var test_sites = [
 	{'title': 'Hacker News',
 	'url':'http://news.ycombinator.com'},
 
-	/*
+	
 
 	{'title':'ft',
 	'url': 'http://ft.com'},

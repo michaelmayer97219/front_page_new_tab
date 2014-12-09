@@ -65,13 +65,21 @@ function newContainer (url, title, conClass) {
 	return $content
 }
 
+function centerLinkBox(linkHolder, innerClass) {
+	var $linkbox = linkHolder.find(innerClass)
+	var linkBoxHeight = $linkbox.height()
+	var outerBoxHeight = linkHolder.height()
+	var topMargin = (outerBoxHeight - linkBoxHeight)/3
+	$linkbox.css('margin-top', topMargin)
+}
+
 
 function top_sites_callback(obj) {
 	var main_contain = $('#main')
 	//create empty box for most visted links
 	var linkHolder = newContainer('', 'Most Visited Links', 'mostVisitedLinks')
 	main_contain.prepend(linkHolder)
-	$('.mostVisitedLinks .smallContainer').append("<div id='linkBox'></div>")
+	$('.mostVisitedLinks .smallContainer').append("<div class='linkBox'></div>")
 	//loop through each topsite and build container
 	$.each(obj, function(key, val) {
 		var url = val.url
@@ -83,7 +91,7 @@ function top_sites_callback(obj) {
 			var cleanURL = prettyURL(url)
 			//make sure it's not too long
 			var cleanURL = ellipsify(cleanURL, 20)
-			$('.mostVisitedLinks .smallContainer #linkBox').append("<div class='linkHolderLink'><a href='"+url+"'>"+cleanURL+"</a></div>")
+			$('.mostVisitedLinks .smallContainer .linkBox').append("<div class='linkHolderLink'><a href='"+url+"'>"+cleanURL+"</a></div>")
 		} else {
 			var newContent = newContainer(url,title,assClass)
 			main_contain.append(newContent)
@@ -92,11 +100,41 @@ function top_sites_callback(obj) {
 	})
 	$('.mostVisitedLinks').find('.tttitle').text('Most Visited Links')
 	//center linkBox
-	var $linkbox = linkHolder.find('#linkBox')
-	var linkBoxHeight = $linkbox.height()
-	var outerBoxHeight = linkHolder.height()
-	var topMargin = (outerBoxHeight - linkBoxHeight)/4
-	$linkbox.css('margin-top', topMargin)
+	centerLinkBox(linkHolder, '.linkBox')
+	var bookMarks = newContainer('', 'Bookmarks', 'bookmarkBox')
+	bookMarks.append("<div class='linkBox'></div>")
+	bookMarks.find('.tttitle').text('Bookmarks')
+	var $bookmarkLinks = bookMarks.find('.linkBox')
+	
+	chrome.bookmarks.getTree(function(obj) {
+		$.each(obj[0].children, function(ind, val) {
+			$bookmarkLinks.append("<div class='bookmarkCat'>Category: "+val.title+"</div>")
+			//check if it's empty
+			if (val.children.length > 0) {
+				$.each(val.children, function(ind, v) {
+					var title = ellipsify(v.title, 25)
+					var url = v.url
+				$bookmarkLinks.append("<a class='bookmarkLink' href='"+url+"'>"+title+"</a>")
+				})
+
+			}
+			
+		})
+	})
+	main_contain.append(bookMarks)
+
+	var history = newContainer('','', 'historyBox')
+	history.append("<div class='linkBox'></div>")
+	history.find('.tttitle').text('Recently Visited')
+	var $historyLinks = history.find('.linkBox')
+
+	chrome.history.search({text: '', maxResults: 20}, function(data) {
+    data.forEach(function(page) {
+        $historyLinks.append("<a class='bookmarkLink' href='"+page.url+"'>"+ellipsify(page.title, 20)+"</a>")
+    });
+    main_contain.append(history)
+    centerLinkBox(history, '.linkbox')
+});
 }
 
 function onClickCallback() {
@@ -109,8 +147,8 @@ function onClickCallback() {
 
 $( document ).ready(function() {
 	alreadyScraped = [] //make sure duplicate scrapes don't happen
-    chrome.topSites.get(top_sites_callback)
-   // top_sites_callback(test_sites)
+   // chrome.topSites.get(top_sites_callback)
+     top_sites_callback(test_sites)
 
     chrome.browserAction.onClicked.addListener(onClickCallback)
 });

@@ -155,7 +155,13 @@ scrapers = {
 		'class': 'nypost'},
 	"newyorker.com":
 		{'callback': newyorker,
-		'class': 'newyorker'}
+		'class': 'newyorker'},
+	"newsweek.com":
+		{'callback': newsweek,
+		'class': 'newsweek'},
+	"thedailybeast.com":
+		{'callback':dailybeast,
+		'class': 'dailybeast'}
 }
 
 non_scrapers =  {
@@ -164,8 +170,19 @@ non_scrapers =  {
 		'class': 'weather'},
 }
 
-function toAllCap(targetClass) {
+function dailybeast(response, targetClass) {
+	basicScrape(response, targetClass, '.cheats .cheat', 20)
+	unlinkStyle(targetClass)
+	unHeaderStyle(targetClass)
+	fixRelativeLinks(targetClass, 'http://dailybeast.com', 'a')
+	
+}
 
+function newsweek(response, targetClass) {
+	basicScrape(response, targetClass, '.hf-info', 20)
+	unHeaderStyle(targetClass)
+	unlinkStyle(targetClass)
+	universalLinkFix(targetClass, 'http://newsweek.com')
 }
 
 function newyorker(response, targetClass) {

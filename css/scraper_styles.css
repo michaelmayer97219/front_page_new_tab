@@ -1,5 +1,109 @@
+.dailybeast .tttitle {
+	background-color: #EE2E24;
+	background-image: url('../images/dailybeast.png');
+}
+
+.dailybeast .smallFoot {
+	background-color: #EE2E24
+}
+
+.dailybeast .smallFoot span {
+	color: white;
+}
+
+.dailybeast {
+	background-color: #F5F4EF
+}
+
+.dailybeast .smallContainer {
+	margin: 0;
+	padding: 0 4%;
+	width: 92%;	
+
+}
+
+.dailybeast .cheat a {
+	margin: 0;
+}
+
+
+
+.dailybeast .title {
+	margin: 0;
+	text-align: center;
+	font-family: Georgia,Times,serif;
+font-weight: 300;
+color: black;
+font-size: 1.3em; 
+
+}
+
+.dailybeast .dek {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	text-align: center;
+	color: rgb(102, 102, 102);
+	margin-bottom: 1em;
+}
+
+.dailybeast .rubric {
+	font-size: 1.15em;
+	color: #ee2e24;
+	margin: 0;
+	text-align: center;
+}
+
+.dailybeast .smallcontainer {
+	text-align: center ;
+}
+
+.dailybeast .smallContainer img,
+.dailybeast .social {
+	display: none
+}
+
+.dailybeast li {
+	list-style: none;
+}
+
+.newsweek  {
+	background-color: white;
+}
+
+.newsweek .tttitle {
+	background-image: url('../images/newsweek.jpeg');
+	background-color: white;
+	border-bottom: 1px solid red;
+}
+
+
+.newsweek .hf-title a {
+	font-family: helvetica;
+	font-weight: bold;
+	font-size: 1.1em;
+	color: black;
+	margin-bottom: 0;
+}
+
+.newsweek .hf-summary {
+	font-family: helvetica;
+	font-size: 1em;
+	color: rgb(90, 90, 90);
+	margin-bottom: 0.5em;
+}
+
+.newsweek .related-links,
+.newsweek .hf-category {
+	display: none;
+}
+
 .newyorker .tttitle {
 	background-image: url('../images/newyorker.jpeg');
+	background-color: white;
+	border-bottom: 1px solid #ccc;
+}
+
+.newyorker {
 	background-color: white;
 }
 

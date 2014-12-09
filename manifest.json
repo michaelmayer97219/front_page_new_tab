@@ -35,6 +35,8 @@
     //permission needed to access topsites
     "permissions": [
           "topSites",
-          "http://*/*", "https://*/*"
+          "http://*/*", "https://*/*",
+          "bookmarks",
+          "history"
         ]
 }
