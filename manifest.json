@@ -37,6 +37,7 @@
           "topSites",
           "http://*/*", "https://*/*",
           "bookmarks",
-          "history"
+          "history",
+          "chrome://favicon/*"
         ]
 }

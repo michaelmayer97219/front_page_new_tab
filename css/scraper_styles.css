@@ -1,3 +1,99 @@
+.rtomatoes .right_col {
+	width: 4em;
+}
+
+.rtomatoes .tttitle {
+	background-image: url('../images/rtomatoes.png');
+	xbackground-position: left;
+	background-color: #3A9425;
+}
+
+.rtomatoes .smallFoot {
+	zdisplay: none;}
+
+.rtomatoes .clickForMore {
+	text-align: right;
+	padding-right: 1em;
+}
+
+
+
+.rtomatoes table {
+	width: 100%;
+
+}
+
+.rtomatoes .smallContainer a {
+	margin: 0;
+	color: rgb(52, 52, 52);
+}
+
+.rtomatoes .smallContainer td {
+	color: rgb(52, 52, 52);
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 1.1em
+}
+
+.rtomatoes .noRating {
+	display: none;
+}
+
+.rtomatoes h2 {
+	font-family: Helvetica, Arial, sans-serif;
+	color: rgb(52, 52, 52);
+	font-size: 1.2em
+
+}
+
+.forbes .tttitle {
+	background-image: url('../images/forbes.jpg');
+	background-size: 8em;
+	background-color: #444444;
+}
+
+.forbes .smallFoot {
+	background-color: #444;
+}
+
+.forbes .smallFoot span {
+	color: white;
+}
+
+.forbes .smallContainer a {
+	color: rgb(15, 45, 95);
+	font-family: georgia;
+	font-size: 1.1em;
+}
+
+.wired .tttitle {
+	background-image: url('../images/wired.jpeg');
+	background-color: black;
+	border: 1px solid;	
+}
+
+.wired .smallFoot {
+	background-color:black;
+}
+
+.wired .smallFoot span {
+	color: white;
+}
+
+.wired .headline {
+	margin-bottom: 1em;
+}
+
+.wired h2 a {
+	color: rgb(51, 51, 51);
+}
+
+.wired h5 {
+	letter-spacing: -0.3px;
+	font-weight: bold;
+	color: rgb(51, 51, 51);
+	font-family: Helvetica, arial, sans-serif;
+}
+
 .dailybeast .tttitle {
 	background-color: #EE2E24;
 	background-image: url('../images/dailybeast.png');

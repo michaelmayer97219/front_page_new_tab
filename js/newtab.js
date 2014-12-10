@@ -114,7 +114,7 @@ function top_sites_callback(obj) {
 				$.each(val.children, function(ind, v) {
 					var title = ellipsify(v.title, 25)
 					var url = v.url
-				$bookmarkLinks.append("<a class='bookmarkLink' href='"+url+"'>"+title+"</a>")
+					$bookmarkLinks.append("<a class='bookmarkLink' href='"+url+"'><img src='"+favicon(url)+"'/>"+title+"</a>")
 				})
 
 			}
@@ -130,7 +130,13 @@ function top_sites_callback(obj) {
 
 	chrome.history.search({text: '', maxResults: 20}, function(data) {
     data.forEach(function(page) {
-        $historyLinks.append("<a class='bookmarkLink' href='"+page.url+"'>"+ellipsify(page.title, 20)+"</a>")
+    	if (page.title) {
+
+    		$historyLinks.append("<a class='bookmarkLink' href='"+page.url+"'><img src='"+favicon(page.url)+"'/>"+ellipsify(page.title, 20)+"</a>")
+    	}
+    	//$historyLinks.append("<img src='chrome://favicon/http://"+urlify(page.url)+"'/>")
+       // $historyLinks.append()
+        
     });
     main_contain.append(history)
     centerLinkBox(history, '.linkbox')

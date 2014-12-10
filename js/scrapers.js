@@ -161,13 +161,49 @@ scrapers = {
 		'class': 'newsweek'},
 	"thedailybeast.com":
 		{'callback':dailybeast,
-		'class': 'dailybeast'}
+		'class': 'dailybeast'},
+	"wired.com": 
+		{'callback': wired,
+		'class': 'wired'},
+	"forbes.com":
+		{'callback': forbes,
+		'class': 'forbes'},
+	"rottentomatoes.com":
+		{'callback': rtomatoes,
+		'class': 'rtomatoes'}
 }
 
 non_scrapers =  {
 	"weather.com":
 		{'callback':weather,
 		'class': 'weather'},
+}
+
+function rtomatoes(response, targetClass) {
+	var content = $.parseHTML(response)
+	basicScrape(content, targetClass, '#homepage-opening-this-week', 1)
+	basicScrape(content, targetClass, '#homepage-top-box-office', 1)
+	unHeaderStyle(targetClass)
+	unlinkStyle(targetClass)
+	universalLinkFix(targetClass, 'http://rottentomatoes.com')
+}
+
+function forbes(response, targetClass) {
+	var content = $.parseHTML(response)
+	basicScrape(content, targetClass, '.editable a', 20)
+	unlinkStyle(targetClass)
+}
+
+function wired(response, targetClass) {
+	basicScrape(response, targetClass, '.headline', 20)
+	unHeaderStyle(targetClass)
+	unlinkStyle(targetClass)
+	$('.'+targetClass).find('h5').each(function(ind) {
+		var $this = $(this)
+		var text = $this.text()
+		$this.text(text.toUpperCase())
+		$this.css('font-size', '0.8em')
+	})
 }
 
 function dailybeast(response, targetClass) {

@@ -3,6 +3,7 @@ function unHeaderStyle(targetClass) {
 	$('.'+targetClass+' h2').addClass('unHeaderate')
 	$('.'+targetClass+' h3').addClass('unHeaderate')
 	$('.'+targetClass+' h4').addClass('unHeaderate')
+	$('.'+targetClass+' h5').addClass('unHeaderate')
 }
 
 //function for the most simple scrapes
@@ -112,3 +113,15 @@ function prettyURL(url) {
 	}
 	return url
 }
+
+function favicon(url) {
+	var appendage = "https://s2.googleusercontent.com/s2/favicons?domain_url="
+	var encodedURL = encodeURIComponent(url)
+	return appendage+encodedURL
+}
+
+
+
+
+
+

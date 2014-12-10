@@ -1,7 +1,18 @@
 var test_sites = [
 
+	{'title': 'rtom',
+	'url': 'http://rottentomatoes.com/'},
+
+	{'title': 'forbes',
+	'url': 'http://forbes.com/'},
+
 	{'title': 'newyorker',
 	'url': 'http://newyorker.com/'},
+
+	{'title': 'Dbeast',
+	'url': 'http://wired.com'},
+
+	/*
 
 	{'title': 'Dbeast',
 	'url': 'http://thedailybeast.com'},
@@ -12,7 +23,7 @@ var test_sites = [
 	{'title': 'ESPN',
 	'url':'http://espn.go.com/'},
 
-/*
+
 	{'title': 'CNN',
 	'url':'http://cnn.com/'},
 
