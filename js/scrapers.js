@@ -1,182 +1,423 @@
+var defaultCache = 1200000
+
 //list of scrapers
 scrapers = {
 	"news.ycombinator.com": 
 		{'callback': hackerNewsResponse,
-		'class': 'hackerNews'},
+		'class': 'hackerNews',
+		'maxCache': defaultCache},
 	"blazersedge.com":
 		{'callback': blazersEdge,
-		'class': 'blazersEdge'},
+		'class': 'blazersEdge',
+		'maxCache': defaultCache},
 	"twitter.com": 
 		{'callback': twitter,
-		'class': 'twitter'},
+		'class': 'twitter',
+		'maxCache': 100000},
 	"fivethirtyeight.com":
 		{'callback': fiveThirtyEight,
-		'class': 'fiveThirtyEight'},
+		'class': 'fiveThirtyEight',
+		'maxCache': defaultCache},
 	"theatlantic.com":
 		{'callback': theAtlantic,
-		'class': 'theAtlantic'},
+		'class': 'theAtlantic',
+		'maxCache': defaultCache},
 	"reddit.com": 
 		{'callback': reddit,
-		'class': 'reddit'},
+		'class': 'reddit',
+		'maxCache': 600000},
 	"qz.com": 
 		{'callback': quartz,
-		'class': 'qz'},
+		'class': 'qz',
+		'maxCache': defaultCache},
 	"nytimes.com": 
 		{'callback': nytimes,
-		'class': 'nytimes'},
+		'class': 'nytimes',
+		'maxCache': defaultCache},
 	"espn.go.com": 
 		{'callback': espn,
-		'class': 'espn'},
+		'class': 'espn',
+		'maxCache': defaultCache},
 	"huffingtonpost.com": 
 		{'callback': huffpo,
-		'class': 'huffpo'},
+		'class': 'huffpo',
+		'maxCache': defaultCache},
 	"cnn.com":
 		{'callback': cnn,
-		'class': 'cnn'},
+		'class': 'cnn',
+		'maxCache': defaultCache},
 	"buzzfeed.com":
 		{'callback':buzzfeed,
-		'class': 'buzzfeed'},
+		'class': 'buzzfeed',
+		'maxCache': defaultCache},
 	"news.google.com":
 		{'callback':googleNews,
-		'class': 'googleNews'},
+		'class': 'googleNews',
+		'maxCache': defaultCache},
 	"foxnews.com":
 		{'callback':foxnews,
-		'class': 'foxnews'},
+		'class': 'foxnews',
+		'maxCache': defaultCache},
 	"washingtonpost.com":
 		{'callback':wapo,
-		'class': 'wapo'},
+		'class': 'wapo',
+		'maxCache': defaultCache},
 	"theguardian.com":
 		{'callback':theguardian,
-		'class': 'theguardian'},
+		'class': 'theguardian',
+		'maxCache': defaultCache},
 	"bbc.com":
 		{'callback':bbc,
-		'class': 'bbc'},
+		'class': 'bbc',
+		'maxCache': defaultCache},
 	"time.com":
 		{'callback': time,
-		'class': 'time'},
+		'class': 'time',
+		'maxCache': defaultCache},
 	"bloomberg.com":
 		{'callback': bloomberg,
-		'class': 'bloomberg'},
+		'class': 'bloomberg',
+		'maxCache': defaultCache},
 	"wsj.com":
 		{'callback': wsj,
-		'class': 'wsj'},
+		'class': 'wsj',
+		'maxCache': defaultCache},
 	"cnbc.com":
 		{'callback': cnbc,
-		'class': 'cnbc'},
+		'class': 'cnbc',
+		'maxCache': defaultCache},
 	"businessweek.com":
 		{'callback': businessweek,
-		'class': 'businessweek'},
+		'class': 'businessweek',
+		'maxCache': defaultCache},
 	"hollywoodreporter.com":
 		{'callback': hreporter,
-		'class': 'hreporter'},
+		'class': 'hreporter',
+		'maxCache': defaultCache},
 	"usatoday.com":
 		{'callback': usatoday,
-		'class': 'usatoday'},
+		'class': 'usatoday',
+		'maxCache': defaultCache},
 	"gizmodo.com":
 		{'callback': gizmodo,
-		'class': 'gizmodo'},
+		'class': 'gizmodo',
+		'maxCache': defaultCache},
 	"bleacherreport.com":
 		{'callback': bleacher,
-		'class': 'bleacher'},
+		'class': 'bleacher',
+		'maxCache': defaultCache},
 	"ign.com":
 		{'callback': ign,
-		'class': 'ign'},
+		'class': 'ign',
+		'maxCache': defaultCache},
 	"cbssports.com":
 		{'callback': cbssports,
-		'class': 'cbssports'},
+		'class': 'cbssports',
+		'maxCache': defaultCache},
 	"engadget.com":
 		{'callback': engadget,
-		'class': 'engadget'},
+		'class': 'engadget',
+		'maxCache': defaultCache},
 	"tmz.com":
 		{'callback': tmz,
-		'class': 'tmz'},
+		'class': 'tmz',
+		'maxCache': defaultCache},
 	"mashable.com":
 		{'callback': mashable,
-		'class': 'mashable'},
+		'class': 'mashable',
+		'maxCache': defaultCache},
 	"npr.org":
 		{'callback': npr,
-		'class': 'npr'},
+		'class': 'npr',
+		'maxCache': defaultCache},
 	"theverge.com":
 		{'callback':verge,
-		'class': 'verge'},
+		'class': 'verge',
+		'maxCache': defaultCache},
 	"drudgereport.com":
 		{'callback': drudge,
-		'class': 'drudge'},
+		'class': 'drudge',
+		'maxCache': defaultCache},
 	"slate.com":
 		{'callback': slate,
-		'class': 'slate'},
+		'class': 'slate',
+		'maxCache': defaultCache},
 	"deadspin.com":
 		{'callback': deadspin,
-		'class': 'deadspin'},
+		'class': 'deadspin',
+		'maxCache': defaultCache},
 	"techcrunch.com":
 		{'callback': tcrunch,
-		'class': 'tcrunch'},
+		'class': 'tcrunch',
+		'maxCache': defaultCache},
 	"vice.com":
 		{'callback': vice,
-		'class': 'vice'},
+		'class': 'vice',
+		'maxCache': defaultCache},
 	"arstechnica.com":
 		{'callback': arstech,
-		'class': 'arstech'},
+		'class': 'arstech',
+		'maxCache': defaultCache},
 	"medium.com":
 		{'callback': medium,
-		'class': 'medium'},
+		'class': 'medium',
+		'maxCache': defaultCache},
 	"businessinsider.com":
 		{'callback': bizinsider,
-		'class': 'bizinsider'},
+		'class': 'bizinsider',
+		'maxCache': defaultCache},
 	"aeon.co":
 		{'callback': aeon,
-		'class': 'aeon'},
+		'class': 'aeon',
+		'maxCache': defaultCache},
 	"variety.com":
 		{'callback': variety,
-		'class': 'variety'},
+		'class': 'variety',
+		'maxCache': defaultCache},
 	"economist.com":
 		{'callback': economist,
-		'class': 'economist'},
+		'class': 'economist',
+		'maxCache': defaultCache},
 	"nymag.com":
 		{'callback': nymag,
-		'class': 'nymag'},
+		'class': 'nymag',
+		'maxCache': defaultCache},
 	"rollingstone.com":
 		{'callback': rstone,
-		'class': 'rstone'},
+		'class': 'rstone',
+		'maxCache': defaultCache},
 	"technologyreview.com":
 		{'callback': techreview,
-		'class': 'techreview'},
+		'class': 'techreview',
+		'maxCache': defaultCache},
 	"sfgate.com":
 		{'callback': sfgate,
-		'class': 'sfgate'},
+		'class': 'sfgate',
+		'maxCache': defaultCache},
 	"ft.com":
 		{'callback': ft,
-		'class': 'ft'},
+		'class': 'ft',
+		'maxCache': defaultCache},
 	"latimes.com":
 		{'callback': latimes,
-		'class': 'latimes'},
+		'class': 'latimes',
+		'maxCache': defaultCache},
 	"nypost.com":
 		{'callback': nypost,
-		'class': 'nypost'},
+		'class': 'nypost',
+		'maxCache': defaultCache},
 	"newyorker.com":
 		{'callback': newyorker,
-		'class': 'newyorker'},
+		'class': 'newyorker',
+		'maxCache': defaultCache},
 	"newsweek.com":
 		{'callback': newsweek,
-		'class': 'newsweek'},
+		'class': 'newsweek',
+		'maxCache': defaultCache},
 	"thedailybeast.com":
 		{'callback':dailybeast,
-		'class': 'dailybeast'},
+		'class': 'dailybeast',
+		'maxCache': defaultCache},
 	"wired.com": 
 		{'callback': wired,
-		'class': 'wired'},
+		'class': 'wired',
+		'maxCache': defaultCache},
 	"forbes.com":
 		{'callback': forbes,
-		'class': 'forbes'},
+		'class': 'forbes',
+		'maxCache': defaultCache},
 	"rottentomatoes.com":
 		{'callback': rtomatoes,
-		'class': 'rtomatoes'}
+		'class': 'rtomatoes',
+		'maxCache': defaultCache},
+	"chicagotribune.com":
+		{'callback': ctribune,
+		'class': 'ctribune',
+		'maxCache': defaultCache},
+	"philly.com":
+		{'callback': philly,
+		'class': 'philly',
+		'maxCache': defaultCache},
+	"adweek.com":
+		{'callback': adweek,
+		'class': 'adweek',
+		'maxCache': defaultCache},
+	"vox.com":
+		{'callback': vox,
+		'class': 'vox',
+		'maxCache': defaultCache},
+	"politico.com":
+		{'callback': politico,
+		'class': 'politico',
+		'maxCache': defaultCache},
+	"reuters.com":
+		{'callback': reuters,
+		'class': 'reuters',
+		'maxCache': defaultCache},
+	"abcnews.com":
+		{'callback': abcnews,
+		'class': 'abcnews',
+		'maxCache': defaultCache},
+	"nbcnews.com":
+		{'callback': nbcnews,
+		'class': 'nbcnews',
+		'maxCache': defaultCache},
+	"breitbart.com":
+		{'callback': breitbart,
+		'class': 'breitbart',
+		'maxCache': defaultCache},
+	"groupon.com":
+		{'callback': groupon,
+		'class': 'groupon',
+		'maxCache': defaultCache},
+	"dailymail.co.uk":
+		{'callback': dailymail,
+		'class': "dailymail",
+		'maxCache': defaultCache},
+	"emgn.com":
+		{'callback': emgn,
+		'class': "emgn",
+		'maxCache': defaultCache},
+	"sbnation.com":
+		{'callback': sbnation,
+		'class': "sbnation",
+		'maxCache': defaultCache},
+	"cracked.com":
+		{'callback': cracked,
+		'class': "cracked",
+		'maxCache': defaultCache},
+	"telegraph.co.uk":
+		{'callback': telegraph,
+		'class': "telegraph",
+		'maxCache': defaultCache},
+	"marketwatch.com":
+		{'callback': marketwatch,
+		'class': "marketwatch",
+		'maxCache': defaultCache},
+	"elitedaily.com":
+		{'callback': elitedaily,
+		'class': "elitedaily",
+		'maxCache': defaultCache}
 }
 
 non_scrapers =  {
 	"weather.com":
 		{'callback':weather,
 		'class': 'weather'},
+}
+
+function elitedaily(response, targetClass) {
+	$content = $.parseHTML(response)
+	basicScrape($content, targetClass, '.post-header a', 30)
+	unlinkStyle(targetClass)
+}
+
+function marketwatch(response, targetClass) {
+	$content = $.parseHTML(response)
+	basicScrape($content, targetClass, '.Headline5', 20)
+	basicScrape($content, targetClass, '.Headline4', 20)
+	basicScrape($content, targetClass, '.Headline3', 20)
+	unlinkStyle(targetClass)
+	universalLinkFix(targetClass, 'http://marketwatch.com')
+}
+
+function telegraph(response, targetClass) {
+	basicScrape(response, targetClass, '.summary h3 a', 30)
+	unlinkStyle(targetClass)
+}
+
+function cracked(response, targetClass) {
+	basicScrape(response, targetClass, '.metaInfo h3 a', 30)
+	basicScrape(response, targetClass, '.meta h3 a', 30)
+	unlinkStyle(targetClass)
+}
+
+function sbnation(response, targetClass) {
+	basicScrape(response, targetClass, 'header h2 a', 40)
+	basicScrape(response, targetClass, 'header h3 a', 40)
+	removeDupeLinks(targetClass)
+	unlinkStyle(targetClass)
+
+}
+
+function emgn(response, targetClass) {
+	basicScrape(response, targetClass, '.panel-inner h2 a', 30)
+	unlinkStyle(targetClass)
+}
+
+
+function dailymail(response, targetClass) {
+	basicScrape(response, targetClass, '.linkro-darkred a', 20)
+	unlinkStyle(targetClass)
+	universalLinkFix(targetClass, 'http://dailymail.co.uk')
+}
+
+function groupon(response, targetClass) {
+	basicScrape(response, targetClass, '.deal-card', 20)
+	universalLinkFix(targetClass, 'http://groupon.com')
+	unlinkStyle(targetClass)
+}
+
+function breitbart(response, targetClass) {
+	$content = $.parseHTML(response)
+	basicScrape($content, targetClass, '.story-title a', 20)
+	unlinkStyle(targetClass)
+	universalLinkFix(targetClass, 'http://www.breitbart.com')
+}
+
+function nbcnews(response, targetClass) {
+	basicScrape(response, targetClass, '.panel-txt a', 1)
+	basicScrape(response, targetClass, '.media-body > a', 30)
+	unlinkStyle(targetClass)
+	unHeaderStyle(targetClass)
+
+}
+
+function abcnews(response, targetClass) {
+	basicScrape(response, targetClass, '.carousel-content .hero_item_meta a', 30)
+	basicScrape(response, targetClass, '.ffl_obj div:nth-child(2) a', 60)
+	unHeaderStyle(targetClass)
+	unlinkStyle(targetClass)
+	universalLinkFix(targetClass, 'http://abcnews.com')
+}
+
+function reuters(response, targetClass) {
+	basicScrape(response, targetClass, '.module h2 a', 10)
+	basicScrape(response, targetClass, '.module li a', 20)
+	unlinkStyle(targetClass)
+	universalLinkFix(targetClass, 'http://reuters.com')
+}
+
+function politico(response, targetClass) {
+	basicScrape(response, targetClass, '.story-frag .summary header', 30)
+	unHeaderStyle(targetClass)
+	unlinkStyle(targetClass)
+}
+
+function vox(response, targetClass) {
+
+	basicScrape(response, targetClass, '.article a', 30)
+	//basicScrape(response, targetClass, '.m-hp-latest__list-container', 20)
+	//basicScrape(response, targetClass, '.m-hp-beat__first-entry', 20)
+	unlinkStyle(targetClass)
+}
+
+function adweek(response, targetClass) {
+	basicScrape(response, targetClass, '.story-header', 20)
+	universalLinkFix(targetClass, 'http://adweek.com')
+}
+
+function philly(response, targetClass) {
+	var $content = $.parseHTML(response)
+	basicScrape($content, targetClass, '.headlineWrap a', 20)
+	unlinkStyle(targetClass)
+}
+
+function ctribune(response, targetClass) {
+	basicScrape(response, targetClass, '.trb_outfit_primaryItem_article_title a', 10)
+	basicScrape(response, targetClass, '.trb_outfit_relatedListTitle a', 20)
+	unlinkStyle(targetClass)
+	universalLinkFix(targetClass, 'http://chicagotribune.com')
 }
 
 function rtomatoes(response, targetClass) {
@@ -567,74 +808,10 @@ function twitter(response, targetClass) {
 	basicScrape(response, targetClass, '.tweet', 15)
 	var newTarget = targetClass+' .stream-item-header'
 	//fixRelativeLinks(targetClass, 'http://twitter.com', '.stream-item-header a')
-	universalLinkFix(targetClass, 'http://twitter.comments')
-
-	//create link to tweet item around tweet text
-	var tweets = $('.tweet')
-	tweets.each(function(ind) {
-		var $this = $(this)
-		var tweetHref = $this.find('.tweet-timestamp').attr('href')
-		var tweetText = $this.find('.tweet-text')
-		tweetText.wrap("<a class='tweet-text-outer' href='"+tweetHref+"'></a>")
-	})
-
-
-	/*
-	var $html = $(response)
-	var contentContainers = $html.find('.content').slice(1,12) //pick 10 tweets
-	var targetContainer = $('.'+targetClass+' .smallContainer')
-	$.each(contentContainers, function(ind, val) {
-		valQuery = $(val)
-		
-
-		if (valQuery.find('.tweet-text')[0]) {
-			var text =  valQuery.find('.tweet-text')[0].innerHTML
-			var name = valQuery.find('.js-action-profile-name')
-			var handle = valQuery.find('.js-action-profile-name')
-			var isPromoted = valQuery.find('.Icon--promoted')
-			targetContainer.append(name)
-			targetContainer.append(handle)
-			targetContainer.append("<div class=tweetText>"+text+"</div>")
-		}
-
-	})
-
-	var relLinks = $('.'+targetClass+' .smallContainer').find('.pretty-link')
-	relLinks.each(function(ind) {
-		$this = $(this)
-		var link = $this.attr('href')
-		var linkText = $this.text()
-		newHTML = "<a class='pretty-link' href=https://www.twitter.com"+link+">"+linkText+"</a>"
-		$this.html(newHTML)
-	})
-
-*/
-}
-
-/*
-function oLive(response, targetClass) {
-	var content = $.parseHTML(response)
-	var $html = $(content)
-	var targetContainer = $('.'+targetClass+' .smallContainer')
-	var mostread = $html.find('#most-popular-read')
-	var contentContainers = mostread.find('li').slice(0,40)
-		console.log(mostread)
-	$.each(contentContainers, function(ind,val) {
-		$val = $(val)
-		headline = $val.children('h2').children('a')
-		targetContainer.append(headline)
-	})
-}
-
-
-function gmail(newClass) {
-	//will just insert a few links
-	var targetContainer = $('.'+newClass).children('.smallContainer')
-	var composeLink = 'https://mail.google.com/mail/u/0/#inbox?compose=new'
-	targetContainer.append("<a href='"+composeLink+"'>Compose Message</a>")
+	universalLinkFix(targetClass, 'http://twitter.com')
 
 }
-*/
+
 function reddit(response, targetClass) {
 	var $html = $(response)
 	var mainTable = $html.find('#siteTable')

@@ -38,6 +38,7 @@
           "http://*/*", "https://*/*",
           "bookmarks",
           "history",
-          "chrome://favicon/*"
+          "chrome://favicon/*",
+          "storage"
         ]
 }

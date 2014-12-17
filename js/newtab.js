@@ -1,20 +1,53 @@
 
 //function for generic scrapers
 
-function scrape(url, responseFunction, targetClass) {
-	var client = new XMLHttpRequest();
-	client.open("GET", url, true);
-	client.onload = (function(response) {
-		var target = response.currentTarget
-	    if (target.readyState === 4) {
-	    	response = target.response
-	  		responseFunction(response, targetClass)
-	    } else {
-	  	  return 'fail'
-	    }
+var storage = chrome.storage.local;
 
-	});
-	client.send();
+function scrape(url, responseFunction, targetClass, maxCache) {
+	var client = new XMLHttpRequest();
+	var time = new Date()
+	var now = Date.now(time)
+
+	var prevResponse = storage.get(targetClass, function(result) {
+		var prevTime = result[targetClass]['time']
+		var cacheResponse = result[targetClass]['response']
+		var diff = now - prevTime
+		var overCache = diff < maxCache
+		console.log()
+		console.log(diff, maxCache, overCache)
+
+		if(overCache) {
+			responseFunction(cacheResponse, targetClass)
+			console.log(targetClass, 'cached')
+		} else {
+			console.log(targetClass, 'notcached')
+			client.open("GET", url, true);
+				client.onload = (function(response) {
+					var target = response.currentTarget
+				    if (target.readyState === 4) {
+				    	response = target.response
+				    	var store = {}
+				    	store[targetClass] = {'response': response,
+												'time': now,
+												'maxCache': maxCache
+												}
+				    	storage.set(store, function() {
+				    		
+				    	})
+				  		responseFunction(response, targetClass)
+				    } else {
+				    	
+				  	  return 'fail'
+				    }
+
+				});
+			client.send();
+		}
+	})
+
+	
+
+	
 }
 
 
@@ -30,7 +63,8 @@ function handle_url(url) {
 	} else if (scrapers.hasOwnProperty(pretty)) {
 		var newClass = scrapers[pretty]['class']
 		var blah = scrapers[pretty]['callback']
-		scrape(url, blah, newClass)
+		var maxCache = scrapers[pretty]['maxCache']
+		scrape(url, blah, newClass, maxCache)
 		return newClass
 
 	} else if (non_scrapers.hasOwnProperty(pretty)) { 
@@ -90,8 +124,8 @@ function top_sites_callback(obj) {
 		if (assClass == null) {
 			var cleanURL = prettyURL(url)
 			//make sure it's not too long
-			var cleanURL = ellipsify(cleanURL, 20)
-			$('.mostVisitedLinks .smallContainer .linkBox').append("<div class='linkHolderLink'><a href='"+url+"'>"+cleanURL+"</a></div>")
+			var cleanURL = ellipsify(cleanURL, 16)
+			$('.mostVisitedLinks .smallContainer .linkBox').append("<a class='bookmarkLink' href='"+url+"'><img src='"+favicon(url)+"'/>"+cleanURL+"</a>")
 		} else {
 			var newContent = newContainer(url,title,assClass)
 			main_contain.append(newContent)
@@ -108,11 +142,11 @@ function top_sites_callback(obj) {
 	
 	chrome.bookmarks.getTree(function(obj) {
 		$.each(obj[0].children, function(ind, val) {
-			$bookmarkLinks.append("<div class='bookmarkCat'>Category: "+val.title+"</div>")
+			//$bookmarkLinks.append("<div class='bookmarkCat'>Category: "+val.title+"</div>")
 			//check if it's empty
 			if (val.children.length > 0) {
 				$.each(val.children, function(ind, v) {
-					var title = ellipsify(v.title, 25)
+					var title = ellipsify(v.title, 16)
 					var url = v.url
 					$bookmarkLinks.append("<a class='bookmarkLink' href='"+url+"'><img src='"+favicon(url)+"'/>"+title+"</a>")
 				})
@@ -128,11 +162,11 @@ function top_sites_callback(obj) {
 	history.find('.tttitle').text('Recently Visited')
 	var $historyLinks = history.find('.linkBox')
 
-	chrome.history.search({text: '', maxResults: 20}, function(data) {
+	chrome.history.search({text: '', maxResults: 30}, function(data) {
     data.forEach(function(page) {
     	if (page.title) {
 
-    		$historyLinks.append("<a class='bookmarkLink' href='"+page.url+"'><img src='"+favicon(page.url)+"'/>"+ellipsify(page.title, 20)+"</a>")
+    		$historyLinks.append("<a class='bookmarkLink' href='"+page.url+"'><img src='"+favicon(page.url)+"'/>"+ellipsify(page.title, 16)+"</a>")
     	}
     	//$historyLinks.append("<img src='chrome://favicon/http://"+urlify(page.url)+"'/>")
        // $historyLinks.append()
@@ -153,8 +187,8 @@ function onClickCallback() {
 
 $( document ).ready(function() {
 	alreadyScraped = [] //make sure duplicate scrapes don't happen
-   // chrome.topSites.get(top_sites_callback)
-     top_sites_callback(test_sites)
+    chrome.topSites.get(top_sites_callback)
+   // top_sites_callback(test_sites)
 
     chrome.browserAction.onClicked.addListener(onClickCallback)
 });

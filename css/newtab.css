@@ -17,7 +17,7 @@ body, html {
 	position: relative;
 	width: 23%;
 	height: 37em;
-	background-color: #fafafa;
+	background-color: #fcfcfc;
 	float: left;
 	margin: 1em;
 	box-shadow: 0.3em 0.3em 0.7em #bbb;
@@ -66,14 +66,27 @@ body, html {
 }
 
 .linkBox {
-	text-align: center;
+	padding-left: 2em;
 }
+
+
 .bookmarkLink {
 	font-size: 1.1em;
-line-height: 1.5em;
+	line-height: 1.8em;
 	display: block;
-	color: #2080DA;
+	color: #578EC2;
 	text-decoration: none;
+}
+
+.bookmarkLink:hover {
+	text-decoration: underline;
+}
+
+.bookmarkLink img {
+	height: 16px;
+	width: 16px;
+	margin-bottom: -3px;
+	padding-right: 1em;
 }
 
 .mostVisitedLinks .smallFoot span {

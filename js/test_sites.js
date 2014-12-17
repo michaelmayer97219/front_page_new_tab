@@ -1,5 +1,59 @@
 var test_sites = [
 
+	{'title': '',	
+	'url': 'http://elitedaily.com'},
+
+	{'title': '',	
+	'url': 'http://marketwatch.com'},
+
+	{'title': '',	
+	'url': 'http://telegraph.co.uk'},
+
+	{'title': '',	
+	'url': 'http://cracked.com'},
+
+	{'title': '',	
+	'url': 'http://sbnation.com'},
+
+	{'title': '',	
+	'url': 'http://emgn.com'},
+
+	{'title': '',	
+	'url': 'http://feedly.com'},
+
+	{'title': 'dmail',	
+	'url': 'http://dailymail.co.uk'},
+
+	{'title': 'groupon',	
+	'url': 'http://groupon.com'},
+	
+	{'title': 'breitbart',	
+	'url': 'http://breitbart.com'},
+/*
+	{'title': 'nbcnews',	
+	'url': 'http://nbcnews.com'},
+
+	{'title': 'abcnews',	
+	'url': 'http://abcnews.com'},
+
+	{'title': 'reuters',
+	'url': 'http://reuters.com'},
+
+	{'title': 'politico',
+	'url': 'http://politico.com'},
+
+	{'title': 'vox',
+	'url': 'http://vox.com'},
+
+	{'title': 'adweek',	
+	'url': 'http://adweek.com/'},
+
+	{'title': 'philly',	
+	'url': 'http://philly.com/'},
+
+	{'title': 'ctribune',
+	'url': 'http://chicagotribune.com/'},
+
 	{'title': 'rtom',
 	'url': 'http://rottentomatoes.com/'},
 
@@ -12,7 +66,7 @@ var test_sites = [
 	{'title': 'Dbeast',
 	'url': 'http://wired.com'},
 
-	/*
+	
 
 	{'title': 'Dbeast',
 	'url': 'http://thedailybeast.com'},

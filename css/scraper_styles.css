@@ -1,3 +1,385 @@
+.elitedaily .tttitle {
+	background-image: url('../images/elitedaily.png');
+	background-color: white;
+	background-size: 8em;
+}
+
+.elitedaily {
+	background-color: white;
+}
+
+.elitedaily .smallContainer a {
+	color: rgb(63, 63, 63);
+	font-family: Arial, 'Lucida Grande', sans-serif;
+	font-size: 1.1em;
+	xfont-weight: bold;
+}
+
+.marketwatch .tttitle {
+	background-color: #02282B;
+	background-image: url('../images/marketwatch.jpeg');
+	background-size: 6em;
+}
+
+.marketwatch .smallFoot {
+	background-color: #02282B;
+}
+
+.marketwatch .smallFoot span {
+	color: white;
+}
+
+.marketwatch .smallContainer a {
+	color: rgb(0, 65, 118);
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+
+.telegraph .tttitle {
+	background-image: url('../images/telegraph.gif');
+	background-color: white;
+		box-shadow: rgba(100, 100, 100, 0.34902) 0px 1px 2px 0px;
+	background-size: 9em;
+	background-position-y: 0.4em;
+}
+
+.telegraph {
+	background-color: white;
+}
+
+.telegraph .smallContainer a {
+	color: rgb(35, 75, 123);
+	font-family: georgia, 'times new roman', times, serif;
+	font-size: 1.1em;
+
+}
+
+.cracked .tttitle {
+	background-color: #2E3940;
+	background-image: url('../images/cracked.png');
+	background-size: 6.5em;
+}
+
+.cracked .smallFoot {
+	background-color: #2E3940;
+
+}
+
+.cracked .smallFoot span {
+	color: white;
+}
+
+.cracked .smallContainer a {
+	color: black;
+	font-family: Georgia, serif;
+	font-weight: bold;
+}
+
+.sbnation .tttitle {
+	background-image: url('../images/sbnation.jpeg') ;
+	background-color: white;
+	background-size: 12em;
+	box-shadow: rgba(50, 50, 50, 0.34902) 0px 1px 2px 0px;
+}
+
+.sbnation {
+	background-color: white;
+}
+
+.sbnation .smallContainer a {
+	font-family: Georgia, serif;
+	color: rgb(41, 41, 41);
+	font-weight: bold;
+}
+
+.emgn .tttitle {
+	background-image: url('../images/emgn.png');
+	background-color: #EEE;
+	background-position-y: -3px;
+	box-shadow: rgba(50, 50, 50, 0.34902) 0px 1px 2px 0px;
+}
+
+.emgn .smallContainer a {
+
+	color: #333;
+	font-family: arial;
+	font-weight: bold;
+	font-size: 1em;
+	margin-top: 1em;
+}
+
+.dailymail .tttitle {
+	background-image: url('../images/dailymail.jpeg');
+	background-color: white;
+	box-shadow: rgba(50, 50, 50, 0.34902) 0px 1px 2px 0px;
+	background-size: 8em;
+background-position-y: 5px;
+}
+
+.dailymail .smallContainer a {
+	color: #004DB3;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+
+.dailymail .smallContainer a:hover {
+	color: red;
+	text-decoration: none;
+}
+
+.groupon .tttitle {
+	background-image: url('../images/groupon.jpeg');
+	background-size: 7em;
+	background-color: black;
+}
+
+.groupon .smallFoot {
+	background-color: black;
+}
+
+.groupon .smallFoot span {
+	color: white;
+}
+
+.groupon p {
+	margin: 0;
+color: rgb(136, 136, 136);
+display: inline-block;
+}
+
+.groupon .deal-title {
+	color: rgb(51, 51, 51);
+	display: block;
+	font-size: 1.1em;
+}
+
+.groupon figure {
+	border-radius: 5px;
+	margin: 0;
+	background-color: rgb(242, 242, 242);
+	font-family: OpenSans, Tahoma, 'Helvetica Neue', Helvetica, Arial, FreeSans, sans-serif;
+	margin: 0 0.5em 0.5em 0em;
+	padding: 0.5em 2em;
+}
+
+.groupon .deal-price {
+	color: rgb(130, 181, 72);
+	text-align: right;
+	display: block;
+}
+
+.groupon .deal-price s {
+	color: rgb(136, 136, 136);
+}
+
+.groupon .smallContainer img,
+.groupon .view-deal,
+.groupon .meta-divider {
+	display: none;
+}
+
+.breitbart .tttitle  {
+	background-image: url('../images/breitbart.jpg');
+	background-color: black;
+	background-size: 3em;
+}
+
+.breitbart .smallFoot {
+	background-color: black;
+}
+
+.breitbart .smallFoot span {
+	color: white;
+}
+
+.breitbart .smallContainer a {
+	color: rgb(255, 85, 0);
+	font-family: Georgia, serif;
+	font-style: italic;
+	font-size: 1.1em;
+}
+
+.breitbart .smallContainer img {
+	display: none;
+}
+
+.nbcnews .tttitle {
+	background-color: #113850;
+	background-image: url('../images/nbcnews.png');
+	background-size: 8em;
+}
+
+.nbcnews .smallFoot {
+	background-color: #113850;
+
+}
+
+.nbcnews .smallFoot span {
+	color: white;
+}
+
+.nbcnews .smallContainer a {
+	color: rgb(0, 0, 0);
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+.nbcnews .label {
+	display: none;
+}
+
+.abcnews .tttitle {
+	background-image: url('../images/abcnews.png');
+	background-color: white;
+	background-size: 4.5em;
+	xbackground-position-x: 0.5em;
+	box-shadow: rgba(50, 50, 50, 0.34902) 0px 1px 5px 0px;
+}
+
+.abcnews .smallContainer a {
+	font-weight: bold;
+	font-family: arial;
+	color: rgb(51, 51, 51);
+}
+
+.reuters .tttitle {
+	background-position-x: 0.5em;
+	background-size: 7em;
+	background-color: #333333;
+	background-image: url('../images/reuters.gif');
+}
+
+.reuters .smallFoot {
+	background-color: #333;
+}
+
+.reuters .smallFoot span {
+	color: white;
+}
+
+.reuters .smallContainer a {
+	color: rgb(0, 110, 151);
+	font-family: arial;
+	font-size: 1.1em;
+}
+
+.reuters .smallContainer img {
+	display: none;
+}
+
+.politico .tttitle {
+	background-color: #980000;
+	background-image: url('../images/politico.png');
+	background-size: 6em;
+}
+
+.politico .smallFoot {
+	background-color: #980000
+}
+
+.politico .smallFoot span {
+	color: white;
+}
+
+.politico .smallContainer a {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	color: black;
+	font-size: 1.05em;
+}
+
+.politico .smallContainer a:hover {
+	color: rgb(16, 160, 251);
+	text-decoration: none;
+}
+
+.politico p,
+.politico br,
+.politico .content-header,
+.politico .widget-header {
+	display: none;
+}
+
+.vox .tttitle {
+	background-image: url('../images/vox.jpeg');
+	background-color: #FEF102;
+}
+
+
+.vox .smallContainer a {
+	color: rgb(60, 57, 57);
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-weight: bold
+}
+
+.adweek {
+	background-color: white;
+}
+
+.adweek .tttitle {
+	background-color: white;
+	background-image: url('../images/adweek.jpeg');
+	background-size: 4.5em;
+}
+
+.adweek .story-header {
+	margin-bottom: 1em;
+}
+
+.adweek .smallContainer a {
+	text-decoration: none;
+	color: #ed1d25;
+}
+
+.adweek .headline {
+	font-family: Helvetica, Arial;
+	
+	font-weight: bold;
+}
+
+.adweek .subheadline {
+	color: #808080;
+	font-family: Georgia, serif;
+	font-size: 1.1em; 
+}
+
+.adweek .smallContainer img {
+	display: none;
+}
+
+.adweek .socialtools {
+	display: none;
+}
+
+.philly .tttitle {
+	background-image: url('../images/philly.png');
+	background-size: 6.5em;
+}
+
+.philly .smallContainer a {
+	font-family: Georgia, serif;
+	color: black;
+	font-weight: normal;
+	font-size: 1.05em;
+}
+
+.ctribune .tttitle {
+	background-color: #003466;
+	background-image: url('../images/ctribune.jpeg');
+}
+
+.ctribune .smallFoot {
+	background-color: #003466;
+}
+
+.ctribune .smallFoot span {
+	color: white;
+}
+
+.ctribune .smallContainer a {
+	font-family: Georgia, serif;
+	color: black;
+	font-weight: bold;
+}
+
 .rtomatoes .right_col {
 	width: 4em;
 }
@@ -1418,7 +1800,9 @@ font-size: 1.3em;
 }
 
 .reddit .tttitle {
-	background-color: #CEE3F8
+	background-color: #CEE3F8;
+	background-image: url('../images/reddit.png');
+	background-size: 4.5em;
 }
 
 .reddit .smallFoot {
@@ -1470,15 +1854,18 @@ font-size: 1.3em;
 
 .twitter s {
 	text-decoration: none;
-	margin-left: 0.3em;
 }
 
 .twitter .smallContainer .tweet-text a,
 .twitter .twitter-atreply s,
-.twitter .twitter-atreply b {
+.twitter .twitter-atreply b,
+.twitter .pretty-link b {
 	color: rgb(0, 132, 180);
 	text-decoration: none;
+	font-weight: normal;
 }
+
+
 
 .twitter .smallContainer .tweet-text-outer {
 	text-decoration: none;
@@ -1507,10 +1894,13 @@ font-size: 1.3em;
 	color: #292f33;
 }
 
-.twitter .js-retweet-text,
-.twitter .pretty-link b {
+.twitter .js-retweet-text {
 	color: #8899a6;
 	font-size: 0.9em;
+}
+
+.twitter .context .pretty-link b {
+	font-weight: normal
 }
 
 .twitter .js-retweet-text a {
@@ -1544,18 +1934,14 @@ font-size: 1.3em;
 	color: rgb(136, 153, 166)
 }
 
-.reddit .smallFoot {
-	background-color: #55ACEE;
+.twitter .username s,
+.twitter .username b {
+	font-weight: normal;
+	font-size: 0.9em;
 }
 
-
-
-.oLive {
-	border-color: #EBE0D2
-}
-
-.oLive .tttitle, .oLive .smallFoot	 {
-	background-color: #EBE0D2
+.promoted-tweet {
+	display: none;
 }
 
 
