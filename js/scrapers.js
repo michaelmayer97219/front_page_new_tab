@@ -297,13 +297,21 @@ scrapers = {
 	"elitedaily.com":
 		{'callback': elitedaily,
 		'class': "elitedaily",
-		'maxCache': defaultCache}
+		'maxCache': defaultCache},
+	"denverpost.com":
+		{'callback': denverpost,
+		'class': 'denverpost',
+		'maxCache': 10}
 }
 
 non_scrapers =  {
 	"weather.com":
 		{'callback':weather,
 		'class': 'weather'},
+}
+
+function denverpost(response, targetClass) {
+	basicScrape(response, targetClass, 'a', 20)
 }
 
 function elitedaily(response, targetClass) {

@@ -1,48 +1,67 @@
 
 //function for generic scrapers
-
 var storage = chrome.storage.local;
 
-function scrape(url, responseFunction, targetClass, maxCache) {
+//actual ajax code
+function ajaxCall(url, responseFunction, targetClass, maxCache, now) {
+	console.log('ajax')
 	var client = new XMLHttpRequest();
+	client.open("GET", url, true);
+	client.onload = (function(response) {
+		var target = response.currentTarget
+		console.log(target.status)
+	    if (target.readyState === 4) {
+	    	if (target.status === 200) {
+	    		response = target.response
+		    	var store = {}
+		    	store[targetClass] = {'response': response,
+										'time': now,
+										'maxCache': maxCache
+										}
+		    	storage.set(store, function() {})
+		  		responseFunction(response, targetClass)
+
+	    	} else {
+	    		responseFunction(cacheResponse, targetClass)
+	    		console.log('used cache')
+	    	}
+	    	
+	    } else {
+	    	alert('fail')
+	  	  return 'fail'
+	    }
+
+	});
+	client.send();
+}
+
+function scrape(url, responseFunction, targetClass, maxCache) {
+	
 	var time = new Date()
 	var now = Date.now(time)
-
 	var prevResponse = storage.get(targetClass, function(result) {
-		var prevTime = result[targetClass]['time']
-		var cacheResponse = result[targetClass]['response']
-		var diff = now - prevTime
-		var overCache = diff < maxCache
-		console.log()
-		console.log(diff, maxCache, overCache)
+		var isCached = result.hasOwnProperty(targetClass)
+		
+		if(isCached) {
 
-		if(overCache) {
-			responseFunction(cacheResponse, targetClass)
-			console.log(targetClass, 'cached')
+			var prevTime = result[targetClass]['time']
+			var cacheResponse = result[targetClass]['response']
+			var diff = now - prevTime
+			var overCache = diff < maxCache
+			if (overCache) {
+				responseFunction(cacheResponse, targetClass)
+				
+			} else {
+				ajaxCall(url, responseFunction, targetClass, maxCache, now)
+			}
+			
 		} else {
-			console.log(targetClass, 'notcached')
-			client.open("GET", url, true);
-				client.onload = (function(response) {
-					var target = response.currentTarget
-				    if (target.readyState === 4) {
-				    	response = target.response
-				    	var store = {}
-				    	store[targetClass] = {'response': response,
-												'time': now,
-												'maxCache': maxCache
-												}
-				    	storage.set(store, function() {
-				    		
-				    	})
-				  		responseFunction(response, targetClass)
-				    } else {
-				    	
-				  	  return 'fail'
-				    }
-
-				});
-			client.send();
+			console.log('blah')
+			ajaxCall(url, responseFunction, targetClass, maxCache)
+			
 		}
+
+		
 	})
 
 	
@@ -187,8 +206,8 @@ function onClickCallback() {
 
 $( document ).ready(function() {
 	alreadyScraped = [] //make sure duplicate scrapes don't happen
-    chrome.topSites.get(top_sites_callback)
-   // top_sites_callback(test_sites)
+   // chrome.topSites.get(top_sites_callback)
+    top_sites_callback(test_sites) //for testing comment out for prod
 
     chrome.browserAction.onClicked.addListener(onClickCallback)
 });
