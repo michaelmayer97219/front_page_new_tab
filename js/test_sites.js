@@ -1,6 +1,15 @@
 var test_sites = [
 
 	{'title': '',	
+	'url': 'http://dallasnews.com'},
+/*
+		{'title': '',	
+	'url': 'http://mercurynews.com'},
+
+	{'title': '',	
+	'url': 'http://seattletimes.com'},
+
+	{'title': '',	
 	'url': 'http://denverpost.com'},
 
 	{'title': '',	
@@ -11,7 +20,7 @@ var test_sites = [
 
 	{'title': '',	
 	'url': 'http://telegraph.co.uk'},
-/*
+
 	{'title': '',	
 	'url': 'http://cracked.com'},
 

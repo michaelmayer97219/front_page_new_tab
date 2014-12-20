@@ -4,12 +4,12 @@ var storage = chrome.storage.local;
 
 //actual ajax code
 function ajaxCall(url, responseFunction, targetClass, maxCache, now) {
-	console.log('ajax')
+	
 	var client = new XMLHttpRequest();
 	client.open("GET", url, true);
 	client.onload = (function(response) {
 		var target = response.currentTarget
-		console.log(target.status)
+
 	    if (target.readyState === 4) {
 	    	if (target.status === 200) {
 	    		response = target.response
@@ -23,7 +23,7 @@ function ajaxCall(url, responseFunction, targetClass, maxCache, now) {
 
 	    	} else {
 	    		responseFunction(cacheResponse, targetClass)
-	    		console.log('used cache')
+	    		
 	    	}
 	    	
 	    } else {
@@ -46,6 +46,7 @@ function scrape(url, responseFunction, targetClass, maxCache) {
 
 			var prevTime = result[targetClass]['time']
 			var cacheResponse = result[targetClass]['response']
+			
 			var diff = now - prevTime
 			var overCache = diff < maxCache
 			if (overCache) {
@@ -205,9 +206,52 @@ function onClickCallback() {
 
 
 $( document ).ready(function() {
+
+	var $body = $('body')
+	var $options = $('.option')
+	var defaultBackImage = 'none' //this has to change
+	storage.get('backImg', function(result) {
+		var backImg = result['backImg']
+		defaultBackImage = backImg
+		$body.css('background-image', backImg)
+	})
+	$options.click(function() {
+		var $this = $(this)
+		var backImg = $this.css('background-image')
+		defaultBackImage = backImg
+		$body.css('background-image', defaultBackImage)
+		var store = {}
+		store['backImg'] = backImg
+		storage.set(store, function() {
+			console.log(store)
+		})
+	})
+
+	$options.hover(function() {
+    		var backImg = $(this).css('background-image')
+    		$body.css('background-image', backImg)
+    	}, function() {
+    		$body.css('background-image', defaultBackImage)
+    	})
+
+    $('.bottomButton').hover(function(){
+    	$(this).find('.optionBox').show(100)
+    }, function() {
+    	$(this).find('.optionBox').hide(100)
+    })
+
+
 	alreadyScraped = [] //make sure duplicate scrapes don't happen
-   // chrome.topSites.get(top_sites_callback)
-    top_sites_callback(test_sites) //for testing comment out for prod
+    chrome.topSites.get(top_sites_callback)
+   // top_sites_callback(test_sites) //for testing comment out for prod
 
     chrome.browserAction.onClicked.addListener(onClickCallback)
+
+
+
 });
+
+
+
+
+

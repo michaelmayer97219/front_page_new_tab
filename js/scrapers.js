@@ -301,7 +301,19 @@ scrapers = {
 	"denverpost.com":
 		{'callback': denverpost,
 		'class': 'denverpost',
-		'maxCache': 10}
+		'maxCache': defaultCache},
+	"seattletimes.com":
+		{'callback': seattletimes,
+		'class': 'seattletimes',
+		'maxCache': defaultCache},
+	"mercurynews.com":
+		{'callback': mercurynews,
+		'class': 'mercurynews',
+		'maxCache': defaultCache},
+	"dallasnews.com":
+		{'callback': dallasnews,
+		'class': 'dallasnews',
+		'maxCache': defaultCache},
 }
 
 non_scrapers =  {
@@ -310,8 +322,30 @@ non_scrapers =  {
 		'class': 'weather'},
 }
 
+function dallasnews(response, targetClass) {
+	basicScrape(response, targetClass, '.article a', 30)
+	unlinkStyle(targetClass)
+}
+
+function mercurynews(response, targetClass) {
+	basicScrape(response, targetClass, '.layout5FeatureItemBox a', 20)
+	basicScrape(response, targetClass, '.complexListingBox a', 20)
+	unlinkStyle(targetClass)
+}
+
+function seattletimes(response, targetClass) {
+	basicScrape(response, targetClass, '.hed5 a', 10)
+	basicScrape(response, targetClass, '.hed4 a', 10)
+	basicScrape(response, targetClass, '.hed3 a', 10)
+	basicScrape(response, targetClass, '.hed2 a', 10)
+	basicScrape(response, targetClass, '.hed1 a', 10)
+	unlinkStyle(targetClass)
+	universalLinkFix(targetClass, 'http://seattletimes.com')
+}
+
 function denverpost(response, targetClass) {
-	basicScrape(response, targetClass, 'a', 20)
+	basicScrape(response, targetClass, '.listingItemTitle', 20),
+	unlinkStyle(targetClass)
 }
 
 function elitedaily(response, targetClass) {

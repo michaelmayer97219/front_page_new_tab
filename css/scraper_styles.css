@@ -1,3 +1,76 @@
+.dallasnews .tttitle {
+	background-image: url('../images/dallasnews.png');
+	background-color: white;
+	background-size: 13em;
+	box-shadow: rgba(100, 100, 100, 0.34902) 0px 1px 3px 0px;
+}
+
+.dallasnews {
+	background-color: white;
+}
+
+.dallasnews .smallContainer img {
+	display: none;
+}
+
+.dallasnews .smallContainer a {
+	color: rgb(33, 33, 33);
+	font-family: 'proxima-nova', helvetica, sans-serif;
+	font-weight: bold;
+}
+
+.dallasnews .smallContainer a:hover {
+	color: #2a6496;
+}
+
+.mercurynews .tttitle {
+	background-color: #EDF1F7;
+	background-image: url('../images/mercurynews.png');
+	background-size: 14em;
+}
+
+.mercurynews .smallContainer a {
+	color: rgb(52, 56, 62);
+	font-family: Merriweather, Georgia, 'Times New Roman', Times, serif;
+	font-size:1.1em;
+}
+
+.mercurynews .smallContainer img,
+.mercurynews .smallContainer span,
+.mercurynews .smallContainer h2,
+.mercurynews .smallContainer br {
+	display: none;
+}
+
+.seattletimes .tttitle {
+	background-image: url('../images/seattletimes.png');
+	background-color: white;
+	background-size: 9em;
+	box-shadow: rgba(100, 100, 100, 0.34902) 0px 1px 3px 0px;
+}
+
+.seattletimes {
+	background-color: white;
+}
+
+.seattletimes .smallContainer a {
+	color: rgb(9, 51, 75);
+	font-family: Georgia, Times, serif;
+	font-size:1.1em;
+}
+
+.denverpost .tttitle {
+	background-image: url('../images/denverpost.jpeg');
+	background-color: white;
+	box-shadow: rgba(100, 100, 100, 0.34902) 0px 1px 3px 0px;
+}
+
+.denverpost .smallContainer a {
+	font-family: Georgia, "Times New Roman", Times, serif ;
+	color: #333;
+	font-weight: bold;
+}
+
 .elitedaily .tttitle {
 	background-image: url('../images/elitedaily.png');
 	background-color: white;
