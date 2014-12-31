@@ -2,10 +2,10 @@ var test_sites = [
 
 	{'title': '',	
 	'url': 'http://dallasnews.com'},
-/*
+
 		{'title': '',	
 	'url': 'http://mercurynews.com'},
-
+/*
 	{'title': '',	
 	'url': 'http://seattletimes.com'},
 

@@ -3,15 +3,19 @@
   <head>
     <meta charset="utf-8">
     <title>Front Page New Tab</title>
-        <!-- load javascript: jQuery 1.9.1 - http://jquery.com/ -->
-        <script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
-        <script type="text/javascript" src="../js/test_sites.js"></script>
-        <script type="text/javascript" src="../js/utils.js"></script>
-        <script type="text/javascript" src="../js/scrapers.js"></script>
-        <script type="text/javascript" src="../js/newtab.js"></script>
-        <link rel="stylesheet" type="text/css" href="../css/global.css"></link>
-        <link rel="stylesheet" type="text/css" href="../css/newtab.css"></link>
-        <link rel="stylesheet" type="text/css" href="../css/scraper_styles.css"></link>
+    <!-- load javascript: jQuery 1.9.1 - http://jquery.com/ -->
+    <link rel="stylesheet" type="text/css" href="../css/global.css"></link>
+    <link rel="stylesheet" type="text/css" href="../css/newtab.css"></link>
+    <link rel="stylesheet" type="text/css" href="../css/scraper_styles.css"></link>
+    <link rel="stylesheet" href="../css/jquery-ui-1.11.2/jquery-ui.min.css">
+    <script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+    <script src="../css/jquery-ui-1.11.2/external/jquery/jquery.js"></script>
+    <script src="../css/jquery-ui-1.11.2/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="../js/test_sites.js"></script>
+    <script type="text/javascript" src="../js/utils.js"></script>
+    <script type="text/javascript" src="../js/scrapers.js"></script>
+    <script type="text/javascript" src="../js/newtab.js"></script>
+        
 
   </head>
   <body>
@@ -19,8 +23,9 @@
     <div id='main'></div>
 
     <div id='footPad'></div>
-    <div id='ntFoot'>
-    <div class='bottomButton' id='background'>
+    <div id='ntFoot' >
+      <!-- <div id='settings'>Settings</div> -->
+      <div class='bottomButton' id='background'>
         <span>Change Background</span>
         <div class='optionBox'>
 
@@ -28,7 +33,7 @@
           <div id='math' class='option'></div>
           <div id='arches' class='option'></div>
           <div id='subtle_white_feathers' class='option'></div>
-          <div id='squarey' class='option'></div>
+          <div id='stardust' class='option'></div>
           <div id='swirl' class='option'></div>
           <div id='wood' class='option'></div>
           <div id='tri' class='option'></div>
@@ -37,13 +42,18 @@
           
         </div>
     </div>
+    <div class='bottomButton' id='removeSites'><span>Remove Sites</span></div>
+    <div class='bottomButton' id='editOrder'><span>Edit Order</span></div>
     <div class='bottomButton' id='addScrapers'>
-        <span>Add Sites</span>
-
+      <span>Add Sites</span>
+      <div id='addScrapeBox'>
+        <div id='addScrapeSlideable'>
+          
+        </div>
+      </div>
     </div>
-     <div class='bottomButton' id='contact'><span>Contact</span></div>
-    
-      <div class='bottomButton' id='about'><span>About</span></div>
+    <div class='bottomButton' id='contact'><span>Contact</span></div>
+    <div class='bottomButton' id='about'><span>About</span></div>
      
       
    </div>

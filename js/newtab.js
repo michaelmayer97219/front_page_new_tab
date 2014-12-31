@@ -9,34 +9,39 @@ function ajaxCall(url, responseFunction, targetClass, maxCache, now) {
 	client.open("GET", url, true);
 	client.onload = (function(response) {
 		var target = response.currentTarget
+		var responseURL = prettyURL(target.responseURL)
+		var clean = prettyURL(url)
+		if (responseURL == clean) {
+			
+			if (target.readyState === 4) {
+		    	if (target.status === 200) {
+		    		var response = target.response
+			    	var store = {}
+			    	store[targetClass] = {'response': response,
+											'time': now,
+											'maxCache': maxCache
+											}
+			    	storage.set(store, function() {})
+			  		responseFunction(response, targetClass)
 
-	    if (target.readyState === 4) {
-	    	if (target.status === 200) {
-	    		response = target.response
-		    	var store = {}
-		    	store[targetClass] = {'response': response,
-										'time': now,
-										'maxCache': maxCache
-										}
-		    	storage.set(store, function() {})
-		  		responseFunction(response, targetClass)
-
-	    	} else {
-	    		responseFunction(cacheResponse, targetClass)
-	    		
-	    	}
-	    	
-	    } else {
-	    	alert('fail')
-	  	  return 'fail'
-	    }
+		    	} else {
+		    		responseFunction(cacheResponse, targetClass)
+		    		
+		    	}
+		    	
+		    } else {
+		    	alert('fail')
+		  	  return 'fail'
+		    }
+		}
+	    
 
 	});
 	client.send();
 }
 
 function scrape(url, responseFunction, targetClass, maxCache) {
-	
+	console.log(url)
 	var time = new Date()
 	var now = Date.now(time)
 	var prevResponse = storage.get(targetClass, function(result) {
@@ -57,7 +62,6 @@ function scrape(url, responseFunction, targetClass, maxCache) {
 			}
 			
 		} else {
-			console.log('blah')
 			ajaxCall(url, responseFunction, targetClass, maxCache)
 			
 		}
@@ -119,6 +123,15 @@ function newContainer (url, title, conClass) {
 	return $content
 }
 
+//function for displaying just .tttitle for clients
+
+function displayTTTitle(conClass, urlll) {
+		var content = "<div  class='psuedoContainer "+conClass+"'>"
+		var content = content + "<div title="+urlll+" class='tttitle'></div>"
+		var content = content + "</div>" //close psuedocontainer
+		return(content)
+}
+
 function centerLinkBox(linkHolder, innerClass) {
 	var $linkbox = linkHolder.find(innerClass)
 	var linkBoxHeight = $linkbox.height()
@@ -129,17 +142,20 @@ function centerLinkBox(linkHolder, innerClass) {
 
 
 function top_sites_callback(obj) {
+	var newObj = obj.concat(extraSites)
+	console.log(newObj)
+	console.log(extraSites)
 	var main_contain = $('#main')
 	//create empty box for most visted links
 	var linkHolder = newContainer('', 'Most Visited Links', 'mostVisitedLinks')
 	main_contain.prepend(linkHolder)
 	$('.mostVisitedLinks .smallContainer').append("<div class='linkBox'></div>")
 	//loop through each topsite and build container
-	$.each(obj, function(key, val) {
+	$.each(newObj, function(key, val) {
 		var url = val.url
 		var title = val.title
 		var assClass = handle_url(url) //should execute scrape as well
-
+		
 		//append url into content if there's no scraper 
 		if (assClass == null) {
 			var cleanURL = prettyURL(url)
@@ -155,7 +171,7 @@ function top_sites_callback(obj) {
 	$('.mostVisitedLinks').find('.tttitle').text('Most Visited Links')
 	//center linkBox
 	centerLinkBox(linkHolder, '.linkBox')
-	var bookMarks = newContainer('', 'Bookmarks', 'bookmarkBox')
+	var bookMarks = newContainer('chrome://bookmarks', 'Bookmarks', 'bookmarkBox')
 	bookMarks.append("<div class='linkBox'></div>")
 	bookMarks.find('.tttitle').text('Bookmarks')
 	var $bookmarkLinks = bookMarks.find('.linkBox')
@@ -177,7 +193,7 @@ function top_sites_callback(obj) {
 	})
 	main_contain.append(bookMarks)
 
-	var history = newContainer('','', 'historyBox')
+	var history = newContainer('chrome://history/1','', 'historyBox')
 	history.append("<div class='linkBox'></div>")
 	history.find('.tttitle').text('Recently Visited')
 	var $historyLinks = history.find('.linkBox')
@@ -195,18 +211,16 @@ function top_sites_callback(obj) {
     main_contain.append(history)
     centerLinkBox(history, '.linkbox')
 });
-}
 
-function onClickCallback() {
-	var links = $('#main .smallContainer').find('a')
-	var linkLength = links.length
-	var randomNumber = Math.floor(Math.random()*linkLength)
-	window.location.href = links[randomNumber]
+footerfix()
+
+ $('#main').sortable()
 }
 
 
 $( document ).ready(function() {
 
+	
 	var $body = $('body')
 	var $options = $('.option')
 	var defaultBackImage = 'none' //this has to change
@@ -223,7 +237,6 @@ $( document ).ready(function() {
 		var store = {}
 		store['backImg'] = backImg
 		storage.set(store, function() {
-			console.log(store)
 		})
 	})
 
@@ -241,17 +254,119 @@ $( document ).ready(function() {
     })
 
 
-	alreadyScraped = [] //make sure duplicate scrapes don't happen
-    chrome.topSites.get(top_sites_callback)
-   // top_sites_callback(test_sites) //for testing comment out for prod
-
-    chrome.browserAction.onClicked.addListener(onClickCallback)
+  extraSites = []//[{'title': 'blah', 'url': 'http://foxnews.com'}]
+  omitSites = []
 
 
+
+
+   
+   
+
+   //make containers draggable
+   
+
+   $(window).resize(function() {
+   		footerfix()
+   })
+
+
+   $('#ntFoot').draggable()
+
+
+
+   //when cursor hovers over add sites button, show an element which
+   //will populate with collapsed versions of clients
+   var $addBox = $('#addScrapeBox')
+   var $addBoxCon = $('#addScrapeSlideable')
+
+   $.each(scrapers, function(ind, val) {
+   	 var urlll = ind
+   	 var newBox = displayTTTitle(val.class, urlll)
+   	 $addBoxCon.append(newBox)
+   	 })
+
+   $('.psuedoContainer .tttitle').click(function() {
+		$this = $(this)
+		var newURL = 'http://'+$this.attr('title')
+		var oldURLs = []
+		$.each(extraSites, function(ind, val) {
+			oldURLs.push(val.url)
+		})
+
+			if (oldURLs.indexOf(newURL) == -1) {
+				extraSites.push({'title':newURL, 'url':newURL})
+				var store = {}
+				store['selectedScrapes'] = extraSites
+				storage.set(store, function() {
+					console.log(store)
+				})
+			} else { //if (selectScrap.indexOf(newURL) == -1) {
+
+				}
+	
+
+   	})
+
+   $('#addScrapers').hover(function() {
+   		$addBox.show()
+   }, function() {
+   		$addBox.hide()
+   })
+
+//	var store = {}
+//					store['selectedScrapes'] = {}
+//					storage.set(store, function() {
+//					console.log(store)
+//				})
+
+	storage.get('selectedScrapes', function(result) {
+    	var res = result['selectedScrapes']
+    	if (extraSites.length > 0) {
+    		extraSites = extraSites.concat(res)
+    	} else if (res.length > 0) {
+    		extraSites = res
+    		console.log(res)
+    	} else {
+
+    	}
+    	
+    	console.log(extraSites)
+    	alreadyScraped = [] //make sure duplicate scrapes don't happen
+    	chrome.topSites.get(top_sites_callback)
+
+    })
+
+	
+	var remove = 0 //keep track of toggle action
+	var $removeSites = $('#removeSites')
+	var origColor = $removeSites.css('color')
+	$removeSites.click(function() {
+		if (remove == 0) {
+			$removeSites.text('Done').css('color', '#f33')
+			$removeSites.css('font-weight', 'bold')
+			$('.container').each(function(){
+				var $this = $(this)
+				$this.append("<div class='deleteIcon'>"
+					+"<img src='../images/x-mark.png'</img></div>")
+			})
+			$('.deleteIcon').click(function() {
+				var $this = $(this)
+				var $con = $this.parents('.container')
+				$con.hide()
+				var hideURL = $con.children('.tttitleLink').attr('href')
+				
+			})
+			remove = 1
+		} else {
+			$removeSites.text('Remove Sites').css('color', origColor)
+			$removeSites.css('font-weight', '400')
+			remove  = 0 //reset
+		}
+
+		
+	})
+
+    //top_sites_callback(test_sites) //for testing comment out for prod
 
 });
-
-
-
-
-

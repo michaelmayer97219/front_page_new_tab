@@ -1,3 +1,19 @@
+function footerfix() {
+	var $body = $('body')
+	var $main = $('#main')
+    var wHeight = $(window).height()
+    var bHeight = $body.height()
+    var mHeight = $main.height()
+   //alert('wh'+wHeight+'bh'+bHeight)
+   console.log('window'+wHeight+' body'+bHeight)
+    if (mHeight < wHeight) {
+    	$('body').css('height', wHeight)
+    } else {
+    	$('body').css('height', mHeight*1.1)
+    }
+	
+}
+
 function unHeaderStyle(targetClass) {
 	$('.'+targetClass+' h1').addClass('unHeaderate')
 	$('.'+targetClass+' h2').addClass('unHeaderate')
@@ -102,7 +118,9 @@ function ellipsify(stringg, maxLength) {
 }
 
 function prettyURL(url) {
-	var url = url.split('//')[1] //remove 'http'
+	if (url.indexOf('//') != -1) {
+		var url = url.split('//')[1] //remove 'http'
+	}
 	var hasWWW = url.indexOf('www.')
 	if (hasWWW != -1) {
 		var url = url.split('www.')[1] //remove 'www.'
