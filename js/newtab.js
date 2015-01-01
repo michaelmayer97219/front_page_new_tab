@@ -115,10 +115,10 @@ function newContainer (url, title, conClass) {
 	
 
 	$content.children('.smallFoot').click(function() {
-		var $parent = $(this).parents()
-		console.log($parent.attr('class'))
-		$parent.toggleClass('tallContainer')
-		$parent.children('.smallFoot').toggleClass('rotated')
+		var $smallCon = $(this).siblings('.smallContainer')
+		console.log($smallCon.attr('class'))
+		$smallCon.toggleClass('slideCon')
+		$(this).toggleClass('rotated')
 	})
 	return $content
 }
