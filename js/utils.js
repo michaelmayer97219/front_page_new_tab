@@ -4,8 +4,7 @@ function footerfix() {
     var wHeight = $(window).height()
     var bHeight = $body.height()
     var mHeight = $main.height()
-   //alert('wh'+wHeight+'bh'+bHeight)
-   console.log('window'+wHeight+' body'+bHeight)
+
     if (mHeight < wHeight) {
     	$('body').css('height', wHeight)
     } else {
@@ -37,7 +36,7 @@ function basicContainerScrape(response, targetClass, containElement, scrapeClass
 	var content = $.parseHTML(response)
 	var $html = $(response)
 	var $smallHTML = $html.find(containElement)
-	console.log($smallHTML)
+
 	basicScrape($smallHTML, targetClass, scrapeClassString ,scrapeLength)
 }
 
@@ -62,7 +61,6 @@ function universalLinkFix(targetClass, newURL) {
 		if (isRel) {
 			$this.attr('href', newURL+href)
 		}
-		//console.log(isRel)
 	})
 }
 

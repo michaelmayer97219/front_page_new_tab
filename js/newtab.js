@@ -41,7 +41,7 @@ function ajaxCall(url, responseFunction, targetClass, maxCache, now) {
 }
 
 function scrape(url, responseFunction, targetClass, maxCache) {
-	console.log(url)
+
 	var time = new Date()
 	var now = Date.now(time)
 	var prevResponse = storage.get(targetClass, function(result) {
@@ -116,7 +116,7 @@ function newContainer (url, title, conClass) {
 
 	$content.children('.smallFoot').click(function() {
 		var $parent = $(this).parents()
-
+		console.log($parent.attr('class'))
 		$parent.toggleClass('tallContainer')
 		$parent.children('.smallFoot').toggleClass('rotated')
 	})
@@ -142,9 +142,7 @@ function centerLinkBox(linkHolder, innerClass) {
 
 
 function top_sites_callback(obj) {
-	var newObj = obj.concat(extraSites)
-	console.log(newObj)
-	console.log(extraSites)
+	var newObj = obj.concat(extraSites['add'])
 	var main_contain = $('#main')
 	//create empty box for most visted links
 	var linkHolder = newContainer('', 'Most Visited Links', 'mostVisitedLinks')
@@ -152,8 +150,15 @@ function top_sites_callback(obj) {
 	$('.mostVisitedLinks .smallContainer').append("<div class='linkBox'></div>")
 	//loop through each topsite and build container
 	$.each(newObj, function(key, val) {
+
+		
 		var url = val.url
 		var title = val.title
+
+		var isSub = extraSites['sub'].indexOf(url)
+		if (isSub != -1) {
+			return
+		}
 		var assClass = handle_url(url) //should execute scrape as well
 		
 		//append url into content if there's no scraper 
@@ -171,11 +176,11 @@ function top_sites_callback(obj) {
 	$('.mostVisitedLinks').find('.tttitle').text('Most Visited Links')
 	//center linkBox
 	centerLinkBox(linkHolder, '.linkBox')
+
 	var bookMarks = newContainer('chrome://bookmarks', 'Bookmarks', 'bookmarkBox')
 	bookMarks.append("<div class='linkBox'></div>")
 	bookMarks.find('.tttitle').text('Bookmarks')
 	var $bookmarkLinks = bookMarks.find('.linkBox')
-	
 	chrome.bookmarks.getTree(function(obj) {
 		$.each(obj[0].children, function(ind, val) {
 			//$bookmarkLinks.append("<div class='bookmarkCat'>Category: "+val.title+"</div>")
@@ -210,9 +215,10 @@ function top_sites_callback(obj) {
     });
     main_contain.append(history)
     centerLinkBox(history, '.linkbox')
+    footerfix()
 });
 
-footerfix()
+
 
  $('#main').sortable()
 }
@@ -220,9 +226,11 @@ footerfix()
 
 $( document ).ready(function() {
 
-	
+	extraSites = {'add': [], 'sub': []}//[{'title': 'blah', 'url': 'http://foxnews.com'}]
 	var $body = $('body')
 	var $options = $('.option')
+
+	//Code for background image
 	var defaultBackImage = 'none' //this has to change
 	storage.get('backImg', function(result) {
 		var backImg = result['backImg']
@@ -237,9 +245,9 @@ $( document ).ready(function() {
 		var store = {}
 		store['backImg'] = backImg
 		storage.set(store, function() {
+
 		})
 	})
-
 	$options.hover(function() {
     		var backImg = $(this).css('background-image')
     		$body.css('background-image', backImg)
@@ -251,93 +259,94 @@ $( document ).ready(function() {
     	$(this).find('.optionBox').show(100)
     }, function() {
     	$(this).find('.optionBox').hide(100)
-    })
+    }) 
 
-
-  extraSites = []//[{'title': 'blah', 'url': 'http://foxnews.com'}]
-  omitSites = []
-
-
-
-
-   
-   
-
-   //make containers draggable
-   
-
+    //footer is dynmically determined when page is not tall enough
    $(window).resize(function() {
    		footerfix()
    })
 
 
+   //for editing site order
    $('#ntFoot').draggable()
-
-
 
    //when cursor hovers over add sites button, show an element which
    //will populate with collapsed versions of clients
    var $addBox = $('#addScrapeBox')
    var $addBoxCon = $('#addScrapeSlideable')
 
-   $.each(scrapers, function(ind, val) {
-   	 var urlll = ind
-   	 var newBox = displayTTTitle(val.class, urlll)
-   	 $addBoxCon.append(newBox)
-   	 })
 
+   ////Add sites code
+   //create options for adding sites by using existing styles for containers
+   $.each(scrapers, function(ind, val) {
+   		var urlll = ind
+   		var newBox = displayTTTitle(val.class, urlll)
+   		$addBoxCon.append(newBox)
+   	})
+
+   //Sites for adding will already be in extraSites. 
+   //Upon click, add new site to storeage of 'selectScraptes'
    $('.psuedoContainer .tttitle').click(function() {
 		$this = $(this)
 		var newURL = 'http://'+$this.attr('title')
 		var oldURLs = []
-		$.each(extraSites, function(ind, val) {
+		$.each(extraSites['add'], function(ind, val) {
 			oldURLs.push(val.url)
 		})
 
-			if (oldURLs.indexOf(newURL) == -1) {
-				extraSites.push({'title':newURL, 'url':newURL})
-				var store = {}
-				store['selectedScrapes'] = extraSites
-				storage.set(store, function() {
-					console.log(store)
-				})
-			} else { //if (selectScrap.indexOf(newURL) == -1) {
+		if (oldURLs.indexOf(newURL) == -1) {
+			extraSites['add'].push({'title':newURL, 'url':newURL})
+			var store = {}
+			store['selectedScrapes'] = extraSites
+			storage.set(store, function() {
 
-				}
-	
+			})
+			location.reload()
+		} else { //if (selectScrap.indexOf(newURL) == -1) {
 
+			}
    	})
 
+
+   //button mechanics for optionbox
    $('#addScrapers').hover(function() {
    		$addBox.show()
    }, function() {
    		$addBox.hide()
    })
 
-//	var store = {}
-//					store['selectedScrapes'] = {}
-//					storage.set(store, function() {
-//					console.log(store)
-//				})
 
+/////For deleting storage for debugging purposes
+	// var store = {}
+	// 				store['selectedScrapes'] = {}
+	// 				storage.set(store, function() {
+	// 				console.log(store)
+	// 			})
+
+
+	//will grab selected scrapes, when done add them to
+	//extrasites which is used in top_sites_callback to 
+	//create page containers
 	storage.get('selectedScrapes', function(result) {
-    	var res = result['selectedScrapes']
-    	if (extraSites.length > 0) {
-    		extraSites = extraSites.concat(res)
+		console.log(result)
+
+    	var res = result['selectedScrapes']['add']
+    	if (extraSites['add'].length > 0) {
+    		extraSites['add'] = extraSites['add'].concat(res)
     	} else if (res.length > 0) {
-    		extraSites = res
-    		console.log(res)
+    		extraSites['add'] = res
+
     	} else {
 
     	}
-    	
-    	console.log(extraSites)
+    	extraSites['sub'] = result['selectedScrapes']['sub']
     	alreadyScraped = [] //make sure duplicate scrapes don't happen
     	chrome.topSites.get(top_sites_callback)
 
     })
 
 	
+	//remove site code
 	var remove = 0 //keep track of toggle action
 	var $removeSites = $('#removeSites')
 	var origColor = $removeSites.css('color')
@@ -355,12 +364,19 @@ $( document ).ready(function() {
 				var $con = $this.parents('.container')
 				$con.hide()
 				var hideURL = $con.children('.tttitleLink').attr('href')
-				
+				extraSites['sub'].push(hideURL)
 			})
 			remove = 1
 		} else {
 			$removeSites.text('Remove Sites').css('color', origColor)
 			$removeSites.css('font-weight', '400')
+			$('.deleteIcon').remove()
+			var store = {}
+			store['selectedScrapes'] = extraSites
+			storage.set(store, function() {
+
+			})
+
 			remove  = 0 //reset
 		}
 

@@ -826,7 +826,7 @@ font-size: 1.3em;
 .nymag .listItem,
 .nymag cite,
 .nymag time,
-.nymag img {
+.nymag .smallContainer img {
 	display: none;
 }
 
@@ -1395,7 +1395,7 @@ font-size: 1.3em;
 	padding: 0;
 }
 
-.bbc img {
+.bbc .smallContainer img {
 	display: none;
 }
 
@@ -1485,7 +1485,7 @@ font-size: 1.3em;
 
 .wapo .number,
 .wapo p,
-.wapo img {
+.wapo .smallContainer img {
 	display: none;
 }
 
@@ -1512,7 +1512,7 @@ font-size: 1.3em;
 	font-family: arial, sans-serif;
 }
 
-.foxnews img {
+.foxnews .smallContainer img {
 	display: none;
 }
 
@@ -1561,7 +1561,7 @@ font-size: 1.3em;
 
 }
 
-.buzzfeed img {
+.buzzfeed .smallContainer img {
 	display: none;
 }
 
@@ -1859,7 +1859,7 @@ font-size: 1.3em;
 	font-size: 1em;
 }
 
-.qz a {
+.qz .smallContainer a {
 	color: rgb(22, 141, 217);
 	text-decoration: none;
 }
@@ -2030,7 +2030,7 @@ font-size: 1.3em;
 	background-image: url('../images/hacker-news.jpg'); 
 }
 
-.hackerNews a {
+.hackerNews .smallContainer a {
 	text-decoration: none;
 	color: black;
 }
