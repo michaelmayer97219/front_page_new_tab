@@ -11,9 +11,12 @@ function ajaxCall(url, responseFunction, targetClass, maxCache, now) {
 		var target = response.currentTarget
 		var responseURL = prettyURL(target.responseURL)
 		var clean = prettyURL(url)
-		if (responseURL == clean) {
+		var cleanRespUrl = responseURL.split('/')[0] //redirect bug hack
+		console.log('clean '+clean+'rURL '+responseURL)
+		if (cleanRespUrl == clean) {
 			
 			if (target.readyState === 4) {
+
 		    	if (target.status === 200) {
 		    		var response = target.response
 			    	var store = {}
@@ -25,6 +28,7 @@ function ajaxCall(url, responseFunction, targetClass, maxCache, now) {
 			  		responseFunction(response, targetClass)
 
 		    	} else {
+
 		    		responseFunction(cacheResponse, targetClass)
 		    		
 		    	}
@@ -177,7 +181,7 @@ function top_sites_callback(obj) {
 	//center linkBox
 	centerLinkBox(linkHolder, '.linkBox')
 
-	var bookMarks = newContainer('chrome://bookmarks', 'Bookmarks', 'bookmarkBox')
+	var bookMarks = newContainer('', 'Bookmarks', 'bookmarkBox')
 	bookMarks.append("<div class='linkBox'></div>")
 	bookMarks.find('.tttitle').text('Bookmarks')
 	var $bookmarkLinks = bookMarks.find('.linkBox')
@@ -198,7 +202,7 @@ function top_sites_callback(obj) {
 	})
 	main_contain.append(bookMarks)
 
-	var history = newContainer('chrome://history/1','', 'historyBox')
+	var history = newContainer('','', 'historyBox')
 	history.append("<div class='linkBox'></div>")
 	history.find('.tttitle').text('Recently Visited')
 	var $historyLinks = history.find('.linkBox')
@@ -215,6 +219,8 @@ function top_sites_callback(obj) {
     });
     main_contain.append(history)
     centerLinkBox(history, '.linkbox')
+
+
     footerfix()
 });
 
@@ -267,8 +273,6 @@ $( document ).ready(function() {
    })
 
 
-   //for editing site order
-   $('#ntFoot').draggable()
 
    //when cursor hovers over add sites button, show an element which
    //will populate with collapsed versions of clients
@@ -278,11 +282,17 @@ $( document ).ready(function() {
 
    ////Add sites code
    //create options for adding sites by using existing styles for containers
+ // var testers = [] //to create array for testing scrapers
    $.each(scrapers, function(ind, val) {
    		var urlll = ind
    		var newBox = displayTTTitle(val.class, urlll)
    		$addBoxCon.append(newBox)
+
+   		//test purposes
+   		//testers.push({'title': '','url': 'http://'+urlll})
+
    	})
+  	//console.log(JSON.stringify(testers)) //for testing
 
    //Sites for adding will already be in extraSites. 
    //Upon click, add new site to storeage of 'selectScraptes'
@@ -294,8 +304,27 @@ $( document ).ready(function() {
 			oldURLs.push(val.url)
 		})
 
+		$.each(extraSites['sub'], function(ind, val) {
+				var site = val
+				console.log(val)
+				if (site == newURL) {
+					extraSites['sub'].splice(ind, 1)
+					console.log(extraSites)
+					var store = {}
+					store['selectedScrapes'] = extraSites
+						storage.set(store, function() {
+
+					})
+					location.reload()
+				}
+		})
+
 		if (oldURLs.indexOf(newURL) == -1) {
 			extraSites['add'].push({'title':newURL, 'url':newURL})
+			//check to see if sites is in 'sub' list
+			//construct new list each time
+
+
 			var store = {}
 			store['selectedScrapes'] = extraSites
 			storage.set(store, function() {
@@ -318,7 +347,7 @@ $( document ).ready(function() {
 
 /////For deleting storage for debugging purposes
 	// var store = {}
-	// 				store['selectedScrapes'] = {}
+	// 				store['selectedScrapes'] = {'add':{}, 'sub':[]}
 	// 				storage.set(store, function() {
 	// 				console.log(store)
 	// 			})
@@ -341,7 +370,8 @@ $( document ).ready(function() {
     	}
     	extraSites['sub'] = result['selectedScrapes']['sub']
     	alreadyScraped = [] //make sure duplicate scrapes don't happen
-    	chrome.topSites.get(top_sites_callback)
+    	//chrome.topSites.get(top_sites_callback)
+    	top_sites_callback(test_sites) //for testing comment out for prod
 
     })
 
@@ -365,6 +395,7 @@ $( document ).ready(function() {
 				$con.hide()
 				var hideURL = $con.children('.tttitleLink').attr('href')
 				extraSites['sub'].push(hideURL)
+
 			})
 			remove = 1
 		} else {
@@ -382,7 +413,5 @@ $( document ).ready(function() {
 
 		
 	})
-
-    //top_sites_callback(test_sites) //for testing comment out for prod
 
 });

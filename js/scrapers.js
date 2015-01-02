@@ -63,7 +63,7 @@ scrapers = {
 		'class': 'wapo',
 		'maxCache': defaultCache},
 	"theguardian.com":
-		{'callback':theguardian,
+		{'callback': guardian,
 		'class': 'theguardian',
 		'maxCache': defaultCache},
 	"bbc.com":
@@ -741,15 +741,17 @@ function bbc(response, targetClass) {
 	removeDupeLinks(targetClass)
 }
 
-function theguardian(response, targetClass) {
+function guardian(response, targetClass) {
+
 	$html = $.parseHTML(response)
-	basicScrape($html, targetClass, '.headline-list__link', 10)
+	basicScrape(response, targetClass, '.fc-item__content a', 30)
 }
 
 function wapo(response, targetClass) {
-		basicScrape(response, targetClass, '.headline', 2)
-		basicScrape(response, targetClass, '.no-left', 2)
+		
+		basicScrape(response, targetClass, '.no-left', 5)
 		basicScrape(response, targetClass, '#post_most', 1)
+		basicScrape(response, targetClass, '.headline', 20)
 		universalLinkFix(targetClass, 'http://washingtonpost.com')
 }
 
@@ -760,7 +762,9 @@ function weather(response, targetClass) {
 function foxnews(response, targetClass) {
 	$html = $.parseHTML(response)
 	basicScrape($html, targetClass, '.section-first', 1)
-	basicScrape($html, targetClass, '.dv-item', 5)
+	basicScrape($html, targetClass, '.dv-item li a', 5)
+	basicScrape($html, targetClass, '.latest-news li a', 20)
+	unlinkStyle(targetClass)
 	
 }
 
@@ -771,6 +775,8 @@ function googleNews(response, targetClass) {
 function buzzfeed(response, targetClass) {
 	$html = $.parseHTML(response)
 	basicScrape($html, targetClass, '.hot_list', 1)
+	basicScrape($html, targetClass, 'article h2 a', 10)
+	unlinkStyle(targetClass)
 	//fixRelativeLinks(targetClass, 'http://www.buzzfeed.com', 'a')
 	universalLinkFix(targetClass, 'http://buzzfeed.com')
 }
@@ -800,16 +806,17 @@ function blazersEdge(response, targetClass) {
 }
 
 function theAtlantic(response, targetClass)	{
-	basicContainerScrape(response, targetClass, '#module-most-popular', 'dd', 30)
+	//basicContainerScrape(response, targetClass, '#module-most-popular', 'dd', 30)
+	basicScrape(response, targetClass, 'article a', 55)
 	universalLinkFix(targetClass, 'http://www.theatlantic.com')
-
+	unlinkStyle(targetClass)
+	unHeaderStyle(targetClass)
 }
 
 function fiveThirtyEight(response, targetClass) {
-	basicScrape(response, targetClass, '.article-title' , 20)
-	var backImage = 'http://s0.wp.com/wp-content/themes/vip/espn-fivethirtyeight/assets/img/logo.png'
-	replaceTitleWithImage(targetClass, backImage, 'http://www.fivethirtyeight.com')
-	
+	basicScrape(response, targetClass, '.article-title' , 40)
+	basicScrape(response, targetClass, '.fte_datalab h3 ' , 20)
+
 }
 
 function quartz(response, targetClass) {

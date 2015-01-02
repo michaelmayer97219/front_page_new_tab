@@ -16,7 +16,7 @@ body, html {
 
 .slideCon {
 	xposition: absolute;
-	top: -35em !important;
+	top: -30em !important;
 	
 }
 
@@ -35,6 +35,7 @@ body, html {
 }
 
 .deleteIcon img {
+	z-index:100;
 	position: absolute;
 top: 0;
 right: 0;
@@ -82,6 +83,13 @@ width: 16px;
 .bookmarkBox .tttitleLink,
 .historyBox .tttitleLink {
 	color: #333;
+	text-decoration: none;
+}
+
+.bookmarkBox .tttitle:hover,
+.mostVisitedLinks .tttitle:hover,
+.historyBox .tttitle:hover {
+	cursor: text;
 	text-decoration: none;
 }
 
@@ -188,6 +196,7 @@ width: 16px;
 
 .rotated {
 	left:-1px;
+	bottom: -1px;
 	-webkit-transform: rotate(180deg);
 }
 
@@ -246,19 +255,19 @@ width: 16px;
 	width: 98%;
 	margin: 1%;
 	height: 98%;
-
-	overflow: scroll;
+	overflow-y: scroll;
 }
 
 .psuedoContainer {
 	float: left;
-	width: 20em;
-	margin: 1em;
+	width: 21.5em;
+	margin: 0.2em;
 	background-color: white;
 }
 
 .psuedoContainer .tttitle {
 	background-color: white;
+	position: relative;
 }
 
 .psuedoContainer .tttitle:hover {
