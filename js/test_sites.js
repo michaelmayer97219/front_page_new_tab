@@ -10,10 +10,10 @@ var test_sites = [/*{"title":"","url":"http://news.ycombinator.com"},
 {"title":"","url":"http://huffingtonpost.com"},
 {"title":"","url":"http://cnn.com"},
 {"title":"","url":"http://buzzfeed.com"},
-{"title":"","url":"http://news.google.com"},*/
+{"title":"","url":"http://news.google.com"},
 {"title":"","url":"http://foxnews.com"},
 {"title":"","url":"http://washingtonpost.com"},
-{"title":"","url":"http://theguardian.com"}/*,
+{"title":"","url":"http://theguardian.com"},
 {"title":"","url":"http://bbc.com"},
 {"title":"","url":"http://time.com"},
 {"title":"","url":"http://bloomberg.com"},
@@ -61,7 +61,7 @@ var test_sites = [/*{"title":"","url":"http://news.ycombinator.com"},
 {"title":"","url":"http://vox.com"},
 {"title":"","url":"http://politico.com"},
 {"title":"","url":"http://reuters.com"},
-{"title":"","url":"http://abcnews.com"},
+{"title":"","url":"http://abcnews.go.com"},
 {"title":"","url":"http://nbcnews.com"},
 {"title":"","url":"http://breitbart.com"},
 {"title":"","url":"http://groupon.com"},
@@ -72,10 +72,10 @@ var test_sites = [/*{"title":"","url":"http://news.ycombinator.com"},
 {"title":"","url":"http://telegraph.co.uk"},
 {"title":"","url":"http://marketwatch.com"},
 {"title":"","url":"http://elitedaily.com"},
-{"title":"","url":"http://denverpost.com"},
+{"title":"","url":"http://denverpost.com"},*/
 {"title":"","url":"http://seattletimes.com"},
 {"title":"","url":"http://mercurynews.com"},
-{"title":"","url":"http://dallasnews.com"}*/]
+{"title":"","url":"http://dallasnews.com"}]
 
 
 /*[

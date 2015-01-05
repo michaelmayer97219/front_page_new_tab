@@ -10,9 +10,12 @@ function ajaxCall(url, responseFunction, targetClass, maxCache, now) {
 	client.onload = (function(response) {
 		var target = response.currentTarget
 		var responseURL = prettyURL(target.responseURL)
-		var clean = prettyURL(url)
+		var clean = prettyURL(url).split('.')
+		clean = clean[clean.length-2]
 		var cleanRespUrl = responseURL.split('/')[0] //redirect bug hack
-		console.log('clean '+clean+'rURL '+responseURL)
+		cleanRespUrl = cleanRespUrl.split('.')
+		cleanRespUrl = cleanRespUrl[cleanRespUrl.length-2]
+		console.log('clean '+clean+'rURL '+cleanRespUrl)
 		if (cleanRespUrl == clean) {
 			
 			if (target.readyState === 4) {
@@ -140,7 +143,7 @@ function centerLinkBox(linkHolder, innerClass) {
 	var $linkbox = linkHolder.find(innerClass)
 	var linkBoxHeight = $linkbox.height()
 	var outerBoxHeight = linkHolder.height()
-	var topMargin = (outerBoxHeight - linkBoxHeight)/3
+	var topMargin = (outerBoxHeight - linkBoxHeight)/100
 	$linkbox.css('margin-top', topMargin)
 }
 
@@ -179,21 +182,26 @@ function top_sites_callback(obj) {
 	})
 	$('.mostVisitedLinks').find('.tttitle').text('Most Visited Links')
 	//center linkBox
-	centerLinkBox(linkHolder, '.linkBox')
+	//centerLinkBox(linkHolder, '.linkBox')
 
 	var bookMarks = newContainer('', 'Bookmarks', 'bookmarkBox')
 	bookMarks.append("<div class='linkBox'></div>")
 	bookMarks.find('.tttitle').text('Bookmarks')
 	var $bookmarkLinks = bookMarks.find('.linkBox')
 	chrome.bookmarks.getTree(function(obj) {
+		var used = 0 //iterator to keep track of how many bookmarks displayed
 		$.each(obj[0].children, function(ind, val) {
 			//$bookmarkLinks.append("<div class='bookmarkCat'>Category: "+val.title+"</div>")
 			//check if it's empty
 			if (val.children.length > 0) {
 				$.each(val.children, function(ind, v) {
-					var title = ellipsify(v.title, 16)
-					var url = v.url
-					$bookmarkLinks.append("<a class='bookmarkLink' href='"+url+"'><img src='"+favicon(url)+"'/>"+title+"</a>")
+					if (used < 17) {
+						var title = ellipsify(v.title, 16)
+						var url = v.url
+						$bookmarkLinks.append("<a class='bookmarkLink' href='"+url+"'><img src='"+favicon(url)+"'/>"+title+"</a>")
+						used = used +1
+						//alert(used)
+					}
 				})
 
 			}
@@ -208,25 +216,19 @@ function top_sites_callback(obj) {
 	var $historyLinks = history.find('.linkBox')
 
 	chrome.history.search({text: '', maxResults: 30}, function(data) {
-    data.forEach(function(page) {
-    	if (page.title) {
+		var i = 0 //iterator for total number of links
+	    data.forEach(function(page) {
+	    	if (page.title && i < 17) {
+	    		$historyLinks.append("<a class='bookmarkLink' href='"+page.url+"'><img src='"+favicon(page.url)+"'/>"+ellipsify(page.title, 16)+"</a>")
+	    		i++
+	    	}	        
+	    });
+	    main_contain.append(history)    
+	});
 
-    		$historyLinks.append("<a class='bookmarkLink' href='"+page.url+"'><img src='"+favicon(page.url)+"'/>"+ellipsify(page.title, 16)+"</a>")
-    	}
-    	//$historyLinks.append("<img src='chrome://favicon/http://"+urlify(page.url)+"'/>")
-       // $historyLinks.append()
-        
-    });
-    main_contain.append(history)
-    centerLinkBox(history, '.linkbox')
+	footerfix()
 
-
-    footerfix()
-});
-
-
-
- $('#main').sortable()
+ 	//$('#main').sortable()	
 }
 
 
@@ -370,8 +372,8 @@ $( document ).ready(function() {
     	}
     	extraSites['sub'] = result['selectedScrapes']['sub']
     	alreadyScraped = [] //make sure duplicate scrapes don't happen
-    	//chrome.topSites.get(top_sites_callback)
-    	top_sites_callback(test_sites) //for testing comment out for prod
+    	chrome.topSites.get(top_sites_callback)
+    	//top_sites_callback(test_sites) //for testing comment out for prod
 
     })
 

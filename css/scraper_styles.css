@@ -2,7 +2,7 @@
 	background-image: url('../images/dallasnews.png');
 	background-color: white;
 	background-size: 13em;
-	box-shadow: rgba(100, 100, 100, 0.34902) 0px 1px 3px 0px;
+	box-shadow: rgba(100, 100, 100, 0.24902) 0px 1px 3px 0px;
 }
 
 .dallasnews {
@@ -26,13 +26,16 @@
 .mercurynews .tttitle {
 	background-color: #EDF1F7;
 	background-image: url('../images/mercurynews.png');
-	background-size: 14em;
+	background-size: 12em;
+	background-position-y: 0.5em;
+	box-shadow: rgba(80, 100, 110, 0.24902) 0px 1px 3px 0px;
 }
 
 .mercurynews .smallContainer a {
 	color: rgb(52, 56, 62);
 	font-family: Merriweather, Georgia, 'Times New Roman', Times, serif;
-	font-size:1.1em;
+	font-size:1.05em;
+	
 }
 
 .mercurynews .smallContainer img,
@@ -46,7 +49,7 @@
 	background-image: url('../images/seattletimes.png');
 	background-color: white;
 	background-size: 9em;
-	box-shadow: rgba(100, 100, 100, 0.34902) 0px 1px 3px 0px;
+	box-shadow: rgba(100, 100, 100, 0.24902) 0px 1px 3px 0px;
 }
 
 .seattletimes {
@@ -56,13 +59,13 @@
 .seattletimes .smallContainer a {
 	color: rgb(9, 51, 75);
 	font-family: Georgia, Times, serif;
-	font-size:1.1em;
+	font-size: 1.05em;
 }
 
 .denverpost .tttitle {
 	background-image: url('../images/denverpost.jpeg');
 	background-color: white;
-	box-shadow: rgba(100, 100, 100, 0.34902) 0px 1px 3px 0px;
+	xbox-shadow: rgba(100, 100, 100, 0.24902) 0px 1px 2px 0px;
 }
 
 .denverpost .smallContainer a {
@@ -75,6 +78,7 @@
 	background-image: url('../images/elitedaily.png');
 	background-color: white;
 	background-size: 8em;
+	box-shadow: rgba(100, 100, 100, 0.24902) 0px 1px 3px 0px;
 }
 
 .elitedaily {
@@ -86,6 +90,10 @@
 	font-family: Arial, 'Lucida Grande', sans-serif;
 	font-size: 1.1em;
 	xfont-weight: bold;
+}
+
+.elitedaily .smallFoot span {
+	display: none;
 }
 
 .marketwatch .tttitle {
@@ -111,7 +119,7 @@
 .telegraph .tttitle {
 	background-image: url('../images/telegraph.gif');
 	background-color: white;
-		box-shadow: rgba(100, 100, 100, 0.34902) 0px 1px 2px 0px;
+		box-shadow: rgba(100, 100, 100, 0.25902) 0px 1px 2px 0px;
 	background-size: 9em;
 	background-position-y: 0.4em;
 }
@@ -146,13 +154,14 @@
 	color: black;
 	font-family: Georgia, serif;
 	font-weight: bold;
+	font-size: 0.95em;
 }
 
 .sbnation .tttitle {
 	background-image: url('../images/sbnation.jpeg') ;
 	background-color: white;
 	background-size: 12em;
-	box-shadow: rgba(50, 50, 50, 0.34902) 0px 1px 2px 0px;
+	box-shadow: rgba(100, 100, 100, 0.25) 0px 1px 2px 0px;
 }
 
 .sbnation {
@@ -163,13 +172,14 @@
 	font-family: Georgia, serif;
 	color: rgb(41, 41, 41);
 	font-weight: bold;
+	font-size: 0.95em;
 }
 
 .emgn .tttitle {
 	background-image: url('../images/emgn.png');
 	background-color: #EEE;
 	background-position-y: -3px;
-	box-shadow: rgba(50, 50, 50, 0.34902) 0px 1px 2px 0px;
+	box-shadow: rgba(100, 100, 100, 0.25) 0px 1px 2px 0px;
 }
 
 .emgn .smallContainer a {
@@ -178,13 +188,17 @@
 	font-family: arial;
 	font-weight: bold;
 	font-size: 1em;
-	margin-top: 1em;
+	margin-top: 0.5em;
+}
+
+.emgn .smallFoot span {
+	display: none
 }
 
 .dailymail .tttitle {
 	background-image: url('../images/dailymail.jpeg');
 	background-color: white;
-	box-shadow: rgba(50, 50, 50, 0.34902) 0px 1px 2px 0px;
+	box-shadow: rgba(100, 100, 100, 0.2) 0px 1px 2px 0px;
 	background-size: 8em;
 background-position-y: 5px;
 }
@@ -231,8 +245,8 @@ display: inline-block;
 	margin: 0;
 	background-color: rgb(242, 242, 242);
 	font-family: OpenSans, Tahoma, 'Helvetica Neue', Helvetica, Arial, FreeSans, sans-serif;
-	margin: 0 0.5em 0.5em 0em;
-	padding: 0.5em 2em;
+	margin: 0 0.25em 0.25em 0em;
+	padding: 0.25em 1.5em;
 }
 
 .groupon .deal-price {
@@ -380,7 +394,8 @@ display: inline-block;
 .vox .smallContainer a {
 	color: rgb(60, 57, 57);
 	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-	font-weight: bold
+	font-weight: bold;
+	font-size: 0.95em;
 }
 
 .adweek {
@@ -391,6 +406,7 @@ display: inline-block;
 	background-color: white;
 	background-image: url('../images/adweek.jpeg');
 	background-size: 4.5em;
+	box-shadow: rgba(200, 190, 190, 0.5) 0px 1px 2px 0px;
 }
 
 .adweek .story-header {
@@ -425,6 +441,7 @@ display: inline-block;
 .philly .tttitle {
 	background-image: url('../images/philly.png');
 	background-size: 6.5em;
+	box-shadow: rgba(200, 190, 190, 0.5) 0px 1px 2px 0px;
 }
 
 .philly .smallContainer a {
@@ -523,7 +540,11 @@ display: inline-block;
 .wired .tttitle {
 	background-image: url('../images/wired.jpeg');
 	background-color: black;
-	border: 1px solid;	
+	border: 1px solid black;	
+}
+
+.wired .smallContainer {
+	margin-top: 0.8em;
 }
 
 .wired .smallFoot {
@@ -535,11 +556,12 @@ display: inline-block;
 }
 
 .wired .headline {
-	margin-bottom: 1em;
+	margin-bottom: 0.5em;
 }
 
 .wired h2 a {
 	color: rgb(51, 51, 51);
+	font-size: 
 }
 
 .wired h5 {
@@ -567,7 +589,7 @@ display: inline-block;
 }
 
 .dailybeast .smallContainer {
-	margin: 0;
+	margin-left: 0;
 	padding: 0 4%;
 	width: 92%;	
 
@@ -585,7 +607,7 @@ display: inline-block;
 	font-family: Georgia,Times,serif;
 font-weight: 300;
 color: black;
-font-size: 1.3em; 
+font-size: 1.1em; 
 
 }
 
@@ -594,11 +616,12 @@ font-size: 1.3em;
 	margin: 0;
 	text-align: center;
 	color: rgb(102, 102, 102);
-	margin-bottom: 1em;
+	margin-bottom: 0.5em;
+	font-size: 1.05em;
 }
 
 .dailybeast .rubric {
-	font-size: 1.15em;
+	font-size: 1em;
 	color: #ee2e24;
 	margin: 0;
 	text-align: center;
@@ -622,23 +645,30 @@ font-size: 1.3em;
 }
 
 .newsweek .tttitle {
-	background-image: url('../images/newsweek.jpeg');
-	background-color: white;
-	border-bottom: 1px solid red;
+	background-image: url('../images/newsweek-red.gif');
+	background-color: #CC0000;
+	background-position-y: 2px;
 }
 
+.newsweek .smallFoot {
+	background-color:  #CC0000;
+}
+
+.newsweek .smallFoot span {
+	color: white;
+}
 
 .newsweek .hf-title a {
 	font-family: helvetica;
 	font-weight: bold;
-	font-size: 1.1em;
+	font-size: 1.05em;
 	color: black;
 	margin-bottom: 0;
 }
 
 .newsweek .hf-summary {
 	font-family: helvetica;
-	font-size: 1em;
+	font-size: 0.95em;
 	color: rgb(90, 90, 90);
 	margin-bottom: 0.5em;
 }
@@ -665,14 +695,15 @@ font-size: 1.3em;
 .newyorker .smallContainer {
 	text-align: center;
 	margin: 0;
-	font-family: Georgia, serif;
+	font-family: 'times new roman', Georgia, serif;
 	padding-top: 0.5em;
 }
 
 .newyorker .smallContainer a {
+	font-family: 'times new roman', Georgia, serif;
 	color: black;
 	font-weight: 500;
-	font-size: 1.3em;
+	font-size: 1.2em;
 	margin:0;
 }
 
@@ -686,6 +717,7 @@ font-size: 1.3em;
 .ft .tttitle {
 	background-image: url('../images/ft.jpg');
 	background-size: 10em;
+	box-shadow: rgba(200, 190, 190, 0.5) 0px 1px 2px 0px;
 }
 
 .ft  {
@@ -706,7 +738,7 @@ font-size: 1.3em;
 .ft .smallContainer h3 {
 	display: block;
 	font-family: Georgia, 'Times New Roman';
-	font-size: 1.2em;
+	font-size: 1em;
 	color: black;
 	font-weight: normal; 
 }
@@ -714,7 +746,7 @@ font-size: 1.3em;
 .ft .smallContainer h4 {
 	display: block;
 	font-family: Georgia, 'Times New Roman', serif;
-	font-size: 1.1em;
+	font-size: 0.95em;
 	font-weight: normal; 
 	color: rgb(80, 80, 80);
 	margin-bottom: 1em;
@@ -736,6 +768,7 @@ font-size: 1.3em;
 	background-image: url('../images/sfgate.jpeg');
 	background-color: white;
 	background-size: 5em;
+	box-shadow: rgba(100, 100, 100, 0.2) 0px 1px 2px 0px;
 }
 
 .sfgate .smallContainer a {
@@ -751,6 +784,7 @@ font-size: 1.3em;
 .latimes .tttitle {
 	background-image: url('../images/latimes.png');
 	background-color: white;
+	box-shadow: rgba(100, 100, 100, 0.2) 0px 1px 2px 0px;
 }
 
 .latimes .smallContainer a {
@@ -761,15 +795,26 @@ font-size: 1.3em;
 }
 
 .techreview .tttitle  {
-	background-image: url('../images/techreview.png')
+	background-image: url('../images/techreview.png');
+	background-color: black;
+}
+
+.techreview .smallFoot {
+	background-color: black;
+}
+
+.techreview .smallFoot span {
+	color: white;
 }
 
 .techreview .smallContainer a {
 	border-bottom: 1px solid rgb(209, 215, 215);
 	font-size: 1em;
 	color: rgb(39, 39, 40);
-	padding-bottom: 0.5em;
+	padding-bottom: 0.3em;
+	margin-bottom: 0.3em;
 }
+
 
 .techreview .smallContainer img,
 .techreview h3,
@@ -781,13 +826,16 @@ font-size: 1.3em;
 .rstone .tttitle {
 	background-image: url('../images/rstone.svg');
 	background-color: white;
+	box-shadow: rgba(100, 100, 100, 0.2) 0px 1px 2px 0px;
+	background-size: 8em;
+	background-position-y: 3px;
 }
 
 .rstone .smallContainer a {
 	font-family: Georgia, serif;
 	font-weight: bold;
 	color: black;
-	font-size: 1.1em;
+	
 }
 
 
@@ -837,6 +885,7 @@ font-size: 1.3em;
 }
 
 .economist p {
+	font-size: 0.9em;
 	margin: 0;
 	font-family: Arial, sans-serif;
 	font-weight: bold;
@@ -851,7 +900,7 @@ font-size: 1.3em;
 	color: rgb(74, 74, 74);
 	font-family: Georgia, serif;
 	font-weight: 500;
-	font-size: 1.3em;
+	font-size: 1.2em;
 }
 
 .economist .smallContainer span {
@@ -861,7 +910,8 @@ font-size: 1.3em;
 .variety .tttitle {
 	background-color: white;
 	background-image: url('../images/variety.jpg');
-	background-size 5em;
+	background-size: 5em;
+	box-shadow: rgba(100, 100, 100, 0.2) 0px 1px 2px 0px;
 }
 
 .variety .smallContainer a {
@@ -869,7 +919,7 @@ font-size: 1.3em;
 	font-weight: bold;
 	font-style: italic;
 	color: black;
-	font-size: 1.1em;
+	font-size: 1em;
 }
 
 .variety .smallContainer img,
@@ -881,7 +931,7 @@ font-size: 1.3em;
 .aeon .tttitle {
 	background-color: white;
 	background-image: url('../images/aeon.png');
-	box-shadow: rgba(50, 50, 50, 0.34902) 0px 1px 5px 0px;
+	box-shadow: rgba(100, 100, 100, 0.2) 0px 1px 2px 0px;
 	border-top: 1px solid #eee;
 }
 
@@ -912,6 +962,7 @@ font-size: 1.3em;
 .medium .tttitle {
 	background-image: url('../images/medium.png');
 	background-color: white;
+	box-shadow: rgba(100, 100, 100, 0.2) 0px 1px 2px 0px;
 	background-size: 6em;
 }
 
@@ -922,8 +973,17 @@ font-size: 1.3em;
 }
 
 .arstech .tttitle {
-	background-image: url('../images/arstechlight.png');
-	background-color: white;
+	background-image: url('../images/arstech.png');
+	background-color: #252525;
+	box-shadow: rgba(100, 100, 100, 0.2) 0px 1px 2px 0px;
+}
+
+.arstech .smallFoot {
+	background-color: #252525
+}
+
+.arstech .smallFoot span {
+	color: white;
 }
 
 .arstech .smallContainer a {
@@ -942,6 +1002,8 @@ font-size: 1.3em;
 .vice .tttitle {
 	background-image: url('../images/vice.png');
 	background-color: white;
+	background-size: 5em;
+	box-shadow: rgba(100, 100, 100, 0.2) 0px 1px 2px 0px;
 }
 
 .vice .smallContainer a {
@@ -954,6 +1016,7 @@ font-size: 1.3em;
 .tcrunch .tttitle {
 	background-image: url('../images/tcrunch.png');
 	background-color: white;
+	box-shadow: rgba(100, 100, 100, 0.2) 0px 1px 2px 0px;
 }
 
 .tcrunch .smallContainer img,
@@ -983,6 +1046,7 @@ font-size: 1.3em;
 .deadspin .tttitle {
 	background-image: url('../images/deadspin.jpeg');
 	background-color: white;
+	box-shadow: rgba(100, 100, 100, 0.2) 0px 1px 2px 0px;
 }
 
 .deadspin .smallContainer a {
@@ -1010,6 +1074,7 @@ font-size: 1.3em;
 .drudge .tttitle {
 	background-color: white;
 	background-image: url('../images/drudge.jpeg');
+	box-shadow: rgba(100, 100, 100, 0.2) 0px 1px 2px 0px;
 }
 
 .drudge .smallContainer a {
@@ -1025,7 +1090,12 @@ font-size: 1.3em;
 }
 
 .verge .tttitle {
-	background-image: url('../images/verge.jpeg')
+	background-image: url('../images/verge.png');
+	background-color: #EA613F;
+}
+
+.verge .smallFoot {
+	background-color: #EA613F;
 }
 
 .verge h1,
@@ -1046,7 +1116,7 @@ font-size: 1.3em;
 
 .npr .tttitle {
 	background-image: url('../images/npr.jpeg');
-
+	background-color: black;
 }
 
 .npr h1,
@@ -1055,7 +1125,7 @@ font-size: 1.3em;
 .npr h4 {
 	margin: 0;
 	padding: 0;
-	font-size: 1.1em;
+	font-size: 1em;
 	color: rgb(51, 51, 51);
 	font-family: 'Gotham SSm', Helvetica, Arial, sans-serif;
 	font-weight: 400;
@@ -1080,6 +1150,15 @@ font-size: 1.3em;
 .tmz .tttitle {
 	background-image: url('../images/tmz.png');
 	background-size: 4em;
+	background-color: #D00000;
+}
+
+.tmz .smallFoot {
+	background-color: #D00000
+}
+
+.tmz .smallFoot span {
+	color: white;
 }
 
 .tmz .smallContainer h1,
@@ -1088,7 +1167,7 @@ font-size: 1.3em;
 .tmz .smallContainer h4 {
 	margin: 0;
 	padding: 0;
-	font-size: 1.1em;
+	font-size: 1em;
 	display: inline;
 	font-family: 'Source Sans Pro', arial, sans-serif;
 	color: black;
@@ -1097,7 +1176,8 @@ font-size: 1.3em;
 
 .engadget .tttitle {
 	background-image: url('../images/engadget.png');
-	background-size: 5em;
+background-size: 6em;
+background-position-y: -0.4em;
 }
 
 .engadget .smallContainer a {
@@ -1105,6 +1185,11 @@ font-size: 1.3em;
 	color: rgb(51, 51, 51);
 	font-size: 1.1em;
 	letter-spacing: 0.1px;
+}
+
+.engadget .smallContainer img,
+.engadget .smallContainer p {
+	display: none;
 }
 
 .cbssports .tttitle {
@@ -1138,6 +1223,7 @@ font-size: 1.3em;
 }
 
 .bleacher .tttitle {
+	background-color: rgb(95, 95, 95);
 	background-image: url('../images/bleacher.jpeg');
 }
 
@@ -1153,19 +1239,18 @@ font-size: 1.3em;
 .gizmodo .tttitle {
 	background-image: url('../images/gizmodo.png');
 	background-color: white;
-	background-size: 9em;
-	border-top: 1px solid #eee;
-	border-bottom: 1px solid #eee;
+	background-size: 8em;
+	box-shadow: rgba(100, 100, 100, 0.2) 0px 1px 2px 0px;
 }
 
 .gizmodo .smallContainer a {
 	display: block;
 	text-decoration: none;
-	font-family: ProximaNovaCond, Proxima Nova Georgia, serif;
+	font-family: helvetica, sans-serif;
 	font-weight: bold;
 	margin-bottom: 0.5em;
 	color: black;
-	font-size: 1.1em
+	font-size: 1em
 }
 
 .gizmodo .smallContainer a:hover {
@@ -1197,7 +1282,7 @@ font-size: 1.3em;
 
 .usatoday .smallContainer a {
 	display: block;
-	padding: 0.5em 1em;
+	padding: 0.3em 0.5em;
 	text-decoration: none;
 	background-color: rgb(249, 249, 249);
 	border-bottom: 1px solid rgb(220, 220, 220);
@@ -1222,27 +1307,49 @@ font-size: 1.3em;
 .hreporter .tttitle {
 	background-image: url('../images/hreporter.jpeg');
 	background-color: white;
+	box-shadow: rgba(100, 100, 100, 0.2) 0px 1px 2px 0px;
 }
 
-.hreporter .smallContainer a {
+.hreporter {
+	background-color: rgba(255,255,255,0.95);
+}
+
+.hreporter .smallContainer a  {
+	text-decoration: none;
+	color: black;
+}
+
+.hreporter .smallContainer a h2 {
 	display: block;
 	text-decoration: none;
 	color: black;
-	font-family: Roboto, Arial, sans-serif;
-	font-weight: bold;
+	font-family: georgia, serif;
+	font-weight: 400;
 	margin: 0.5em 0;
+	font-size: 1.03em;
 }
 
 .hreporter .smallContainer a:hover {
 	color: red;
 }
 
+.hreporter .smallContainer a > * {
+	display: none;
+}
+
+.hreporter .smallContainer a h2 {
+	display: block;
+}
+
 .businessweek .tttitle {
 	background-image: url('../images/businessweek.png');
 	background-color: white;
-	border-top: 2px solid #eee;
-	border-bottom: 2px solid #eee;
+	box-shadow: rgba(100, 100, 100, 0.2) 0px 1px 2px 0px;
 	background-size: 7em;
+}
+
+.businessweek  {
+	background-color: rgba(255,255,255,0.95)
 }
 
 .businessweek .smallContainer a {
@@ -1250,7 +1357,7 @@ font-size: 1.3em;
 	text-decoration: none;
 	color: rgb(85, 85, 85);
 	font-family: sans-serif;
-	border-bottom: 1px solid rgb(224, 224, 224);
+	border-bottom: 1px solid rgba(224, 224, 224,0.8);
 	padding: 0.25em 0;
 }
 
@@ -1340,6 +1447,7 @@ font-size: 1.3em;
 	font-family: akzidenz-grotesk-std-bloom, Arial, Helvetica, sans-serif;
 	margin: 0.5em 0;
 	display: block;
+	font-size: 1em
 }
 
 .bloomberg .smallContainer a:hover {
@@ -1383,6 +1491,13 @@ font-size: 1.3em;
 
 .bbc .tttitle {
 	background-image: url('../images/bbc.gif');
+	background-position-x: 0;
+	background-color: white;
+	border-bottom: 1px solid #eee;
+}
+
+.bbc {
+	background-color: rbga(255,255,255,0.95);
 }
 
 .bbc .livestats-icon {
@@ -1437,16 +1552,14 @@ font-size: 1.3em;
 	display: none;
 }
 
-.theguardian a {
-	text-decoration: none;
-	color: rgb(51, 51, 51);
-}
 
-.theguardian h2 {
+.theguardian .smallContainer a {
 	font-family: 'Guardian Egyptian Web', 'Guardian Text Egyptian Web', Georgia, serif;
 	font-size: 1em;
+	font-weight: bold;
 	margin: 0.5em 0;
 	line-height: 1.25em;
+	color: rgb(51, 51, 51);
 }
 
 .theguardian h2 {
