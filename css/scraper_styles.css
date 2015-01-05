@@ -1,3 +1,61 @@
+.mentalfloss .tttitle {
+	background-image: url('../images/mentalfloss.png');
+	background-size: 8em;
+	background-color: white;
+	box-shadow: rgba(100, 100, 100, 0.24902) 0px 1px 3px 0px;
+}
+
+.mentalfloss .smallContainer a {
+	color: rgb(51, 51, 51);
+	font-family: helvetica, sans-serif;
+	font-size: 1.05em;
+}
+
+.techmeme .tttitle {
+	background-image: url('../images/techmeme.png');
+	background-size: 6em;
+	background-color: transparent;
+	box-shadow: rgba(100, 100, 100, 0.24902) 0px 1px 3px 0px;
+	background-position-x: 1em; 
+}
+
+.techmeme .smallContainer .item {
+	margin-bottom: 0.5em;
+}
+
+.techmeme table,
+.techmeme tr,
+.techmeme td {
+	margin: 0;
+	padding: 0;
+}
+
+.techmeme .smallContainer .item div,
+.techmeme .smallContainer .item img {
+	display: none;
+}
+
+.techmeme .smallContainer a {
+	color: rgb(0, 72, 96);
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.techmeme .smallContainer a:hover {
+	text-decoration: underline;
+}
+
+.techmeme .smallContainer table,
+.techmeme .smallContainer table a {
+	font-family: sans-serif;
+	color: rgb(104, 104, 96);
+	font-size: 0.95em;
+	text-decoration: none;
+}
+
+
+
+
 .dallasnews .tttitle {
 	background-image: url('../images/dallasnews.png');
 	background-color: white;

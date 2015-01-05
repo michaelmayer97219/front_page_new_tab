@@ -1,1 +1,3 @@
-A new tab override for chrome which scrapes content from your most visited pages.
+This is a beta version, please email me any bug reports/feedback.
+
+Created by Michael Mayer. Feel free to contact at: me@micjm.com

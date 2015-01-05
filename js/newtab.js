@@ -372,8 +372,8 @@ $( document ).ready(function() {
     	}
     	extraSites['sub'] = result['selectedScrapes']['sub']
     	alreadyScraped = [] //make sure duplicate scrapes don't happen
-    	chrome.topSites.get(top_sites_callback)
-    	//top_sites_callback(test_sites) //for testing comment out for prod
+    	//chrome.topSites.get(top_sites_callback)
+    	top_sites_callback(test_sites) //for testing comment out for prod
 
     })
 
@@ -388,8 +388,7 @@ $( document ).ready(function() {
 			$removeSites.css('font-weight', 'bold')
 			$('.container').each(function(){
 				var $this = $(this)
-				$this.append("<div class='deleteIcon'>"
-					+"<img src='../images/x-mark.png'</img></div>")
+				$this.append("<div class='deleteIcon'></div>")
 			})
 			$('.deleteIcon').click(function() {
 				var $this = $(this)

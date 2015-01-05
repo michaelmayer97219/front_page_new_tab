@@ -72,10 +72,12 @@ var test_sites = [/*{"title":"","url":"http://news.ycombinator.com"},
 {"title":"","url":"http://telegraph.co.uk"},
 {"title":"","url":"http://marketwatch.com"},
 {"title":"","url":"http://elitedaily.com"},
-{"title":"","url":"http://denverpost.com"},*/
+{"title":"","url":"http://denverpost.com"},
 {"title":"","url":"http://seattletimes.com"},
 {"title":"","url":"http://mercurynews.com"},
-{"title":"","url":"http://dallasnews.com"}]
+{"title":"","url":"http://dallasnews.com"},*/
+{"title":"","url": "http://techmeme.com"},
+{"title":"","url": "http://mentalfloss.com"}]
 
 
 /*[

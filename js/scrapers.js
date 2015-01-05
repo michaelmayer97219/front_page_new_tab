@@ -318,12 +318,39 @@ scrapers = {
 		{'callback': dallasnews,
 		'class': 'dallasnews',
 		'maxCache': defaultCache},
+	"techmeme.com":
+		{'callback': techmeme,
+		'class': 'techmeme',
+		'maxCache': defaultCache},
+	"mentalfloss.com":
+		{'callback': mentalfloss,
+		'class': 'mentalfloss',
+		'maxCache': defaultCache}
 }
 
 non_scrapers =  {
 	"weather.com":
 		{'callback':weather,
 		'class': 'weather'},
+}
+
+function mentalfloss(response, targetClass) {
+	basicScrape(response, targetClass, '.views-content-field-rich-title a', 5)
+	basicScrape(response, targetClass, '.views-row h3 a', 20)
+	basicScrape(response, targetClass, '.views-field h1 > a', 20)
+	removeDupeLinks(targetClass)
+
+	unlinkStyle(targetClass)
+	universalLinkFix(targetClass, 'http://mentalfloss.com')
+}
+
+function techmeme(response, targetClass) {
+	basicScrape(response, targetClass, '.item', 10)
+	$('.ii').each(function(ind, val) {
+		$(this).hide()
+		var hLink = $(val).find('a')
+		$(this).parent().append(hLink)
+	})
 }
 
 function dallasnews(response, targetClass) {

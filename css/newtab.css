@@ -34,16 +34,20 @@ body, html {
 	
 }
 
-.deleteIcon img {
-	z-index:100;
+.deleteIcon {
+	background-image: url('../images/x-mark.png');
+	background-image: url('../images/delete-2.png');
+	background-size: 24px;
 	position: absolute;
-top: 0;
-right: 0;
-height: 16px;
-width: 16px;
+	z-index: 100;
+	height: 24px;
+	width: 24px;
+	top: 0px;
+	right: 0px;
 }
 
-.deleteIcon img:hover {
+
+.deleteIcon:hover {
 	cursor: pointer;
 }
 
@@ -162,7 +166,7 @@ width: 16px;
 	font-size: 1.2em;
 	line-height: 1.3em;
 	padding-top: .5em;
-	overflow: hidden;
+	overflow: visible;
 	background-color: rgba(0,0,0, 0.05);
 	text-align: center;
 	background-size: contain;
