@@ -228,7 +228,7 @@ function top_sites_callback(obj) {
 
 	footerfix()
 
- 	//$('#main').sortable()	
+ 	$('#main').sortable()	
 }
 
 
@@ -372,8 +372,8 @@ $( document ).ready(function() {
     	}
     	extraSites['sub'] = result['selectedScrapes']['sub']
     	alreadyScraped = [] //make sure duplicate scrapes don't happen
-    	//chrome.topSites.get(top_sites_callback)
-    	top_sites_callback(test_sites) //for testing comment out for prod
+    	chrome.topSites.get(top_sites_callback)
+    	//top_sites_callback(test_sites) //for testing comment out for prod
 
     })
 

@@ -1,44 +1,22 @@
 {
-    //manifest spec: http://developer.chrome.com/extensions/manifest.html
-    //required
-    "name": "Front Page New Tab (Beta)",
-    "version": "0.1",
-    "manifest_version": 2,
-
-    //recommended
-    "description": "Your front page to the internet.",
-    "icons": {
-        "19": "images/fp.png",
-        "38": "images/fp64.png",
-        "128": "images/fp64.png"
-    },
-
-    //required
-   //"browser_action": {
-    //    "default_title": "browser_action: default_title",
-      //  "default_icon": {
-        //    "19": "images/fp.png",
-          //  "38": "images/fp64.png"
-        //}
-    //},
-
-    //additional
-    //"options_page": "html/options.html",
-    //"homepage_url": "http://yourdomainhere.com/",
-
-    //allows cross-origin
-
-    //override newtab
-    "chrome_url_overrides" : {
-    "newtab": "html/newtab.html"
+  "name": "Front Page New Tab (Beta)",
+  "version": "0.1",
+  "manifest_version": 2,
+  "description": "The Front Page of your Internet",
+  "icons": {
+    "19": "images/fp.png",
+    "38": "images/fp64.png",
+    "128": "images/fp64.png"
   },
-    //permission needed to access topsites
-    "permissions": [
-          "topSites",
-          "http://*/*", "https://*/*",
-          "bookmarks",
-          "history",
-          "chrome://favicon/*",
-          "storage"
-        ]
+  "chrome_url_overrides" : {
+  "newtab": "html/newtab.html"
+  },
+  "permissions": [
+    "topSites",
+    "http://*/*", "https://*/*",
+    "bookmarks",
+    "history",
+    "chrome://favicon/*",
+    "storage"
+  ]
 }

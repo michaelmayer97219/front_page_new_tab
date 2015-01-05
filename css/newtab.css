@@ -306,6 +306,11 @@ body, html {
 	xdisplay: none;
 }
 
+.bottomButton a {
+	color: black;
+	text-decoration: none;
+}
+
 .bottomButton:hover {
 	color: #666;
 	cursor: pointer;

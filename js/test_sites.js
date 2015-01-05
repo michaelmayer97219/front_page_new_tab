@@ -1,10 +1,13 @@
-var test_sites = [/*{"title":"","url":"http://news.ycombinator.com"},
+var test_sites = [
+{"title":"","url":"http://nytimes.com"},
+{"title":"","url":"http://reddit.com"}, 
+{"title":"","url":"http://qz.com"},
+{"title":"","url":"http://politico.com"},
+/*{"title":"","url":"http://news.ycombinator.com"},
 {"title":"","url":"http://blazersedge.com"}, 
 {"title":"","url":"http://twitter.com"},
 {"title":"","url":"http://fivethirtyeight.com"},
 {"title":"","url":"http://theatlantic.com"},
-{"title":"","url":"http://reddit.com"}, 
-{"title":"","url":"http://qz.com"},
 {"title":"","url":"http://nytimes.com"},
 {"title":"","url":"http://espn.go.com"},
 {"title":"","url":"http://huffingtonpost.com"},
@@ -59,7 +62,7 @@ var test_sites = [/*{"title":"","url":"http://news.ycombinator.com"},
 {"title":"","url":"http://philly.com"},
 {"title":"","url":"http://adweek.com"},
 {"title":"","url":"http://vox.com"},
-{"title":"","url":"http://politico.com"},
+
 {"title":"","url":"http://reuters.com"},
 {"title":"","url":"http://abcnews.go.com"},
 {"title":"","url":"http://nbcnews.com"},
@@ -75,9 +78,9 @@ var test_sites = [/*{"title":"","url":"http://news.ycombinator.com"},
 {"title":"","url":"http://denverpost.com"},
 {"title":"","url":"http://seattletimes.com"},
 {"title":"","url":"http://mercurynews.com"},
-{"title":"","url":"http://dallasnews.com"},*/
+{"title":"","url":"http://dallasnews.com"},
 {"title":"","url": "http://techmeme.com"},
-{"title":"","url": "http://mentalfloss.com"}]
+{"title":"","url": "http://mentalfloss.com"}*/]
 
 
 /*[
