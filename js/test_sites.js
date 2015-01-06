@@ -1,9 +1,9 @@
 var test_sites = [
-{"title":"","url":"http://nytimes.com"},
+{"title":"","url":"http://nytimes.com"},/*
 {"title":"","url":"http://reddit.com"}, 
 {"title":"","url":"http://qz.com"},
 {"title":"","url":"http://politico.com"},
-/*{"title":"","url":"http://news.ycombinator.com"},
+{"title":"","url":"http://news.ycombinator.com"},
 {"title":"","url":"http://blazersedge.com"}, 
 {"title":"","url":"http://twitter.com"},
 {"title":"","url":"http://fivethirtyeight.com"},

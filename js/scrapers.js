@@ -850,6 +850,7 @@ function theAtlantic(response, targetClass)	{
 	//basicContainerScrape(response, targetClass, '#module-most-popular', 'dd', 30)
 	basicScrape(response, targetClass, 'article a', 55)
 	universalLinkFix(targetClass, 'http://www.theatlantic.com')
+	removeDupeLinks(targetClass)
 	unlinkStyle(targetClass)
 	unHeaderStyle(targetClass)
 }
@@ -905,7 +906,7 @@ function twitter(response, targetClass) {
 function reddit(response, targetClass) {
 	var $html = $(response)
 	var mainTable = $html.find('#siteTable')
-	var objects = mainTable.find('.entry').slice(0,8) //slice to take just a few items
+	var objects = mainTable.find('.entry').slice(0,15) //slice to take just a few items
 
 	var targetContainer = $('.'+targetClass+' .smallContainer')
 	$.each(objects, function(ind,val) {
@@ -919,5 +920,6 @@ function reddit(response, targetClass) {
 		targetContainer.find('.redditChunk').last().append(title).append(subreddit).append(comments)
 		targetContainer.find('.linkflairlabel').hide() //cuz they're annoying
 	})
+	universalLinkFix(targetClass, 'http://reddit.com')
 }
 

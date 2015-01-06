@@ -223,19 +223,29 @@ function top_sites_callback(obj) {
 	    		i++
 	    	}	        
 	    });
-	    main_contain.append(history)    
+	    main_contain.append(history) 
+	    var footer = $('#ntFoot')
+	    var footpad = $('#footPad')
+	    footpad.hide()
+		footer.hide()
+		$('#main').append(footpad)
+		$('#main').append(footer)   
+		footpad.show()
+		footer.show()
+
 	});
 
-	footerfix()
+	//footerfix()
 
- 	$('#main').sortable()	
+ 	//$('#main').sortable()	
+ 	
 }
 
 
 $( document ).ready(function() {
 
 	extraSites = {'add': [], 'sub': []}//[{'title': 'blah', 'url': 'http://foxnews.com'}]
-	var $body = $('body')
+	var $body = $('#main')
 	var $options = $('.option')
 
 	//Code for background image
@@ -270,9 +280,9 @@ $( document ).ready(function() {
     }) 
 
     //footer is dynmically determined when page is not tall enough
-   $(window).resize(function() {
-   		footerfix()
-   })
+   //$(window).resize(function() {
+   	//	footerfix()
+   //})
 
 
 
@@ -359,18 +369,18 @@ $( document ).ready(function() {
 	//extrasites which is used in top_sites_callback to 
 	//create page containers
 	storage.get('selectedScrapes', function(result) {
-		console.log(result)
+		if (result['selectedScrapes'] != undefined) {
+	    	var res = result['selectedScrapes']['add']
+	    	if (extraSites['add'].length > 0) {
+	    		extraSites['add'] = extraSites['add'].concat(res)
+	    	} else if (res.length > 0) {
+	    		extraSites['add'] = res
 
-    	var res = result['selectedScrapes']['add']
-    	if (extraSites['add'].length > 0) {
-    		extraSites['add'] = extraSites['add'].concat(res)
-    	} else if (res.length > 0) {
-    		extraSites['add'] = res
+	    	} else {
 
-    	} else {
-
-    	}
-    	extraSites['sub'] = result['selectedScrapes']['sub']
+	    	}
+	    	extraSites['sub'] = result['selectedScrapes']['sub']
+   		}
     	alreadyScraped = [] //make sure duplicate scrapes don't happen
     	chrome.topSites.get(top_sites_callback)
     	//top_sites_callback(test_sites) //for testing comment out for prod
@@ -415,4 +425,33 @@ $( document ).ready(function() {
 		
 	})
 
+
+	//menu code
+	$('.menuOption').tooltip({
+		position: { my: "left+15 center", at: "right center" },
+		show: { effect: "blind", duration: 50 }
+	})
+
+	$menu = $('#settingBox #menu')
+	var menuIt = 0 //track clicks
+
+	$menu.click(function() {
+		if (menuIt == 0) {
+			$menu.attr('title', 'Hide Options')
+			$menu.siblings().show(100)	
+			menuIt = 1
+		} else {
+			$menu.attr('title', 'Show Options')
+			$menu.siblings().hide(100)
+			menuIt = 0
+		}
+		
+	})
+
 });
+
+
+
+
+
+
