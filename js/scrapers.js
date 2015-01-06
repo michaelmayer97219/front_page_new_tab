@@ -870,7 +870,7 @@ function hackerNewsResponse(response, targetClass) {
 	var innerContent = '<table><tbody>'
 	var $html = $(response)
 	var table = $html.find('table')[2] //contains table with all links
-	var table = $(table).find('tr').slice(0,40)
+	var table = $(table).find('tr').slice(0,-1)
 	$.each(table, function(ind, val) {
 		var element = val.innerHTML
 		var ehtml = $(element)
@@ -896,7 +896,7 @@ function hackerNewsResponse(response, targetClass) {
 
 
 function twitter(response, targetClass) {
-	basicScrape(response, targetClass, '.tweet', 10)
+	basicScrape(response, targetClass, '.tweet', 1000)
 	var newTarget = targetClass+' .stream-item-header'
 	//fixRelativeLinks(targetClass, 'http://twitter.com', '.stream-item-header a')
 	universalLinkFix(targetClass, 'http://twitter.com')
@@ -906,7 +906,7 @@ function twitter(response, targetClass) {
 function reddit(response, targetClass) {
 	var $html = $(response)
 	var mainTable = $html.find('#siteTable')
-	var objects = mainTable.find('.entry').slice(0,15) //slice to take just a few items
+	var objects = mainTable.find('.entry') //slice to take just a few items
 
 	var targetContainer = $('.'+targetClass+' .smallContainer')
 	$.each(objects, function(ind,val) {

@@ -2264,7 +2264,8 @@ background-position-x: 1em;
 
 .hackerNews .smallContainer {
 	font-size: .9em;
-	padding: 0px;
+	padding-top: 2em;
+	height: 37.5em;
 	background-color: #F6F6EF;
 
 }

@@ -116,7 +116,7 @@ function newContainer (url, title, conClass) {
 	//var content = content "//close title div
 	var content = content + "<div class='smallContainer'>"
 	var content = content + "</div>" //close small container
-	var content = content + "<div class='smallFoot'><span>&#8964;</span></div>"
+	var content = content + "<div class='smallFoot'></div>"
 	var content = content + "</div>" //close container div
 	var $content = $(content)
 	
@@ -246,38 +246,8 @@ $( document ).ready(function() {
 
 	extraSites = {'add': [], 'sub': []}//[{'title': 'blah', 'url': 'http://foxnews.com'}]
 	var $body = $('#main')
-	var $options = $('.option')
 
-	//Code for background image
-	var defaultBackImage = 'none' //this has to change
-	storage.get('backImg', function(result) {
-		var backImg = result['backImg']
-		defaultBackImage = backImg
-		$body.css('background-image', backImg)
-	})
-	$options.click(function() {
-		var $this = $(this)
-		var backImg = $this.css('background-image')
-		defaultBackImage = backImg
-		$body.css('background-image', defaultBackImage)
-		var store = {}
-		store['backImg'] = backImg
-		storage.set(store, function() {
 
-		})
-	})
-	$options.hover(function() {
-    		var backImg = $(this).css('background-image')
-    		$body.css('background-image', backImg)
-    	}, function() {
-    		$body.css('background-image', defaultBackImage)
-    	})
-
-    $('.bottomButton').hover(function(){
-    	$(this).find('.optionBox').show(100)
-    }, function() {
-    	$(this).find('.optionBox').hide(100)
-    }) 
 
     //footer is dynmically determined when page is not tall enough
    //$(window).resize(function() {
@@ -390,12 +360,11 @@ $( document ).ready(function() {
 	
 	//remove site code
 	var remove = 0 //keep track of toggle action
-	var $removeSites = $('#removeSites')
-	var origColor = $removeSites.css('color')
+	var $removeSites = $('#remove')
+	var origCont = $removeSites.html()
 	$removeSites.click(function() {
 		if (remove == 0) {
-			$removeSites.text('Done').css('color', '#f33')
-			$removeSites.css('font-weight', 'bold')
+			$removeSites.attr('title', 'Done')
 			$('.container').each(function(){
 				var $this = $(this)
 				$this.append("<div class='deleteIcon'></div>")
@@ -410,8 +379,7 @@ $( document ).ready(function() {
 			})
 			remove = 1
 		} else {
-			$removeSites.text('Remove Sites').css('color', origColor)
-			$removeSites.css('font-weight', '400')
+			$removeSites.html(origCont)
 			$('.deleteIcon').remove()
 			var store = {}
 			store['selectedScrapes'] = extraSites
@@ -447,6 +415,51 @@ $( document ).ready(function() {
 		}
 		
 	})
+
+	var $back = $('#settingBox #background')
+	var backIt = 0 //keep track of if it's been clicked
+	$back.click(function() {
+		if (backIt ==0) {
+			$(this).find('.optionBox').show(100)
+			backIt = 1
+		} else {
+			$(this).find('.optionBox').hide(100)
+			$back.attr('title', 'Change Background')
+			backIt = 0
+		}
+	})
+
+	var $options = $('#background .option')
+
+	//Code for background image
+	var defaultBackImage = 'none' //this has to change
+	storage.get('backImg', function(result) {
+		var backImg = result['backImg']
+		defaultBackImage = backImg
+		$body.css('background-image', backImg)
+	})
+
+	$options.click(function() {
+		var $this = $(this)
+		var backImg = $this.css('background-image')
+		defaultBackImage = backImg
+		$body.css('background-image', defaultBackImage)
+		var store = {}
+		store['backImg'] = backImg
+		storage.set(store, function() {
+
+		})
+	})
+
+	$options.hover(function() {
+		var backImg = $(this).css('background-image')
+		$body.css('background-image', backImg)
+	}, function() {
+		$body.css('background-image', defaultBackImage)
+	})
+
+
+	
 
 });
 
