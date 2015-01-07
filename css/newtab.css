@@ -261,12 +261,12 @@ body, html {
 #addScrapeBox {
 	width: 45em;
 	height: 35em;
-	position: absolute;
-	xtop: 10%;
-	right: 10%;
-	bottom: 5em;
+	position: fixed;
+right: 5%;
+top: 7em;
+padding: 1em;
 	display: none;
-	background-color: rgba(245,245,245,0.95);
+	background-color: rgba(255,255,255,0.95);
 }
 
 #addScrapeSlideable {

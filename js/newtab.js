@@ -248,20 +248,10 @@ $( document ).ready(function() {
 	var $body = $('#main')
 
 
-
-    //footer is dynmically determined when page is not tall enough
-   //$(window).resize(function() {
-   	//	footerfix()
-   //})
-
-
-
    //when cursor hovers over add sites button, show an element which
    //will populate with collapsed versions of clients
    var $addBox = $('#addScrapeBox')
    var $addBoxCon = $('#addScrapeSlideable')
-
-
    ////Add sites code
    //create options for adding sites by using existing styles for containers
  // var testers = [] //to create array for testing scrapers
@@ -320,7 +310,7 @@ $( document ).ready(function() {
 
 
    //button mechanics for optionbox
-   $('#addScrapers').hover(function() {
+   $('#settingBox #add').hover(function() {
    		$addBox.show()
    }, function() {
    		$addBox.hide()
@@ -417,14 +407,21 @@ $( document ).ready(function() {
 	})
 
 	var $back = $('#settingBox #background')
+	var $optbox = $('#settingBox .optionBox')
 	var backIt = 0 //keep track of if it's been clicked
 	$back.click(function() {
 		if (backIt ==0) {
-			$(this).find('.optionBox').show(100)
+			$optbox.show(100)
 			backIt = 1
 		} else {
-			$(this).find('.optionBox').hide(100)
+			$optbox.hide(100)
 			$back.attr('title', 'Change Background')
+			backIt = 0
+		}
+	})
+	$('#main').click(function() {
+		if (backIt == 1) {
+			$optbox.hide(100)
 			backIt = 0
 		}
 	})
