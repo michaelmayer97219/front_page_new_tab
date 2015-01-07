@@ -172,7 +172,7 @@ function top_sites_callback(obj) {
 		if (assClass == null) {
 			var cleanURL = prettyURL(url)
 			//make sure it's not too long
-			var cleanURL = ellipsify(cleanURL, 16)
+			var cleanURL = ellipsify(cleanURL, 23)
 			$('.mostVisitedLinks .smallContainer .linkBox').append("<a class='bookmarkLink' href='"+url+"'><img src='"+favicon(url)+"'/>"+cleanURL+"</a>")
 		} else {
 			var newContent = newContainer(url,title,assClass)
@@ -185,7 +185,7 @@ function top_sites_callback(obj) {
 	//centerLinkBox(linkHolder, '.linkBox')
 
 	var bookMarks = newContainer('', 'Bookmarks', 'bookmarkBox')
-	bookMarks.append("<div class='linkBox'></div>")
+	bookMarks.children('.smallContainer').append("<div class='linkBox'></div>")
 	bookMarks.find('.tttitle').text('Bookmarks')
 	var $bookmarkLinks = bookMarks.find('.linkBox')
 	chrome.bookmarks.getTree(function(obj) {
@@ -196,7 +196,7 @@ function top_sites_callback(obj) {
 			if (val.children.length > 0) {
 				$.each(val.children, function(ind, v) {
 					if (used < 17) {
-						var title = ellipsify(v.title, 16)
+						var title = ellipsify(v.title, 23)
 						var url = v.url
 						$bookmarkLinks.append("<a class='bookmarkLink' href='"+url+"'><img src='"+favicon(url)+"'/>"+title+"</a>")
 						used = used +1
@@ -211,7 +211,7 @@ function top_sites_callback(obj) {
 	main_contain.append(bookMarks)
 
 	var history = newContainer('','', 'historyBox')
-	history.append("<div class='linkBox'></div>")
+	history.children('.smallContainer').append("<div class='linkBox'></div>")
 	history.find('.tttitle').text('Recently Visited')
 	var $historyLinks = history.find('.linkBox')
 
@@ -219,7 +219,7 @@ function top_sites_callback(obj) {
 		var i = 0 //iterator for total number of links
 	    data.forEach(function(page) {
 	    	if (page.title && i < 17) {
-	    		$historyLinks.append("<a class='bookmarkLink' href='"+page.url+"'><img src='"+favicon(page.url)+"'/>"+ellipsify(page.title, 16)+"</a>")
+	    		$historyLinks.append("<a class='bookmarkLink' href='"+page.url+"'><img src='"+favicon(page.url)+"'/>"+ellipsify(page.title, 23)+"</a>")
 	    		i++
 	    	}	        
 	    });
@@ -310,10 +310,18 @@ $( document ).ready(function() {
 
 
    //button mechanics for optionbox
-   $('#settingBox #add').hover(function() {
-   		$addBox.show()
-   }, function() {
-   		$addBox.hide()
+   var addInt  = 0 
+   $addButton = $('#settingBox #add')
+   $addButton.click(function() {
+   		if (addInt == 0) {
+   			$addBox.show()
+   			$addButton.children('i').css('color', 'black')
+   			addInt = 1
+   		} else {
+   			$addBox.hide()
+   			$addButton.children('i').css('color', 'rgba(11,11,11,0.7)')
+   			addInt = 0
+   		}
    })
 
 
@@ -367,16 +375,18 @@ $( document ).ready(function() {
 				extraSites['sub'].push(hideURL)
 
 			})
+			$removeSites.children('i').css('color', 'black')
 			remove = 1
 		} else {
 			$removeSites.html(origCont)
+			$removeSites.attr('title', 'Remove Sites')
 			$('.deleteIcon').remove()
 			var store = {}
 			store['selectedScrapes'] = extraSites
 			storage.set(store, function() {
 
 			})
-
+			$removeSites.children('i').css('color', 'rgba(11,11,11,0.7)')
 			remove  = 0 //reset
 		}
 
@@ -397,10 +407,12 @@ $( document ).ready(function() {
 		if (menuIt == 0) {
 			$menu.attr('title', 'Hide Options')
 			$menu.siblings().show(100)	
+			$menu.children('i').css('color', 'black')
 			menuIt = 1
 		} else {
 			$menu.attr('title', 'Show Options')
 			$menu.siblings().hide(100)
+			$menu.children('i').css('color', 'rgba(11,11,11,0.7)')
 			menuIt = 0
 		}
 		
@@ -412,18 +424,27 @@ $( document ).ready(function() {
 	$back.click(function() {
 		if (backIt ==0) {
 			$optbox.show(100)
+			$back.children('i').css('color', 'black')
 			backIt = 1
 		} else {
 			$optbox.hide(100)
 			$back.attr('title', 'Change Background')
+			$back.children('i').css('color', 'rgba(11,11,11,0.7)')
 			backIt = 0
 		}
 	})
 	$('#main').click(function() {
 		if (backIt == 1) {
 			$optbox.hide(100)
+			
 			backIt = 0
 		}
+
+		if (addInt == 1) {
+			$addBox.hide(100)
+			addInt = 0
+		}
+
 	})
 
 	var $options = $('#background .option')
