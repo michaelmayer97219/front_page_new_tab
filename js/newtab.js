@@ -151,23 +151,21 @@ function centerLinkBox(linkHolder, innerClass) {
 function top_sites_callback(obj) {
 	var newObj = obj.concat(extraSites['add'])
 	var main_contain = $('#main')
+	
 	//create empty box for most visted links
 	var linkHolder = newContainer('', 'Most Visited Links', 'mostVisitedLinks')
 	main_contain.prepend(linkHolder)
 	$('.mostVisitedLinks .smallContainer').append("<div class='linkBox'></div>")
+	
 	//loop through each topsite and build container
 	$.each(newObj, function(key, val) {
-
-		
 		var url = val.url
 		var title = val.title
-
 		var isSub = extraSites['sub'].indexOf(url)
 		if (isSub != -1) {
 			return
 		}
 		var assClass = handle_url(url) //should execute scrape as well
-		
 		//append url into content if there's no scraper 
 		if (assClass == null) {
 			var cleanURL = prettyURL(url)
@@ -475,8 +473,6 @@ $( document ).ready(function() {
 	}, function() {
 		$body.css('background-image', defaultBackImage)
 	})
-
-
 	
 
 });
