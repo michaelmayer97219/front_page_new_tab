@@ -904,6 +904,7 @@ function twitter(response, targetClass) {
 }
 
 function reddit(response, targetClass) {
+
 	var $html = $(response)
 	var mainTable = $html.find('#siteTable')
 	var objects = mainTable.find('.entry') //slice to take just a few items

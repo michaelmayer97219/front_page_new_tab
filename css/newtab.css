@@ -116,9 +116,10 @@ body, html {
 }
 
 .linkBox {
-	xposition: absolute;
-	xtop: 0.5em;
-	xpadding-left: 2em;
+
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	padding-right: 0.5em;
 }
 
 .mostVisitedLinks .linkBox {
@@ -132,6 +133,8 @@ body, html {
 	display: block;
 	color: #376A92;
 	text-decoration: none;
+	text-overflow: ellipsis;
+	overflow: hidden;
 }
 
 .bookmarkLink:hover {

@@ -1,25 +1,26 @@
 
-//function for generic scrapers
+
 var storage = chrome.storage.local;
 
 //actual ajax code
 function ajaxCall(url, responseFunction, targetClass, maxCache, now) {
-	
 	var client = new XMLHttpRequest();
 	client.open("GET", url, true);
 	client.onload = (function(response) {
 		var target = response.currentTarget
+
 		var responseURL = prettyURL(target.responseURL)
+
 		var clean = prettyURL(url).split('.')
 		clean = clean[clean.length-2]
 		var cleanRespUrl = responseURL.split('/')[0] //redirect bug hack
+
 		cleanRespUrl = cleanRespUrl.split('.')
 		cleanRespUrl = cleanRespUrl[cleanRespUrl.length-2]
-		console.log('clean '+clean+'rURL '+cleanRespUrl)
-		if (cleanRespUrl == clean) {
-			
-			if (target.readyState === 4) {
 
+
+		if (cleanRespUrl == clean) {
+			if (target.readyState === 4) {
 		    	if (target.status === 200) {
 		    		var response = target.response
 			    	var store = {}
@@ -29,16 +30,10 @@ function ajaxCall(url, responseFunction, targetClass, maxCache, now) {
 											}
 			    	storage.set(store, function() {})
 			  		responseFunction(response, targetClass)
-
 		    	} else {
-
 		    		responseFunction(cacheResponse, targetClass)
-		    		
 		    	}
-		    	
 		    } else {
-		    	alert('fail')
-		  	  return 'fail'
 		    }
 		}
 	    
@@ -48,41 +43,25 @@ function ajaxCall(url, responseFunction, targetClass, maxCache, now) {
 }
 
 function scrape(url, responseFunction, targetClass, maxCache) {
-
 	var time = new Date()
 	var now = Date.now(time)
 	var prevResponse = storage.get(targetClass, function(result) {
 		var isCached = result.hasOwnProperty(targetClass)
-		
 		if(isCached) {
-
 			var prevTime = result[targetClass]['time']
 			var cacheResponse = result[targetClass]['response']
-			
 			var diff = now - prevTime
 			var overCache = diff < maxCache
 			if (overCache) {
-				responseFunction(cacheResponse, targetClass)
-				
+				responseFunction(cacheResponse, targetClass)	
 			} else {
 				ajaxCall(url, responseFunction, targetClass, maxCache, now)
 			}
-			
 		} else {
-			ajaxCall(url, responseFunction, targetClass, maxCache)
-			
-		}
-
-		
+			ajaxCall(url, responseFunction, targetClass, maxCache)	
+		}		
 	})
-
-	
-
-	
 }
-
-
-
 
 //function for filling container
 function handle_url(url) {
@@ -133,30 +112,20 @@ function newContainer (url, title, conClass) {
 //function for displaying just .tttitle for clients
 
 function displayTTTitle(conClass, urlll) {
+	console.log()
 		var content = "<div  class='psuedoContainer "+conClass+"'>"
 		var content = content + "<div title="+urlll+" class='tttitle'></div>"
 		var content = content + "</div>" //close psuedocontainer
 		return(content)
 }
 
-function centerLinkBox(linkHolder, innerClass) {
-	var $linkbox = linkHolder.find(innerClass)
-	var linkBoxHeight = $linkbox.height()
-	var outerBoxHeight = linkHolder.height()
-	var topMargin = (outerBoxHeight - linkBoxHeight)/100
-	$linkbox.css('margin-top', topMargin)
-}
-
-
 function top_sites_callback(obj) {
 	var newObj = obj.concat(extraSites['add'])
 	var main_contain = $('#main')
-	
 	//create empty box for most visted links
 	var linkHolder = newContainer('', 'Most Visited Links', 'mostVisitedLinks')
 	main_contain.prepend(linkHolder)
 	$('.mostVisitedLinks .smallContainer').append("<div class='linkBox'></div>")
-	
 	//loop through each topsite and build container
 	$.each(newObj, function(key, val) {
 		var url = val.url
@@ -170,7 +139,7 @@ function top_sites_callback(obj) {
 		if (assClass == null) {
 			var cleanURL = prettyURL(url)
 			//make sure it's not too long
-			var cleanURL = ellipsify(cleanURL, 23)
+			var cleanURL = cleanURL
 			$('.mostVisitedLinks .smallContainer .linkBox').append("<a class='bookmarkLink' href='"+url+"'><img src='"+favicon(url)+"'/>"+cleanURL+"</a>")
 		} else {
 			var newContent = newContainer(url,title,assClass)
@@ -179,8 +148,6 @@ function top_sites_callback(obj) {
 		
 	})
 	$('.mostVisitedLinks').find('.tttitle').text('Most Visited Links')
-	//center linkBox
-	//centerLinkBox(linkHolder, '.linkBox')
 
 	var bookMarks = newContainer('', 'Bookmarks', 'bookmarkBox')
 	bookMarks.children('.smallContainer').append("<div class='linkBox'></div>")
@@ -193,13 +160,13 @@ function top_sites_callback(obj) {
 			//check if it's empty
 			if (val.children.length > 0) {
 				$.each(val.children, function(ind, v) {
-					if (used < 17) {
-						var title = ellipsify(v.title, 23)
+					//if (used < 17) {
+						var title = v.title
 						var url = v.url
 						$bookmarkLinks.append("<a class='bookmarkLink' href='"+url+"'><img src='"+favicon(url)+"'/>"+title+"</a>")
 						used = used +1
 						//alert(used)
-					}
+					//}
 				})
 
 			}
@@ -217,26 +184,26 @@ function top_sites_callback(obj) {
 		var i = 0 //iterator for total number of links
 	    data.forEach(function(page) {
 	    	if (page.title && i < 17) {
-	    		$historyLinks.append("<a class='bookmarkLink' href='"+page.url+"'><img src='"+favicon(page.url)+"'/>"+ellipsify(page.title, 23)+"</a>")
+	    		$historyLinks.append("<a class='bookmarkLink' href='"+page.url+"'><img src='"+favicon(page.url)+"'/>"+page.title+"</a>")
 	    		i++
 	    	}	        
 	    });
 	    main_contain.append(history) 
-	    var footer = $('#ntFoot')
-	    var footpad = $('#footPad')
-	    footpad.hide()
-		footer.hide()
-		$('#main').append(footpad)
-		$('#main').append(footer)   
-		footpad.show()
-		footer.show()
-
 	});
 
-	//footerfix()
+	storage.get('sortOrder', function(result) {
+		var res = result['sortOrder']
+		if (res != undefined) {
+			$.each(res, function(ind,val) {
+				var sortClass = val.split(' ')[1]
+				console.log(sortClass)
+				var sortBox = $('#main .'+sortClass)
+				sortBox.remove()
+				$('#main').append(sortBox)
+			})
+		} 
+	})
 
- 	//$('#main').sortable()	
- 	
 }
 
 
@@ -245,6 +212,10 @@ $( document ).ready(function() {
 	extraSites = {'add': [], 'sub': []}//[{'title': 'blah', 'url': 'http://foxnews.com'}]
 	var $body = $('#main')
 
+	//stretch main to window height at a minimum
+
+	var windowHeight = $(window).height()
+	$body.css('min-height', windowHeight)
 
    //when cursor hovers over add sites button, show an element which
    //will populate with collapsed versions of clients
@@ -266,9 +237,17 @@ $( document ).ready(function() {
 
    //Sites for adding will already be in extraSites. 
    //Upon click, add new site to storeage of 'selectScraptes'
+   
+   //fix for bug breaking 'add sites' where 'title' disapearred 
+   var activeContainer
+   $('.psuedoContainer .tttitle').hover(function() {
+   		activeContainer = $(this).attr('title')
+   		$(this).tooltip({content:activeContainer})
+   })
    $('.psuedoContainer .tttitle').click(function() {
-		$this = $(this)
-		var newURL = 'http://'+$this.attr('title')
+		//$this = $(this)
+		
+		var newURL = 'http://'+ activeContainer
 		var oldURLs = []
 		$.each(extraSites['add'], function(ind, val) {
 			oldURLs.push(val.url)
@@ -276,10 +255,10 @@ $( document ).ready(function() {
 
 		$.each(extraSites['sub'], function(ind, val) {
 				var site = val
-				console.log(val)
+
 				if (site == newURL) {
 					extraSites['sub'].splice(ind, 1)
-					console.log(extraSites)
+					console.log(val)
 					var store = {}
 					store['selectedScrapes'] = extraSites
 						storage.set(store, function() {
@@ -306,6 +285,9 @@ $( document ).ready(function() {
 			}
    	})
 
+   	var highlightColor = 'rgba(230,0,0,0.8)'
+	var origColor = $('.menuOption i').css('color')
+
 
    //button mechanics for optionbox
    var addInt  = 0 
@@ -313,11 +295,11 @@ $( document ).ready(function() {
    $addButton.click(function() {
    		if (addInt == 0) {
    			$addBox.show()
-   			$addButton.children('i').css('color', 'black')
+   			$addButton.children('i').css('color', highlightColor)
    			addInt = 1
    		} else {
    			$addBox.hide()
-   			$addButton.children('i').css('color', 'rgba(11,11,11,0.7)')
+   			$addButton.children('i').css('color', origColor)
    			addInt = 0
    		}
    })
@@ -353,7 +335,7 @@ $( document ).ready(function() {
 
     })
 
-	
+
 	//remove site code
 	var remove = 0 //keep track of toggle action
 	var $removeSites = $('#remove')
@@ -373,7 +355,7 @@ $( document ).ready(function() {
 				extraSites['sub'].push(hideURL)
 
 			})
-			$removeSites.children('i').css('color', 'black')
+			$removeSites.children('i').css('color', highlightColor)
 			remove = 1
 		} else {
 			$removeSites.html(origCont)
@@ -384,7 +366,7 @@ $( document ).ready(function() {
 			storage.set(store, function() {
 
 			})
-			$removeSites.children('i').css('color', 'rgba(11,11,11,0.7)')
+			$removeSites.children('i').css('color', origColor)
 			remove  = 0 //reset
 		}
 
@@ -398,6 +380,8 @@ $( document ).ready(function() {
 		show: { effect: "blind", duration: 50 }
 	})
 
+
+
 	$menu = $('#settingBox #menu')
 	var menuIt = 0 //track clicks
 
@@ -405,12 +389,12 @@ $( document ).ready(function() {
 		if (menuIt == 0) {
 			$menu.attr('title', 'Hide Options')
 			$menu.siblings().show(100)	
-			$menu.children('i').css('color', 'black')
+			$menu.children('i').css('color', highlightColor)
 			menuIt = 1
 		} else {
 			$menu.attr('title', 'Show Options')
 			$menu.siblings().hide(100)
-			$menu.children('i').css('color', 'rgba(11,11,11,0.7)')
+			$menu.children('i').css('color', origColor)
 			menuIt = 0
 		}
 		
@@ -422,12 +406,12 @@ $( document ).ready(function() {
 	$back.click(function() {
 		if (backIt ==0) {
 			$optbox.show(100)
-			$back.children('i').css('color', 'black')
+			$back.children('i').css('color', highlightColor)
 			backIt = 1
 		} else {
 			$optbox.hide(100)
 			$back.attr('title', 'Change Background')
-			$back.children('i').css('color', 'rgba(11,11,11,0.7)')
+			$back.children('i').css('color', origColor)
 			backIt = 0
 		}
 	})
@@ -480,15 +464,37 @@ $( document ).ready(function() {
 	$order.click(function() {
 		if (orderClick == 0) {
 			$('#main').sortable()
-			$order.children('i').css('color', 'black')
+			$order.attr('title', 'Done')
+			$order.children('i').css('color', highlightColor)
 			orderClick = 1
+			$('#main .container').hover(function() {
+
+				$(this).css('cursor', 'move')
+				$(this).children().css('cursor', 'move')
+				$(this).children().children().css('cursor', 'move')
+			})
 		} else {
-			console.log($('#main').sortable('toArray', {attribute: 'class'}))
+
+			$('#main .container').hover(function() {
+
+				$(this).css('cursor', 'initial')
+				$(this).children().css('cursor', 'initial')
+				$(this).children().children().css('cursor', 'initial')
+			})
 			$('#main').sortable('disable')
-			$order.children('i').css('color', 'rgba(11,11,11,0.7)')
+			$order.attr('title', 'Change Order')
+			$order.children('i').css('color', origColor)
 			orderClick = 0
+			sortArray = $('#main').sortable('toArray', {attribute: 'class'})
+			var store = {}
+			store['sortOrder'] = sortArray
+			storage.set(store, function() {
+
+			})
 		}
 	})
+
+
 
 });
 
