@@ -363,7 +363,7 @@ $( document ).ready(function() {
 			$removeSites.attr('title', 'Done')
 			$('.container').each(function(){
 				var $this = $(this)
-				$this.append("<div class='deleteIcon'></div>")
+				$this.append("<div class='deleteIcon'><i class='fa fa-remove fa-2x'></div>")
 			})
 			$('.deleteIcon').click(function() {
 				var $this = $(this)
@@ -474,6 +474,21 @@ $( document ).ready(function() {
 		$body.css('background-image', defaultBackImage)
 	})
 	
+	var $order = $('#settingBox #sort')
+
+	var orderClick = 0 //keep track of toggle action
+	$order.click(function() {
+		if (orderClick == 0) {
+			$('#main').sortable()
+			$order.children('i').css('color', 'black')
+			orderClick = 1
+		} else {
+			console.log($('#main').sortable('toArray', {attribute: 'class'}))
+			$('#main').sortable('disable')
+			$order.children('i').css('color', 'rgba(11,11,11,0.7)')
+			orderClick = 0
+		}
+	})
 
 });
 
