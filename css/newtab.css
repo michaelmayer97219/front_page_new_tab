@@ -159,7 +159,6 @@ body, html {
 
 .smallContainer {
 	margin: 0.5em;
-	
 	width: 95%;
 	padding: 0 .3em;
 	padding-top: 2.5em;
@@ -201,6 +200,17 @@ body, html {
 .tttitle:hover {
 	text-decoration: underline;
 	cursor: pointer;
+}
+
+.tttitle .linkIcon {
+position: absolute;
+display: none;
+right: 1em;
+
+color: #333;
+font-size: 0.9em;
+
+
 }
 
 .smallFoot {

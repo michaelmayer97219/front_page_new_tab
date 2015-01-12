@@ -150,7 +150,7 @@
 	xfont-weight: bold;
 }
 
-.elitedaily .smallFoot span {
+.elitedaily .linkIcon {
 	display: none;
 }
 
@@ -164,7 +164,7 @@
 	background-color: #02282B;
 }
 
-.marketwatch .smallFoot span {
+.marketwatch .linkIcon {
 	color: white;
 }
 
@@ -204,7 +204,7 @@
 
 }
 
-.cracked .smallFoot span {
+.cracked .linkIcon {
 	color: white;
 }
 
@@ -249,7 +249,7 @@
 	margin-top: 0.5em;
 }
 
-.emgn .smallFoot span {
+.emgn .linkIcon {
 	display: none
 }
 
@@ -282,7 +282,7 @@ background-position-y: 5px;
 	background-color: black;
 }
 
-.groupon .smallFoot span {
+.groupon .linkIcon {
 	color: white;
 }
 
@@ -333,7 +333,7 @@ display: inline-block;
 	background-color: black;
 }
 
-.breitbart .smallFoot span {
+.breitbart .linkIcon {
 	color: white;
 }
 
@@ -359,7 +359,7 @@ display: inline-block;
 
 }
 
-.nbcnews .smallFoot span {
+.nbcnews .linkIcon {
 	color: white;
 }
 
@@ -397,7 +397,7 @@ display: inline-block;
 	background-color: #333;
 }
 
-.reuters .smallFoot span {
+.reuters .linkIcon {
 	color: white;
 }
 
@@ -421,7 +421,7 @@ display: inline-block;
 	background-color: #980000
 }
 
-.politico .smallFoot span {
+.politico .linkIcon {
 	color: white;
 }
 
@@ -518,7 +518,7 @@ display: inline-block;
 	background-color: #003466;
 }
 
-.ctribune .smallFoot span {
+.ctribune .linkIcon {
 	color: white;
 }
 
@@ -585,7 +585,7 @@ display: inline-block;
 	background-color: #444;
 }
 
-.forbes .smallFoot span {
+.forbes .linkIcon {
 	color: white;
 }
 
@@ -609,7 +609,7 @@ display: inline-block;
 	background-color:black;
 }
 
-.wired .smallFoot span {
+.wired .linkIcon {
 	color: white;
 }
 
@@ -638,7 +638,7 @@ display: inline-block;
 	background-color: #EE2E24
 }
 
-.dailybeast .smallFoot span {
+.dailybeast .linkIcon {
 	color: white;
 }
 
@@ -648,7 +648,7 @@ display: inline-block;
 
 .dailybeast .smallContainer {
 	margin-left: 0;
-	padding: 0 4%;
+	padding-left: 4%;
 	width: 92%;	
 
 }
@@ -712,7 +712,7 @@ font-size: 1.1em;
 	background-color:  #CC0000;
 }
 
-.newsweek .smallFoot span {
+.newsweek .linkIcon {
 	color: white;
 }
 
@@ -752,9 +752,9 @@ font-size: 1.1em;
 
 .newyorker .smallContainer {
 	text-align: center;
-	margin: 0;
+
 	font-family: 'times new roman', Georgia, serif;
-	padding-top: 0.5em;
+
 }
 
 .newyorker .smallContainer a {
@@ -861,7 +861,7 @@ font-size: 1.1em;
 	background-color: black;
 }
 
-.techreview .smallFoot span {
+.techreview .linkIcon {
 	color: white;
 }
 
@@ -1011,6 +1011,10 @@ font-size: 1.1em;
 	background-image: url('../images/bizinsider.jpeg')
 }
 
+.bizinsider .linkIcon {
+	color: white;
+}
+
 .bizinsider .smallContainer a {
 	color: rgb(34, 34, 34);
 	font-family: helvetica;
@@ -1040,7 +1044,7 @@ font-size: 1.1em;
 	background-color: #252525
 }
 
-.arstech .smallFoot span {
+.arstech .linkIcon {
 	color: white;
 }
 
@@ -1068,7 +1072,7 @@ font-size: 1.1em;
 	font-family: helvetica;
 	color: black;
 	font-weight: bold;
-	font-size: 
+	margin-bottom: 0.5em;
 }
 
 .tcrunch .tttitle {
@@ -1116,6 +1120,10 @@ font-size: 1.1em;
 .slate .tttitle {
 	background-image: url('../images/slate.gif');
 	background-size: 4.5em;
+}
+
+.slate .linkIcon {
+	color: white;
 }
 
 .slate .smallContainer a {
@@ -1177,6 +1185,10 @@ font-size: 1.1em;
 	background-color: black;
 }
 
+.npr .linkIcon {
+	color: white;
+}
+
 .npr h1,
 .npr h2,
 .npr h3,
@@ -1215,7 +1227,7 @@ font-size: 1.1em;
 	background-color: #D00000
 }
 
-.tmz .smallFoot span {
+.tmz .linkIcon {
 	color: white;
 }
 
@@ -1236,6 +1248,10 @@ font-size: 1.1em;
 	background-image: url('../images/engadget.png');
 background-size: 6em;
 background-position-y: -0.4em;
+}
+
+.engadget .linkIcon {
+	color: white;
 }
 
 .engadget .smallContainer a {
@@ -1285,6 +1301,10 @@ background-position-y: -0.4em;
 	background-image: url('../images/bleacher.jpeg');
 }
 
+.bleacher .linkIcon {
+	color: white;
+}
+
 .bleacher .smallContainer img {
 	display: none;
 }
@@ -1329,7 +1349,7 @@ background-position-y: -0.4em;
 	background-color: black;
 }
 
-.usatoday .smallFoot span {
+.usatoday .linkIcon {
 	color: white;
 }
 
@@ -1437,7 +1457,7 @@ background-position-y: -0.4em;
 	background-color: #146195
 }
 
-.cnbc .smallFoot span {
+.cnbc .linkIcon {
 	color: white;
 }
 
@@ -1463,7 +1483,7 @@ background-position-y: -0.4em;
 	background-color: #3F4345;
 }
 
-.wsj .smallFoot span {
+.wsj .linkIcon {
 	color: white;
 }
 
@@ -1491,7 +1511,7 @@ background-position-y: -0.4em;
 	background-color: black;
 }
 
-.bloomberg .smallFoot span {
+.bloomberg .linkIcon {
 	color: white;
 }
 
@@ -1527,7 +1547,7 @@ background-position-y: -0.4em;
 	background-color: #E90606;
 }
 
-.time .smallFoot span {
+.time .linkIcon {
 	color: white;
 }
 
@@ -1602,7 +1622,7 @@ background-position-y: -0.4em;
 	background-color: #00417B;
 }
 
-.theguardian .smallFoot span {
+.theguardian .linkIcon {
 	color: white;
 }
 
@@ -1672,7 +1692,7 @@ background-position-y: -0.4em;
 	background-color: #022960;
 }
 
-.foxnews .smallFoot span {
+.foxnews .linkIcon {
 	color: white;
 }
 
@@ -1730,8 +1750,17 @@ background-position-x: 1em;
 }
 
 .buzzfeed .tttitle {
-	background-image: url('../images/buzzfeed.png')
+	background-image: url('../images/buzzfeed.png');
+	background-color: #EE3322
 
+}
+
+.buzzfeed .linkIcon {
+	color: white;
+}
+
+.buzzfeed .smallFoot {
+	background-color: #EE3322;
 }
 
 .buzzfeed .smallContainer img {
@@ -1750,7 +1779,7 @@ background-position-x: 1em;
 	color: black;
 	text-decoration: none;
 	font-family: ProximaNovaSemibold, Helvetica, Arial, sans-serif;
-	margin: 0.6em 0;
+	margin: 0em 0em 0.5em 0em;
 	font-size: 1em;
 }
 
@@ -1781,7 +1810,7 @@ background-position-x: 1em;
 	background-color: #CA0002;
 }
 
-.cnn .smallFoot span {
+.cnn .linkIcon {
 	color: white;
 }
 
@@ -1826,7 +1855,7 @@ background-position-x: 1em;
 .huffpo h1,
 .huffpo .smallContainer #splash_block {
 	display: block;
-	margin: 0.5em 0;
+	margin: 0em 0em 0.5em 0em;
 	color: rgb(26, 26, 26);
 	font-family: arial;
 	width: 100% !important;
@@ -1855,7 +1884,7 @@ background-position-x: 1em;
 	background-color: #7F0200;
 }
 
-.espn .smallFoot span {
+.espn .linkIcon {
 	color: white;
 }
 
@@ -1877,7 +1906,7 @@ background-position-x: 1em;
 	color: darkblue;
 }
 
-.espn .smallFoot span {
+.espn .linkIcon {
 	display: none;
 }
 
@@ -1885,7 +1914,6 @@ background-position-x: 1em;
 	background-color: white;
 	border-top: 1px solid #eee;
 	border-bottom: 1px solid #eee;
-	background-position-x: 2em;
 	background-image: url('../images/nytimes.png')
 }
 
@@ -1893,7 +1921,7 @@ background-position-x: 1em;
 .nytimes .smallContainer h1,
 .nytimes .smallContainer h3
  {
-	margin: 0.5em 0 0.5em 0;
+	margin: 0em 0 0.5em 0;
 	font-size: 1em;
 	font-family: nyt-cheltenham, georgia, 'times new roman', times, serif;
 	xfont-style: italic;
@@ -1967,8 +1995,9 @@ background-position-x: 1em;
 	cursor: pointer;
 }
 
-.fiveThirtyEight .smallContainer h2, .fiveThirtyEight .smallContainer h3 {
-	margin: 0.5em 0;
+.fiveThirtyEight .smallContainer h2,
+ .fiveThirtyEight .smallContainer h3 {
+	margin: 0em 0em 0.5em 0em;
 	font-size: 1em;
 	color: black;
 	text-decoration: none;
@@ -1992,7 +2021,7 @@ background-position-x: 1em;
 }
 
 .theAtlantic .smallContainer a {
-	margin: 0.5em 0em;
+	margin: 0em 0em 0.5em 0em;
 	font-family: 'times new roman', times, serif;
 	font-weight: bold;
 	font-size: 1.15em;
@@ -2004,7 +2033,7 @@ background-position-x: 1em;
 	background-color: #002B45;
 }
 
-.theAtlantic .smallFoot span {
+.theAtlantic .linkIcon {
 	color: white;
 }
 
@@ -2075,6 +2104,10 @@ background-position-x: 1em;
 
 .qz a:hover {
 	text-decoration: underline;
+}
+
+.qz .linkIcon {
+	color: white;
 }
 
 .reddit {
@@ -2224,6 +2257,10 @@ background-position-x: 1em;
 
 .promoted-tweet {
 	display: none;
+}
+
+.twitter .linkIcon {
+	color:white;
 }
 
 

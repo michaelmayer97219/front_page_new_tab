@@ -91,7 +91,7 @@ function handle_url(url) {
 }
 
 function newContainer (url, title, conClass) {
-	var content = "<div class='container "+conClass+"'><a class='tttitleLink' href='"+ url + "'><div class='tttitle'></div></a>"  //will be appended each loop into main container
+	var content = "<div class='container "+conClass+"'><a class='tttitleLink' href='"+ url + "'><div class='tttitle'><i class='fa fa-external-link linkIcon'></i></div></a>"  //will be appended each loop into main container
 	//var content = content "//close title div
 	var content = content + "<div class='smallContainer'>"
 	var content = content + "</div>" //close small container
@@ -118,6 +118,68 @@ function displayTTTitle(conClass, urlll) {
 		var content = content + "</div>" //close psuedocontainer
 		return(content)
 }
+
+function createBookmarkBox(main_contain) {
+	var bookMarks = newContainer('', 'Bookmarks', 'bookmarkBox')
+	bookMarks.children('.smallContainer').append("<div class='linkBox'></div>")
+	bookMarks.find('.tttitle').text('Bookmarks')
+	var $bookmarkLinks = bookMarks.find('.linkBox')
+	chrome.bookmarks.getTree(function(obj) {
+		var used = 0 //iterator to keep track of how many bookmarks displayed
+		$.each(obj[0].children, function(ind, val) {
+			//$bookmarkLinks.append("<div class='bookmarkCat'>Category: "+val.title+"</div>")
+			//check if it's empty
+			if (val.children.length > 0) {
+				$.each(val.children, function(ind, v) {
+					var title = v.title
+					var url = v.url
+					$bookmarkLinks.append("<a class='bookmarkLink' href='"+url+"'><img src='"+favicon(url)+"'/>"+title+"</a>")
+					used = used +1
+				})
+			}
+		})
+	})
+	main_contain.append(bookMarks)
+}
+
+function reorderBoxes() {
+	storage.get('sortOrder', function(result) {
+		var res = result['sortOrder']
+		if (res != undefined) {
+			$.each(res, function(ind,val) {
+				var sortClass = val.split(' ')[1]
+				console.log(sortClass)
+				var sortBox = $('#main .'+sortClass)
+				sortBox.remove()
+				$('#main').append(sortBox)
+			})
+		} 
+
+		$('.tttitle').hover(function(){
+			$(this).children('.linkIcon').show()
+		}, function() {
+			$(this).children('.linkIcon').hide()
+		})
+	})
+}
+
+function createHistoryBox(main_contain) {
+	var history = newContainer('','', 'historyBox')
+	history.children('.smallContainer').append("<div class='linkBox'></div>")
+	history.find('.tttitle').text('Recently Visited')
+	var $historyLinks = history.find('.linkBox')
+
+	chrome.history.search({text: '', maxResults: 30}, function(data) {
+		var i = 0 //iterator for total number of links
+	    data.forEach(function(page) {
+	    	if (page.title && i < 17) {
+	    		$historyLinks.append("<a class='bookmarkLink' href='"+page.url+"'><img src='"+favicon(page.url)+"'/>"+page.title+"</a>")
+	    		i++
+	    	}	        
+	    });
+	    main_contain.append(history) 
+	});
+} 
 
 function top_sites_callback(obj) {
 	var newObj = obj.concat(extraSites['add'])
@@ -149,61 +211,9 @@ function top_sites_callback(obj) {
 	})
 	$('.mostVisitedLinks').find('.tttitle').text('Most Visited Links')
 
-	var bookMarks = newContainer('', 'Bookmarks', 'bookmarkBox')
-	bookMarks.children('.smallContainer').append("<div class='linkBox'></div>")
-	bookMarks.find('.tttitle').text('Bookmarks')
-	var $bookmarkLinks = bookMarks.find('.linkBox')
-	chrome.bookmarks.getTree(function(obj) {
-		var used = 0 //iterator to keep track of how many bookmarks displayed
-		$.each(obj[0].children, function(ind, val) {
-			//$bookmarkLinks.append("<div class='bookmarkCat'>Category: "+val.title+"</div>")
-			//check if it's empty
-			if (val.children.length > 0) {
-				$.each(val.children, function(ind, v) {
-					//if (used < 17) {
-						var title = v.title
-						var url = v.url
-						$bookmarkLinks.append("<a class='bookmarkLink' href='"+url+"'><img src='"+favicon(url)+"'/>"+title+"</a>")
-						used = used +1
-						//alert(used)
-					//}
-				})
-
-			}
-			
-		})
-	})
-	main_contain.append(bookMarks)
-
-	var history = newContainer('','', 'historyBox')
-	history.children('.smallContainer').append("<div class='linkBox'></div>")
-	history.find('.tttitle').text('Recently Visited')
-	var $historyLinks = history.find('.linkBox')
-
-	chrome.history.search({text: '', maxResults: 30}, function(data) {
-		var i = 0 //iterator for total number of links
-	    data.forEach(function(page) {
-	    	if (page.title && i < 17) {
-	    		$historyLinks.append("<a class='bookmarkLink' href='"+page.url+"'><img src='"+favicon(page.url)+"'/>"+page.title+"</a>")
-	    		i++
-	    	}	        
-	    });
-	    main_contain.append(history) 
-	});
-
-	storage.get('sortOrder', function(result) {
-		var res = result['sortOrder']
-		if (res != undefined) {
-			$.each(res, function(ind,val) {
-				var sortClass = val.split(' ')[1]
-				console.log(sortClass)
-				var sortBox = $('#main .'+sortClass)
-				sortBox.remove()
-				$('#main').append(sortBox)
-			})
-		} 
-	})
-
+	createBookmarkBox(main_contain)
+	createHistoryBox(main_contain)
+	reorderBoxes()
 }
 
 
@@ -223,17 +233,13 @@ $( document ).ready(function() {
    var $addBoxCon = $('#addScrapeSlideable')
    ////Add sites code
    //create options for adding sites by using existing styles for containers
- // var testers = [] //to create array for testing scrapers
+
    $.each(scrapers, function(ind, val) {
    		var urlll = ind
    		var newBox = displayTTTitle(val.class, urlll)
    		$addBoxCon.append(newBox)
-
-   		//test purposes
-   		//testers.push({'title': '','url': 'http://'+urlll})
-
    	})
-  	//console.log(JSON.stringify(testers)) //for testing
+
 
    //Sites for adding will already be in extraSites. 
    //Upon click, add new site to storeage of 'selectScraptes'
@@ -343,7 +349,7 @@ $( document ).ready(function() {
 	$removeSites.click(function() {
 		if (remove == 0) {
 			$removeSites.attr('title', 'Done')
-			$('.container').each(function(){
+			$(".container:not('.mostVisitedLinks'):not('.bookmarkBox'):not('.historyBox')").each(function(){
 				var $this = $(this)
 				$this.append("<div class='deleteIcon'><i class='fa fa-remove fa-2x'></div>")
 			})
@@ -493,8 +499,6 @@ $( document ).ready(function() {
 			})
 		}
 	})
-
-
 
 });
 

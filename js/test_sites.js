@@ -1,5 +1,5 @@
-var test_sites = [
-{"title":"","url":"http://nytimes.com"},/*
+var test_sites = [/*
+{"title":"","url":"http://nytimes.com"},
 {"title":"","url":"http://reddit.com"}, 
 {"title":"","url":"http://qz.com"},
 {"title":"","url":"http://politico.com"},
@@ -62,7 +62,6 @@ var test_sites = [
 {"title":"","url":"http://philly.com"},
 {"title":"","url":"http://adweek.com"},
 {"title":"","url":"http://vox.com"},
-
 {"title":"","url":"http://reuters.com"},
 {"title":"","url":"http://abcnews.go.com"},
 {"title":"","url":"http://nbcnews.com"},
@@ -70,7 +69,7 @@ var test_sites = [
 {"title":"","url":"http://groupon.com"},
 {"title":"","url":"http://dailymail.co.uk"},
 {"title":"","url":"http://emgn.com"},
-{"title":"","url":"http://sbnation.com"},
+{"title":"","url":"http://sbnation.com"},*/
 {"title":"","url":"http://cracked.com"},
 {"title":"","url":"http://telegraph.co.uk"},
 {"title":"","url":"http://marketwatch.com"},
@@ -80,7 +79,7 @@ var test_sites = [
 {"title":"","url":"http://mercurynews.com"},
 {"title":"","url":"http://dallasnews.com"},
 {"title":"","url": "http://techmeme.com"},
-{"title":"","url": "http://mentalfloss.com"}*/]
+{"title":"","url": "http://mentalfloss.com"}]
 
 
 /*[

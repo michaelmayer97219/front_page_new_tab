@@ -345,7 +345,7 @@ function mentalfloss(response, targetClass) {
 }
 
 function techmeme(response, targetClass) {
-	basicScrape(response, targetClass, '.item', 10)
+	basicScrape(response, targetClass, '.item', 30)
 	$('.ii').each(function(ind, val) {
 		$(this).hide()
 		var hLink = $(val).find('a')
@@ -375,7 +375,7 @@ function seattletimes(response, targetClass) {
 }
 
 function denverpost(response, targetClass) {
-	basicScrape(response, targetClass, '.listingItemTitle', 20),
+	basicScrape(response, targetClass, '.listingItemTitle', 30),
 	unlinkStyle(targetClass)
 }
 
@@ -395,7 +395,7 @@ function marketwatch(response, targetClass) {
 }
 
 function telegraph(response, targetClass) {
-	basicScrape(response, targetClass, '.summary h3 a', 20)
+	basicScrape(response, targetClass, '.summary h3 a', 30)
 	unlinkStyle(targetClass)
 }
 
@@ -420,13 +420,13 @@ function emgn(response, targetClass) {
 
 
 function dailymail(response, targetClass) {
-	basicScrape(response, targetClass, '.linkro-darkred a', 10)
+	basicScrape(response, targetClass, '.linkro-darkred a', 30)
 	unlinkStyle(targetClass)
 	universalLinkFix(targetClass, 'http://dailymail.co.uk')
 }
 
 function groupon(response, targetClass) {
-	basicScrape(response, targetClass, '.deal-card', 10)
+	basicScrape(response, targetClass, '.deal-card', 30)
 	universalLinkFix(targetClass, 'http://groupon.com')
 	unlinkStyle(targetClass)
 }
@@ -434,7 +434,7 @@ function groupon(response, targetClass) {
 function breitbart(response, targetClass) {
 
 	$content = $.parseHTML(response)
-	basicScrape($content, targetClass, '.title a', 20)
+	basicScrape($content, targetClass, '.title a', 30)
 	unlinkStyle(targetClass)
 	universalLinkFix(targetClass, 'http://www.breitbart.com')
 }
@@ -456,34 +456,34 @@ function abcnews(response, targetClass) {
 }
 
 function reuters(response, targetClass) {
-	basicScrape(response, targetClass, '.module h2 a', 10)
-	basicScrape(response, targetClass, '.module li a', 10)
+	basicScrape(response, targetClass, '.module h2 a', 20)
+	basicScrape(response, targetClass, '.module li a', 20)
 	unlinkStyle(targetClass)
 	universalLinkFix(targetClass, 'http://reuters.com')
 }
 
 function politico(response, targetClass) {
-	basicScrape(response, targetClass, '.story-frag .summary header', 20)
+	basicScrape(response, targetClass, '.story-frag .summary header', 30)
 	unHeaderStyle(targetClass)
 	unlinkStyle(targetClass)
 }
 
 function vox(response, targetClass) {
 
-	basicScrape(response, targetClass, '.article a', 20)
+	basicScrape(response, targetClass, '.article a', 30)
 	//basicScrape(response, targetClass, '.m-hp-latest__list-container', 20)
 	//basicScrape(response, targetClass, '.m-hp-beat__first-entry', 20)
 	unlinkStyle(targetClass)
 }
 
 function adweek(response, targetClass) {
-	basicScrape(response, targetClass, '.story-header', 20)
+	basicScrape(response, targetClass, '.story-header', 30)
 	universalLinkFix(targetClass, 'http://adweek.com')
 }
 
 function philly(response, targetClass) {
 	var $content = $.parseHTML(response)
-	basicScrape($content, targetClass, '.headlineWrap a', 20)
+	basicScrape($content, targetClass, '.headlineWrap a', 30)
 	unlinkStyle(targetClass)
 }
 
@@ -506,12 +506,12 @@ function rtomatoes(response, targetClass) {
 
 function forbes(response, targetClass) {
 	var content = $.parseHTML(response)
-	basicScrape(content, targetClass, '.editable a', 20)
+	basicScrape(content, targetClass, '.editable a', 30)
 	unlinkStyle(targetClass)
 }
 
 function wired(response, targetClass) {
-	basicScrape(response, targetClass, '.headline', 15)
+	basicScrape(response, targetClass, '.headline', 30)
 	unHeaderStyle(targetClass)
 	unlinkStyle(targetClass)
 	$('.'+targetClass).find('h5').each(function(ind) {
@@ -523,7 +523,7 @@ function wired(response, targetClass) {
 }
 
 function dailybeast(response, targetClass) {
-	basicScrape(response, targetClass, '.cheats .cheat', 20)
+	basicScrape(response, targetClass, '.cheats .cheat', 30)
 	unlinkStyle(targetClass)
 	unHeaderStyle(targetClass)
 	fixRelativeLinks(targetClass, 'http://dailybeast.com', 'a')
@@ -531,14 +531,14 @@ function dailybeast(response, targetClass) {
 }
 
 function newsweek(response, targetClass) {
-	basicScrape(response, targetClass, '.hf-info', 10)
+	basicScrape(response, targetClass, '.hf-info', 30)
 	unHeaderStyle(targetClass)
 	unlinkStyle(targetClass)
 	universalLinkFix(targetClass, 'http://newsweek.com')
 }
 
 function newyorker(response, targetClass) {
-	basicScrape(response, targetClass, 'section section', 10)
+	basicScrape(response, targetClass, 'section section', 30)
 	unlinkStyle(targetClass)
 	//allcap headers
 	$('.'+targetClass).find('.smallContainer a').each(function(ind) {
@@ -552,7 +552,7 @@ function newyorker(response, targetClass) {
 
 function ft(response, targetClass) {
 	var $html = $.parseHTML(response)
-	basicScrape($html, targetClass, '.article', 20)
+	basicScrape($html, targetClass, '.article', 30)
 	unlinkStyle(targetClass)
 	unHeaderStyle(targetClass)
 	colorate(targetClass, '#F6E9D8', false)
@@ -566,18 +566,18 @@ function sfgate(response, targetClass) {
 function latimes(response, targetClass) {
 	basicScrape(response, targetClass, '.trb_outfit_featuredArticleTitle', 1)
 	basicScrape(response, targetClass, '.trb_outfit_list_headline_a', 5)
-	basicScrape(response, targetClass, '.trb_outfit_relatedListTitle', 15)
+	basicScrape(response, targetClass, '.trb_outfit_relatedListTitle', 20)
 	universalLinkFix(targetClass, 'http://latimes.com')
 	unlinkStyle(targetClass)
 }
 function nypost(response, targetClass) {
-	basicScrape(response, targetClass, 'article > h3 > a', 20)
+	basicScrape(response, targetClass, 'article > h3 > a', 30)
 	unlinkStyle(targetClass)
 }
 
 function techreview(response, targetClass) {
-	basicScrape(response, targetClass, '.top-stories-list a', 10)
-	basicScrape(response, targetClass, '.articles-list li a', 10)
+	basicScrape(response, targetClass, '.top-stories-list a', 20)
+	basicScrape(response, targetClass, '.articles-list li a', 20)
 	unlinkStyle(targetClass)
 	unHeaderStyle(targetClass)
 	universalLinkFix(targetClass, 'http://technologyreview.com')
@@ -593,14 +593,14 @@ function rstone(response, targetClass) {
 }
 
 function nymag(response, targetClass) {
-	basicScrape(response, targetClass, 'article .ledeLink', 10)
-	basicScrape(response, targetClass, '.feedLink', 10)
+	basicScrape(response, targetClass, 'article .ledeLink', 20)
+	basicScrape(response, targetClass, '.feedLink', 20)
 	unlinkStyle(targetClass)
 }
 
 function economist(response, targetClass) {
-	basicScrape(response, targetClass, '.hero-tab', 10)
-	basicScrape(response, targetClass, 'article', 10)
+	basicScrape(response, targetClass, '.hero-tab', 20)
+	basicScrape(response, targetClass, 'article', 20)
 	unlinkStyle(targetClass)
 	universalLinkFix(targetClass, 'http://economist.com')
 }
@@ -612,18 +612,18 @@ function variety(response, targetClass) {
 }
 
 function aeon(response, targetClass) {
-	basicScrape(response, targetClass, '.panel', 15)
+	basicScrape(response, targetClass, '.panel', 30)
 	unlinkStyle(targetClass)
 }
 
 function bizinsider(response, targetClass) {
-	basicScrape(response, targetClass, '.title', 20)
+	basicScrape(response, targetClass, '.title', 30)
 	unlinkStyle(targetClass)
 	colorate(targetClass, '#2E5262', true)
 }
 
 function medium(response, targetClass) {
-	basicScrape(response, targetClass, '.block-title a', 20)
+	basicScrape(response, targetClass, '.block-title a', 30)
 	universalLinkFix(targetClass, 'http://medium.com')
 	unlinkStyle(targetClass)
 }
@@ -636,7 +636,7 @@ function arstech(response, targetClass) {
 
 function vice(response, targetClass) {
 	var $html = $.parseHTML(response)
-	basicScrape($html, targetClass, '.item-title a', 15)
+	basicScrape($html, targetClass, '.item-title a', 30)
 	unlinkStyle(targetClass)
 	universalLinkFix(targetClass, 'http://vice.com')
 }
@@ -650,7 +650,7 @@ function tcrunch(response, targetClass) {
 
 function deadspin(response, targetClass) {
 		var $html = $.parseHTML(response)
-	basicScrape($html, targetClass, '.entry-title a', 20)
+	basicScrape($html, targetClass, '.entry-title a', 30)
 	unlinkStyle(targetClass)
 }
 
@@ -665,13 +665,13 @@ function slate(response, targetClass) {
 }
 
 function drudge(response, targetClass) {
-	basicScrape(response, targetClass, '#drudgeTopHeadlines a', 20)
+	basicScrape(response, targetClass, '#drudgeTopHeadlines a', 30)
 	basicScrape(response, targetClass, 'b a', 20)
 	unlinkStyle(targetClass)
 }
 
 function verge(response, targetClass) {
-	basicScrape(response, targetClass, '.m-hero__slot-link', 20)
+	basicScrape(response, targetClass, '.m-hero__slot-link', 30)
 	unlinkStyle(targetClass)
 }
 
@@ -727,7 +727,7 @@ function bleacher(response, targetClass) {
 
 function gizmodo(response, targetClass) {
 	var $html = $.parseHTML(response)
-	basicScrape($html, targetClass, '.entry-title a', 10)
+	basicScrape($html, targetClass, '.entry-title a', 30)
 }
 
 function usatoday(response, targetClass) {
@@ -745,13 +745,13 @@ function hreporter(response, targetClass) {
 
 function businessweek(response, targetClass) {
 	var $html = $.parseHTML(response)
-	basicScrape($html, targetClass, '.tab_panel li a', 20)
+	basicScrape($html, targetClass, '.tab_panel li a', 30)
 }
 
 function cnbc(response, targetClass) {
 	var $html = $.parseHTML(response)
-	basicScrape($html, targetClass, '#tab_contents_tab_1 .headline a', 10)
-	basicScrape($html, targetClass, '#tab_contents_tab_1 .headline a', 10)
+	basicScrape($html, targetClass, '#tab_contents_tab_1 .headline a', 20)
+	basicScrape($html, targetClass, '#tab_contents_tab_1 .headline a', 20)
 	removeDupeLinks(targetClass)
 	universalLinkFix(targetClass, 'http://cnbc.com')
 }
@@ -816,7 +816,7 @@ function googleNews(response, targetClass) {
 function buzzfeed(response, targetClass) {
 	$html = $.parseHTML(response)
 	basicScrape($html, targetClass, '.hot_list', 1)
-	basicScrape($html, targetClass, 'article h2 a', 10)
+	basicScrape($html, targetClass, 'article h2 a', 20)
 	unlinkStyle(targetClass)
 	//fixRelativeLinks(targetClass, 'http://www.buzzfeed.com', 'a')
 	universalLinkFix(targetClass, 'http://buzzfeed.com')
@@ -840,6 +840,7 @@ function espn(response, targetClass) {
 
 function nytimes(response, targetClass) {
 	basicScrape(response, targetClass, '.story-heading',   30)
+	unHeaderStyle(targetClass)
 }
 
 function blazersEdge(response, targetClass) {
