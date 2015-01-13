@@ -1,3 +1,97 @@
+.nj .tttitle {
+	background-image: url('../images/nj.png');
+	background-color: #E7DCCE;
+}
+
+.nj .smallFoot {
+	background-color: #E7DCCE;	
+}
+
+.nj .smallContainer a {
+	color: rgb(54, 54, 54);
+	font-weight: bold;
+	font-family: arial;
+}
+
+.accountingweb .tttitle {
+	background-image: url('../images/accountingweb.png');
+	background-color: white;
+	box-shadow: rgba(100, 100, 100, 0.24902) 0px 1px 3px 0px;	
+	background-size: 10em;
+}
+
+.accountingweb .smallContainer .views-field-field-article-image, 
+.accountingweb .smallContainer .views-field-name,
+.accountingweb .smallContainer .views-field-view-node{
+	display: none;
+}
+
+.accountingweb .smallContainer .views-field-title a {
+	color: rgb(6, 99, 153);
+	text-decoration: none;
+	font-family: arial, helvetica, sans-serif;
+	font-weight: bold
+}
+
+.accountingweb .views-row {
+	margin-bottom: 0.5em;
+}
+
+.accountingweb .views-field-field-article-description {
+	font-family: arial, helvetica, sans-serif;
+	color: rgb(68, 68, 68);
+}
+
+
+.accountingtoday .tttitle {
+	background-image: url('../images/accountingtoday.jpeg');
+	background-color: white;
+	box-shadow: rgba(100, 100, 100, 0.24902) 0px 1px 3px 0px;	
+	background-position-y: 0.3em;
+background-size: 10em;
+}
+
+.accountingtoday .smallContainer img,
+.accountingtoday .smallContainer .share-icons,
+.accountingtoday .smallContainer .homepage-related,
+.accountingtoday .smallContainer ul,
+.accountingtoday .smallContainer .read-more,
+.accountingtoday .smallContainer .clear,
+.accountingtoday .smallContainer .spec-left {
+	display: none;
+}
+
+.accountingtoday .smallContainer .tabcontent,
+.accountingtoday .hentry {
+	margin-bottom: 0.5em;
+}
+
+.accountingtoday .smallContainer p {
+	margin: 0;
+}
+
+.accountingtoday .story-title,
+.accountingtoday .entry-title {
+	color: rgb(51, 51, 51);
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-weight: bold;
+	font-size: 1.05em;
+}
+
+.accountingtoday .smallContainer a {
+	text-decoration: none;
+	color: rgb(51,51,51);
+}
+
+.accountingtoday .smallContainer a:hover {
+	text-decoration: underline;
+}
+
+.accountingtoday .entry-summary {
+	font-size: 1em;	
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+}
+
 .mentalfloss .tttitle {
 	background-image: url('../images/mentalfloss.png');
 	background-size: 8em;

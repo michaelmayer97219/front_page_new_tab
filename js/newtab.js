@@ -227,6 +227,25 @@ $( document ).ready(function() {
 	var windowHeight = $(window).height()
 	$body.css('min-height', windowHeight)
 
+	storage.get('selectedScrapes', function(result) {
+		if (result['selectedScrapes'] != undefined) {
+	    	var res = result['selectedScrapes']['add']
+	    	if (extraSites['add'].length > 0) {
+	    		extraSites['add'] = extraSites['add'].concat(res)
+	    	} else if (res.length > 0) {
+	    		extraSites['add'] = res
+
+	    	} else {
+
+	    	}
+	    	extraSites['sub'] = result['selectedScrapes']['sub']
+   		}
+    	alreadyScraped = [] //make sure duplicate scrapes don't happen
+    	chrome.topSites.get(top_sites_callback)
+    	//top_sites_callback(test_sites) //for testing comment out for prod
+
+    })
+
    //when cursor hovers over add sites button, show an element which
    //will populate with collapsed versions of clients
    var $addBox = $('#addScrapeBox')
@@ -322,24 +341,7 @@ $( document ).ready(function() {
 	//will grab selected scrapes, when done add them to
 	//extrasites which is used in top_sites_callback to 
 	//create page containers
-	storage.get('selectedScrapes', function(result) {
-		if (result['selectedScrapes'] != undefined) {
-	    	var res = result['selectedScrapes']['add']
-	    	if (extraSites['add'].length > 0) {
-	    		extraSites['add'] = extraSites['add'].concat(res)
-	    	} else if (res.length > 0) {
-	    		extraSites['add'] = res
 
-	    	} else {
-
-	    	}
-	    	extraSites['sub'] = result['selectedScrapes']['sub']
-   		}
-    	alreadyScraped = [] //make sure duplicate scrapes don't happen
-    	chrome.topSites.get(top_sites_callback)
-    	//top_sites_callback(test_sites) //for testing comment out for prod
-
-    })
 
 
 	//remove site code
@@ -464,8 +466,8 @@ $( document ).ready(function() {
 		$body.css('background-image', defaultBackImage)
 	})
 	
-	var $order = $('#settingBox #sort')
 
+	var $order = $('#settingBox #sort')
 	var orderClick = 0 //keep track of toggle action
 	$order.click(function() {
 		if (orderClick == 0) {

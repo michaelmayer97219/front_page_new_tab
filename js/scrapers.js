@@ -325,6 +325,18 @@ scrapers = {
 	"mentalfloss.com":
 		{'callback': mentalfloss,
 		'class': 'mentalfloss',
+		'maxCache': defaultCache},
+	"accountingtoday.com":
+		{'callback': accountingtoday,
+		'class': 'accountingtoday',
+		'maxCache': defaultCache},
+	"accountingweb.com":
+		{'callback': accountingweb,
+		'class': 'accountingweb',
+		'maxCache': defaultCache*5},
+	"nj.com":
+		{'callback': nj,
+		'class': 'nj',
 		'maxCache': defaultCache}
 }
 
@@ -332,6 +344,23 @@ non_scrapers =  {
 	"weather.com":
 		{'callback':weather,
 		'class': 'weather'},
+}
+
+function nj(response, targetClass) {
+	basicScrape(response, targetClass, '.tcp-item h2 a', 30)
+	basicScrape(response, targetClass, '.tcp-item h3 a', 20)
+	basicScrape(response, targetClass, '.item-text .h2 a', 10)
+	unlinkStyle(targetClass)
+}
+
+function accountingweb(response, targetClass) {
+	basicScrape(response, targetClass, '.views-row', 20)
+}
+
+function accountingtoday(response, targetClass) {
+	basicScrape(response, targetClass, '.tabcontent', 20)
+	basicScrape(response, targetClass, '.hentry', 20)
+	universalLinkFix(targetClass, 'http://www.accountingtoday.com')
 }
 
 function mentalfloss(response, targetClass) {

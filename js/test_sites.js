@@ -1,4 +1,9 @@
-var test_sites = [/*
+var test_sites = [
+{"title":"","url":"http://nj.com"},
+/*
+{"title":"","url":"http://accountingtoday.com"},
+{"title":"","url":"http://accountingweb.com"},
+
 {"title":"","url":"http://nytimes.com"},
 {"title":"","url":"http://reddit.com"}, 
 {"title":"","url":"http://qz.com"},
@@ -69,7 +74,7 @@ var test_sites = [/*
 {"title":"","url":"http://groupon.com"},
 {"title":"","url":"http://dailymail.co.uk"},
 {"title":"","url":"http://emgn.com"},
-{"title":"","url":"http://sbnation.com"},*/
+{"title":"","url":"http://sbnation.com"},
 {"title":"","url":"http://cracked.com"},
 {"title":"","url":"http://telegraph.co.uk"},
 {"title":"","url":"http://marketwatch.com"},
@@ -79,7 +84,7 @@ var test_sites = [/*
 {"title":"","url":"http://mercurynews.com"},
 {"title":"","url":"http://dallasnews.com"},
 {"title":"","url": "http://techmeme.com"},
-{"title":"","url": "http://mentalfloss.com"}]
+{"title":"","url": "http://mentalfloss.com"}*/]
 
 
 /*[
