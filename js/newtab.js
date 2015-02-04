@@ -71,6 +71,7 @@ function handle_url(url) {
 	if (scraped != -1) {
 		return null
 	} else if (scrapers.hasOwnProperty(pretty)) {
+
 		var newClass = scrapers[pretty]['class']
 		var blah = scrapers[pretty]['callback']
 		var maxCache = scrapers[pretty]['maxCache']
@@ -91,7 +92,7 @@ function handle_url(url) {
 }
 
 function newContainer (url, title, conClass) {
-	var content = "<div class='container "+conClass+"'><a class='tttitleLink' href='"+ url + "'><div class='tttitle'><i class='fa fa-external-link linkIcon'></i></div></a>"  //will be appended each loop into main container
+	var content = "<div title='"+url+"' class='container "+conClass+"'><a class='tttitleLink' href='"+ url + "'><div class='tttitle'><i class='fa fa-external-link linkIcon'></i></div></a>"  //will be appended each loop into main container
 	//var content = content "//close title div
 	var content = content + "<div class='smallContainer'>"
 	var content = content + "</div>" //close small container
@@ -102,7 +103,6 @@ function newContainer (url, title, conClass) {
 
 	$content.children('.smallFoot').click(function() {
 		var $smallCon = $(this).siblings('.smallContainer')
-		console.log($smallCon.attr('class'))
 		$smallCon.toggleClass('slideCon')
 		$(this).toggleClass('rotated')
 	})
@@ -112,116 +112,67 @@ function newContainer (url, title, conClass) {
 //function for displaying just .tttitle for clients
 
 function displayTTTitle(conClass, urlll) {
-	console.log()
 		var content = "<div  class='psuedoContainer "+conClass+"'>"
 		var content = content + "<div title="+urlll+" class='tttitle'></div>"
 		var content = content + "</div>" //close psuedocontainer
 		return(content)
 }
 
-function createBookmarkBox(main_contain) {
-	var bookMarks = newContainer('', 'Bookmarks', 'bookmarkBox')
-	bookMarks.children('.smallContainer').append("<div class='linkBox'></div>")
-	bookMarks.find('.tttitle').text('Bookmarks')
-	var $bookmarkLinks = bookMarks.find('.linkBox')
-	chrome.bookmarks.getTree(function(obj) {
-		var used = 0 //iterator to keep track of how many bookmarks displayed
-		$.each(obj[0].children, function(ind, val) {
-			//$bookmarkLinks.append("<div class='bookmarkCat'>Category: "+val.title+"</div>")
-			//check if it's empty
-			if (val.children.length > 0) {
-				$.each(val.children, function(ind, v) {
-					var title = v.title
-					var url = v.url
-					$bookmarkLinks.append("<a class='bookmarkLink' href='"+url+"'><img src='"+favicon(url)+"'/>"+title+"</a>")
-					used = used +1
-				})
+
+function sortArray(order, origArray) {
+	var nnn = []
+	$.each(order, function(ind, val) {
+		var shifted = 0
+		$.each(origArray, function(i,v) {
+			var url = v.url
+
+			if (url == val && shifted==0) {
+				nnn.unshift(v)
+				shifted = 1
 			}
 		})
 	})
-	main_contain.append(bookMarks)
+	nnn = nnn.reverse()
+	var newArray = nnn.concat(origArray)
+	return newArray
 }
-
-function reorderBoxes() {
-	storage.get('sortOrder', function(result) {
-		var res = result['sortOrder']
-		if (res != undefined) {
-			$.each(res, function(ind,val) {
-				var sortClass = val.split(' ')[1]
-				console.log(sortClass)
-				var sortBox = $('#main .'+sortClass)
-				sortBox.remove()
-				$('#main').append(sortBox)
-			})
-		} 
-
-		$('.tttitle').hover(function(){
-			$(this).children('.linkIcon').show()
-		}, function() {
-			$(this).children('.linkIcon').hide()
-		})
-	})
-}
-
-function createHistoryBox(main_contain) {
-	var history = newContainer('','', 'historyBox')
-	history.children('.smallContainer').append("<div class='linkBox'></div>")
-	history.find('.tttitle').text('Recently Visited')
-	var $historyLinks = history.find('.linkBox')
-
-	chrome.history.search({text: '', maxResults: 30}, function(data) {
-		var i = 0 //iterator for total number of links
-	    data.forEach(function(page) {
-	    	if (page.title && i < 17) {
-	    		$historyLinks.append("<a class='bookmarkLink' href='"+page.url+"'><img src='"+favicon(page.url)+"'/>"+page.title+"</a>")
-	    		i++
-	    	}	        
-	    });
-	    main_contain.append(history) 
-	});
-} 
 
 function top_sites_callback(obj) {
 	var newObj = obj.concat(extraSites['add'])
+	console.log(extraSites)
+	var sOrder = extraSites['sortOrder']
+	sortedObj = sortArray(sOrder, newObj)
 	var main_contain = $('#main')
-	//create empty box for most visted links
-	var linkHolder = newContainer('', 'Most Visited Links', 'mostVisitedLinks')
-	main_contain.prepend(linkHolder)
-	$('.mostVisitedLinks .smallContainer').append("<div class='linkBox'></div>")
-	//loop through each topsite and build container
-	$.each(newObj, function(key, val) {
+	$.each(sortedObj, function(key, val) {
 		var url = val.url
-		var title = val.title
-		var isSub = extraSites['sub'].indexOf(url)
-		if (isSub != -1) {
-			return
+		if (val.url) {
+			var title = val.title
+			var isSub = extraSites['sub'].indexOf(url)
+			console.log(url+' '+isSub)
+			if (isSub != -1) {
+				return
+			}
+			var assClass = handle_url(url) //should execute scrape as well
+			//append url into content if there's no scraper 
+			if (assClass == null) {
+				var cleanURL = prettyURL(url)
+				//make sure it's not too long
+				leftOutLinks.push(cleanURL)
+				//$('.mostVis .smallContainer .linkBox').append("<a class='bookmarkLink' href='"+url+"'><img src='"+favicon(url)+"'/>"+cleanURL+"</a>")
+			} else {
+				var newContent = newContainer(url,title,assClass)
+				main_contain.append(newContent)
+			}
 		}
-		var assClass = handle_url(url) //should execute scrape as well
-		//append url into content if there's no scraper 
-		if (assClass == null) {
-			var cleanURL = prettyURL(url)
-			//make sure it's not too long
-			var cleanURL = cleanURL
-			$('.mostVisitedLinks .smallContainer .linkBox').append("<a class='bookmarkLink' href='"+url+"'><img src='"+favicon(url)+"'/>"+cleanURL+"</a>")
-		} else {
-			var newContent = newContainer(url,title,assClass)
-			main_contain.append(newContent)
-		}
-		
 	})
-	$('.mostVisitedLinks').find('.tttitle').text('Most Visited Links')
-
-	createBookmarkBox(main_contain)
-	createHistoryBox(main_contain)
-	reorderBoxes()
 }
 
 
 $( document ).ready(function() {
 
-	extraSites = {'add': [], 'sub': []}//[{'title': 'blah', 'url': 'http://foxnews.com'}]
+	extraSites = {'add': [], 'sub': [], 'sortOrder': [], 'prodMode': null}//[{'title': 'blah', 'url': 'http://foxnews.com'}]
 	var $body = $('#main')
-
+	leftOutLinks = []
 	//stretch main to window height at a minimum
 
 	var windowHeight = $(window).height()
@@ -229,6 +180,8 @@ $( document ).ready(function() {
 
 	storage.get('selectedScrapes', function(result) {
 		if (result['selectedScrapes'] != undefined) {
+			console.log(result)
+
 	    	var res = result['selectedScrapes']['add']
 	    	if (extraSites['add'].length > 0) {
 	    		extraSites['add'] = extraSites['add'].concat(res)
@@ -239,9 +192,21 @@ $( document ).ready(function() {
 
 	    	}
 	    	extraSites['sub'] = result['selectedScrapes']['sub']
+	    	extraSites['sortOrder'] = result['selectedScrapes']['sortOrder']
    		}
-    	alreadyScraped = [] //make sure duplicate scrapes don't happen
-    	chrome.topSites.get(top_sites_callback)
+
+	alreadyScraped = []
+
+   		if (result['selectedScrapes']['prodMode']) {
+   			extraSites['prodMode'] = true
+   				$('.menuOption').show()
+				$('#prodMode i').css('color', 'rgba(230, 0, 0, 0.8);')
+			} else {
+				chrome.topSites.get(top_sites_callback)
+				extraSites['prodMode'] = false
+			}
+     //make sure duplicate scrapes don't happen
+    	
     	//top_sites_callback(test_sites) //for testing comment out for prod
 
     })
@@ -253,11 +218,20 @@ $( document ).ready(function() {
    ////Add sites code
    //create options for adding sites by using existing styles for containers
 
-   $.each(scrapers, function(ind, val) {
+   $.each(non_scrapers, function(ind, val) {
    		var urlll = ind
    		var newBox = displayTTTitle(val.class, urlll)
    		$addBoxCon.append(newBox)
    	})
+
+   $.each(scrapers, function(ind, val) {
+
+   		var urlll = ind
+   		var newBox = displayTTTitle(val.class, urlll)
+   		$addBoxCon.append(newBox)
+   	})
+
+
 
 
    //Sites for adding will already be in extraSites. 
@@ -267,7 +241,7 @@ $( document ).ready(function() {
    var activeContainer
    $('.psuedoContainer .tttitle').hover(function() {
    		activeContainer = $(this).attr('title')
-   		$(this).tooltip({content:activeContainer})
+   		//$(this).tooltip({content:activeContainer,tooltipClass: "custom-tooltip-styling"})
    })
    $('.psuedoContainer .tttitle').click(function() {
 		//$this = $(this)
@@ -283,7 +257,6 @@ $( document ).ready(function() {
 
 				if (site == newURL) {
 					extraSites['sub'].splice(ind, 1)
-					console.log(val)
 					var store = {}
 					store['selectedScrapes'] = extraSites
 						storage.set(store, function() {
@@ -330,28 +303,29 @@ $( document ).ready(function() {
    })
 
 
-/////For deleting storage for debugging purposes
-	// var store = {}
-	// 				store['selectedScrapes'] = {'add':{}, 'sub':[]}
-	// 				storage.set(store, function() {
-	// 				console.log(store)
-	// 			})
+	//For deleting storage for debugging purposes
+	//	 var store = {}
+	//	 				store['selectedScrapes'] = {'add':{}, 'sub':[], 'sortOrder':[]}
+	//	 				storage.set(store, function() {
+	//	 				console.log(store)
+	//	 			})
 
 
-	//will grab selected scrapes, when done add them to
-	//extrasites which is used in top_sites_callback to 
-	//create page containers
+		//will grab selected scrapes, when done add them to
+		//extrasites which is used in top_sites_callback to 
+		//create page containers
 
 
 
-	//remove site code
+		//remove site code
 	var remove = 0 //keep track of toggle action
 	var $removeSites = $('#remove')
 	var origCont = $removeSites.html()
 	$removeSites.click(function() {
+		console.log(extraSites)
 		if (remove == 0) {
 			$removeSites.attr('title', 'Done')
-			$(".container:not('.mostVisitedLinks'):not('.bookmarkBox'):not('.historyBox')").each(function(){
+			$(".container").each(function(){
 				var $this = $(this)
 				$this.append("<div class='deleteIcon'><i class='fa fa-remove fa-2x'></div>")
 			})
@@ -359,7 +333,7 @@ $( document ).ready(function() {
 				var $this = $(this)
 				var $con = $this.parents('.container')
 				$con.hide()
-				var hideURL = $con.children('.tttitleLink').attr('href')
+				var hideURL = $con.attr('title')
 				extraSites['sub'].push(hideURL)
 
 			})
@@ -493,13 +467,36 @@ $( document ).ready(function() {
 			$order.attr('title', 'Change Order')
 			$order.children('i').css('color', origColor)
 			orderClick = 0
-			sortArray = $('#main').sortable('toArray', {attribute: 'class'})
+			sortArray = $('#main').sortable('toArray', {attribute: 'title'})
 			var store = {}
-			store['sortOrder'] = sortArray
+			
+			extraSites['sortOrder'] = sortArray
+			store['selectedScrapes'] = extraSites
 			storage.set(store, function() {
 
 			})
 		}
+	})
+
+	$prodMode = $('#prodMode').click(function() {
+		var mode = extraSites['prodMode']
+		console.log(extraSites)
+		var store = {}
+		if (mode == true) {
+			extraSites['prodMode'] = false
+			store['selectedScrapes'] = extraSites
+			storage.set(store, function() {
+
+			})
+		} else if (mode==null || mode ==false) {
+			extraSites['prodMode'] = true
+			console.log(extraSites)
+			store['selectedScrapes'] = extraSites
+			storage.set(store, function() {
+
+			})
+		}
+		location.reload()
 	})
 
 });

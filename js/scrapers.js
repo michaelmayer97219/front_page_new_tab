@@ -341,9 +341,70 @@ scrapers = {
 }
 
 non_scrapers =  {
-	"weather.com":
-		{'callback':weather,
-		'class': 'weather'},
+	"history_box":
+		{'callback':history_box,
+		'class': 'historyBox'},
+	"most_visited":
+		{'class': 'mostVis',
+		'callback': mostVis},
+	"bookmark_box":
+		{'class': 'bookmarkBox',
+		'callback': bookmark_box}
+}
+
+function bookmark_box(targetClass) {
+	var bookMarks = $('.'+targetClass)
+	bookMarks.children('.smallContainer').append("<div class='linkBox'></div>")
+	var $bookmarkLinks = bookMarks.find('.linkBox')
+	chrome.bookmarks.getTree(function(obj) {
+		var used = 0 //iterator to keep track of how many bookmarks displayed
+		$.each(obj[0].children, function(ind, val) {
+			if (val.children.length > 0) {
+				$.each(val.children, function(ind, v) {
+					var title = v.title
+					var url = v.url
+					$bookmarkLinks.append("<a class='bookmarkLink' href='"+url+"'><img src='"+favicon(url)+"'/>"+title+"</a>")
+					used = used +1
+				})
+			} 
+		})
+	})
+
+	var bookContent = $bookmarkLinks.val()
+
+	if (bookContent.length == 0) {
+		$bookmarkLinks.find('.smallContainer').val('No bookmarks to add.')
+		
+	}
+}
+
+function history_box(targetClass) {
+	var	history = $('.'+targetClass)
+	history.children('.smallContainer').append("<div class='linkBox'></div>")
+	var $historyLinks = history.find('.linkBox')
+
+	chrome.history.search({text: '', maxResults: 30}, function(data) {
+		var i = 0 //iterator for total number of links
+	    data.forEach(function(page) {
+	    	if (page.title && i < 17) {
+	    		$historyLinks.append("<a class='bookmarkLink' href='"+page.url+"'><img src='"+favicon(page.url)+"'/>"+page.title+"</a>")
+	    		i++
+	    	}	        
+	    });
+	    main_contain.append(history) 
+	});
+}
+
+function mostVis(targetClass) {
+	var $box = $('.'+targetClass)
+	$box.children('.smallContainer').append("<div class='linkBox'></div>")
+	var $linkBox = $box.find('.linkBox')
+	$.each(leftOutLinks, function(ind, val) {
+		if (val) {
+			$linkBox.append("<a class='bookmarkLink' href='"+val+"'><img src='"+favicon(val)+"'/>"+val+"</a>")
+		}
+	})
+
 }
 
 function nj(response, targetClass) {

@@ -63,24 +63,21 @@ body, html {
 
 
 
-.mostVisitedLinks .tttitleLink {
+.mostVis .tttitleLink {
 	text-decoration: none;
 }
 
-.mostVisitedLinks .tttitle {
+.mostVis .tttitle {
 	color: #333
 }
 
-.mostVisitedLinks .tttitle {
+.mostVis .tttitle {
 
 }
 
-.mostVisitedLinks .smallContainer a {
-	color: #2080DA;
-	text-decoration: none;
-}
 
-.mostVisitedLinks .smallContainer .linkHolderLink {
+
+.mostVis .smallContainer .linkHolderLink {
 	text-align: center;
 	font-family: sans-serif;
 	line-height: 1.5em;
@@ -131,7 +128,8 @@ body, html {
 	font-size: 1.05em;
 	line-height: 1.8em;
 	display: block;
-	color: #376A92;
+	xcolor: #376A92;
+	color: #002244;
 	text-decoration: none;
 	text-overflow: ellipsis;
 	overflow: hidden;
@@ -374,6 +372,10 @@ box-shadow: 2px 2px 4px #eee;
 #background .option:hover {
 	opacity: 0.9;
 	cursor: pointer;
+}
+
+.custom-tooltip-styling {
+	z-index: 100000 !important;
 }
 
 #null {

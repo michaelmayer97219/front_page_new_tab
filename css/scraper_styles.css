@@ -1,3 +1,25 @@
+.mostVis .tttitle:after {
+	content: 'Most Visited Sites'
+}
+
+
+.mostVis a {
+	color: #333;
+	text-decoration: none;
+}
+
+.mostVis a:hover {
+	cursor: default;
+}
+
+.historyBox .tttitle:after {
+	content: 'History'
+}
+
+.bookmarkBox .tttitle:after {
+	content: 'Bookmarks'
+}
+
 .nj .tttitle {
 	background-image: url('../images/nj.png');
 	background-color: #E7DCCE;
