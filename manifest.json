@@ -11,12 +11,18 @@
   "chrome_url_overrides" : {
   "newtab": "html/newtab.html"
   },
+  "background": {
+    "scripts": ["js/background.js", "js/jquery-1.9.1.min.js", "js/utils.js", "js/scrapers.js"],
+    "pages": ["html/background.html"],
+    "persistent": false
+  },
   "permissions": [
     "topSites",
     "http://*/*", "https://*/*",
     "bookmarks",
     "history",
     "chrome://favicon/*",
-    "storage"
+    "storage",
+     "alarms"
   ]
 }

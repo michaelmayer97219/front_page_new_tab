@@ -6,17 +6,10 @@ scrapers = {
 		{'callback': hackerNewsResponse,
 		'class': 'hackerNews',
 		'maxCache': defaultCache},
-	"blazersedge.com":
-		{'callback': blazersEdge,
-		'class': 'blazersEdge',
-		'maxCache': defaultCache},
+
 	"twitter.com": 
 		{'callback': twitter,
 		'class': 'twitter',
-		'maxCache': 100000},
-	"fivethirtyeight.com":
-		{'callback': fiveThirtyEight,
-		'class': 'fiveThirtyEight',
 		'maxCache': defaultCache},
 	"theatlantic.com":
 		{'callback': theAtlantic,
@@ -25,7 +18,7 @@ scrapers = {
 	"reddit.com": 
 		{'callback': reddit,
 		'class': 'reddit',
-		'maxCache': 600000},
+		'maxCache': defaultCache},
 	"qz.com": 
 		{'callback': quartz,
 		'class': 'qz',
@@ -254,6 +247,10 @@ scrapers = {
 		{'callback': politico,
 		'class': 'politico',
 		'maxCache': defaultCache},
+	"fivethirtyeight.com":
+		{'callback': fiveThirtyEight,
+		'class': 'fiveThirtyEight',
+		'maxCache': defaultCache},
 	"reuters.com":
 		{'callback': reuters,
 		'class': 'reuters',
@@ -334,6 +331,10 @@ scrapers = {
 		{'callback': accountingweb,
 		'class': 'accountingweb',
 		'maxCache': defaultCache*5},
+	"blazersedge.com":
+		{'callback': blazersEdge,
+		'class': 'blazersEdge',
+		'maxCache': defaultCache},
 	"nj.com":
 		{'callback': nj,
 		'class': 'nj',
@@ -391,7 +392,7 @@ function history_box(targetClass) {
 	    		i++
 	    	}	        
 	    });
-	    main_contain.append(history) 
+	   // main_contain.append(history) 
 	});
 }
 
