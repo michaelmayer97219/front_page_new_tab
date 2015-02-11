@@ -154,6 +154,7 @@ function sortArray(order, origArray) {
 	})
 	nnn = nnn.reverse()
 	var newArray = nnn.concat(origArray)
+
 	return newArray
 }
 
@@ -183,6 +184,18 @@ function top_sites_callback(obj) {
 			}
 		}
 	})
+
+	if (noshow == false) {
+		_gaq.push(['_setCustomVar',
+		      1,                // This custom var is set to slot #1.  Required parameter.
+		      'left_out_urls',    // The name of the custom variable.  Required parameter.
+		      String(leftOutLinks),        // The value of the custom variable.  Required parameter.
+		                        //  (possible values might be Free, Bronze, Gold, and Platinum)
+		      1                 // Sets the scope to visitor-level.  Optional parameter.
+		 ]); 
+		 console.log(String(leftOutLinks))	
+	
+	}
 
 }
 
