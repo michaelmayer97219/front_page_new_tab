@@ -2282,7 +2282,8 @@ background-position-x: 1em;
 	background-position-y: center;
 	background-size: 1.7em;
 }
-
+/***************************
+****************************
 .twitter s {
 	text-decoration: none;
 }
@@ -2377,6 +2378,91 @@ background-position-x: 1em;
 
 .twitter .linkIcon {
 	color:white;
+}
+
+****************************
+***************************/
+
+.twitter .content > * {
+	display: none;
+}
+
+.twitter .tweet {
+	padding: 0.6em 0.5em 0.5em 4em;
+	xborder-bottom: 1px solid #ddd	;
+	font-size: 0.95em;
+}
+
+.twitter .tweet-context {
+
+	padding: 0.5em 0;
+}
+.twitter .Icon--retweeted:before {
+	font-family: FontAwesome;
+	content: "\f079";
+	color: #999;
+}
+
+.twitter a,
+.twitter s {
+	text-decoration: none;
+}
+
+.promoted-tweet,
+.twitter .u-hiddenVisually,
+.twitter .invisible {
+	display: none;
+}
+
+.twitter .stream-item-header {
+	position: relative;
+	display: block;
+	overflow: ellipsis;
+}
+
+.twitter .avatar {
+	float: left;
+	position: absolute;
+	left: -4em;		
+	height: 3em;
+	border-radius: 0.5em;
+	margin-right: 0.5em;
+}
+
+.twitter .tweet-text {
+	display: block;
+	clear: both;
+	margin: 0.1em 0em;
+}
+
+
+
+.twitter .fullname {
+	color: #333;
+}
+
+.twitter s,
+.twitter b,
+.twitter .js-retweet-text {
+	color: #999;
+	font-weight: 400;
+	
+}
+
+.twitter .tweet-text .pretty-link s,
+.twitter .tweet-text .pretty-link b {
+	color: #333;
+}
+
+.twitter .smallContainer .tweet-text a {
+	color: rgb(0, 132, 180);
+
+}
+
+.twitter .time a {
+	color: #ccc;
+	float: right;
+
 }
 
 
