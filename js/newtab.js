@@ -15,6 +15,7 @@ $( document ).ready(function() {
 	$body.css('min-height', windowHeight)
 
 	storage.get('selectedScrapes', function(result) {
+		console.log(result)
 		if (result['selectedScrapes']) {
 			processInitiatorResult(result, extraSites)
    			if (result['selectedScrapes']['prodMode']) {
@@ -22,6 +23,7 @@ $( document ).ready(function() {
    				$('.menuOption').show()
 				$('#prodMode i').css('color', 'rgba(230, 0, 0, 0.8);')
 			} else {
+				
 				chrome.topSites.get(top_sites_callback)
 				extraSites['prodMode'] = false
 			}

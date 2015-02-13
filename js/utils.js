@@ -159,9 +159,15 @@ function sortArray(order, origArray) {
 }
 
 function top_sites_callback(obj) {
+	console.log(obj)
 	var newObj = obj.concat(extraSites['add'])
 	var sOrder = extraSites['sortOrder']
-	sortedObj = sortArray(sOrder, newObj)
+	if (sOrder) {
+		sortedObj = sortArray(sOrder, newObj)
+	} else {
+		sortedObj = newObj
+	}
+	
 	var main_contain = $('#main')
 	$.each(sortedObj, function(key, val) {
 		var url = val.url

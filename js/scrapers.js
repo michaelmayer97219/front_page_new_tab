@@ -959,7 +959,19 @@ function quartz(response, targetClass) {
 
 function hackerNewsResponse(response, targetClass) {
 
-	var innerContent = '<table><tbody>'
+	basicScrape(response, targetClass, '#hnmain table', 2)
+
+	$('.hackerNews').find('table').first().hide()
+
+	$('.hackerNews .smallContainer').find('a').each(function(ind, val) {
+		var attr = $(val).attr('href')
+		if (attr.slice(-1) != '/') {
+			$(val).attr('href', 'https://news.ycombinator.com/'+attr)
+		}
+	})
+
+	//$('.hackerNews').find('table tr td').first().hide()
+/*	var innerContent = '<table><tbody>'
 	var $html = $(response)
 	var table = $html.find('table')[2] //contains table with all links
 	var table = $(table).find('tr').slice(0,-1)
@@ -983,6 +995,7 @@ function hackerNewsResponse(response, targetClass) {
 		$(this).append(newLink)
 
 	})
+*/
 }
 
 
@@ -992,6 +1005,20 @@ function twitter(response, targetClass) {
 	var newTarget = targetClass+' .stream-item-header'
 	//fixRelativeLinks(targetClass, 'http://twitter.com', '.stream-item-header a')
 	universalLinkFix(targetClass, 'http://twitter.com')
+
+	$(".tweet").each(function(i, v) {
+		var $this  = $(this)
+		var perma = $this.find('.permalink-link')
+		var source = perma.attr('href')
+		//alert(source)
+		$this.find('.content').append("<a href='"+source+"' class='pLink'><i class='fa fa-external-link'></i></a>")
+	})
+
+	$('.tweet').hover(function(){
+				$(this).find('.pLink').show()
+			},function(){
+				$(this).find('.pLink').hide()
+			})
 
 }
 

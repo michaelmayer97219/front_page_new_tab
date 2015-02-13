@@ -2388,14 +2388,14 @@ background-position-x: 1em;
 }
 
 .twitter .tweet {
-	padding: 0.6em 0.5em 0.5em 4em;
+	padding: 0.6em 0.5em 0.5em 3.5em;
 	xborder-bottom: 1px solid #ddd	;
-	font-size: 0.95em;
+	font-size: 1em;
 }
 
 .twitter .tweet-context {
 
-	padding: 0.5em 0;
+	xpadding: 0.5em 0;
 }
 .twitter .Icon--retweeted:before {
 	font-family: FontAwesome;
@@ -2410,7 +2410,8 @@ background-position-x: 1em;
 
 .promoted-tweet,
 .twitter .u-hiddenVisually,
-.twitter .invisible {
+.twitter .invisible,
+.twitter button {
 	display: none;
 }
 
@@ -2418,15 +2419,30 @@ background-position-x: 1em;
 	position: relative;
 	display: block;
 	overflow: ellipsis;
+	line-height: 1em;
+}
+
+.twitter .content {
+	position: relative;
 }
 
 .twitter .avatar {
 	float: left;
 	position: absolute;
-	left: -4em;		
+	left: -3.5em;		
 	height: 3em;
 	border-radius: 0.5em;
 	margin-right: 0.5em;
+}
+
+
+.twitter .pLink {
+	position: absolute;
+	display: none;
+	left: -3.5em;
+	bottom: 0em;
+	color: #999;
+	background-color: white;
 }
 
 .twitter .tweet-text {
@@ -2446,7 +2462,7 @@ background-position-x: 1em;
 .twitter .js-retweet-text {
 	color: #999;
 	font-weight: 400;
-	
+	font-size: 0.9em;
 }
 
 .twitter .tweet-text .pretty-link s,
@@ -2462,7 +2478,7 @@ background-position-x: 1em;
 .twitter .time a {
 	color: #ccc;
 	float: right;
-
+	font-size: 0.9em;
 }
 
 
@@ -2491,10 +2507,27 @@ background-position-x: 1em;
 
 .hackerNews tr {
 	width: 1em;
+	list-style: none;
+}
+
+.hackerNews .title {
+	sdisplay: none;
+}
+
+.hackerNews tr:nth-child(3n+1) td:nth-child(1),
+.hackerNews tr:nth-child(3n+1) td:nth-child(2),
+.hackerNews tr:nth-child(3n+2) td:nth-child(1) {
+	display: none
+}
+
+.subtext a,
+.subtext {
+	color: #828282;
+	font-size: 0.9em;
 }
 
 .hackerNews .hComLink {
-	color: #828282;
+	xcolor: #828282;
 	font-size: .8em;
 }
 
@@ -2522,5 +2555,6 @@ background-position-x: 1em;
 }
 
 .hackerNews .comhead {
-	color: #828282
+	color: #828282;
+	font-size: 0.9em;
 }
