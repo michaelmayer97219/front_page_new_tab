@@ -15,16 +15,20 @@ $( document ).ready(function() {
 	$body.css('min-height', windowHeight)
 
 	storage.get('selectedScrapes', function(result) {
-
-		processInitiatorResult(result, extraSites)
-   		if (result['selectedScrapes']['prodMode']) {
-   			extraSites['prodMode'] = true
+		if (result['selectedScrapes']) {
+			processInitiatorResult(result, extraSites)
+   			if (result['selectedScrapes']['prodMode']) {
+   				extraSites['prodMode'] = true
    				$('.menuOption').show()
 				$('#prodMode i').css('color', 'rgba(230, 0, 0, 0.8);')
 			} else {
 				chrome.topSites.get(top_sites_callback)
 				extraSites['prodMode'] = false
 			}
+		} else {
+			chrome.topSites.get(top_sites_callback)
+		}
+
     })
 
    //when cursor hovers over add sites button, show an element which
