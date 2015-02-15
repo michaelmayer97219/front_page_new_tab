@@ -20,6 +20,7 @@
 	content: 'Bookmarks'
 }
 
+
 .pHunt .tttitle {
 	background-image: url('../images/pHunt.png');
 	background-color: white;
@@ -1639,30 +1640,6 @@ background-position-y: -0.4em;
 	display: block;
 }
 
-.businessweek .tttitle {
-	background-image: url('../images/businessweek.png');
-	background-color: white;
-	box-shadow: rgba(100, 100, 100, 0.2) 0px 1px 2px 0px;
-	background-size: 7em;
-}
-
-.businessweek  {
-	background-color: rgba(255,255,255,0.95)
-}
-
-.businessweek .smallContainer a {
-	display: block;
-	text-decoration: none;
-	color: rgb(85, 85, 85);
-	font-family: sans-serif;
-	border-bottom: 1px solid rgba(224, 224, 224,0.8);
-	padding: 0.25em 0;
-}
-
-.businessweek .smallContainer a:hover {
-	text-decoration: underline;
-}
-
 .cnbc .tttitle {
 	background-image: url('../images/cnbc.png');
 	background-color: #146195;
@@ -1717,40 +1694,58 @@ background-position-y: -0.4em;
 }
 
 .bloomberg .tttitle {
-	background-color: black;
-	background-image: url('../images/bloomberg.svg');
-	background-size: 7em;
-	background-position-y: 4px;
+	background-image: url('../images/bloomberg.png');
+	background-color: rgb(40,0,215);
+	background-size: 10em;
 }
 
-.bloomberg {
-	border-color: black;
+
+.bloomberg .hero-story__image-container,
+.bloomberg .hero-story__published-at,
+.bloomberg .brief__story-decoration,
+.bloomberg time,
+.bloomberg .label-and-timestamp,
+.bloomberg .byline {
+	display: none;
 }
 
-.bloomberg .smallFoot {
-	background-color: black;
+.bloomberg .brief__story-headline-link {
+	display: block !important;
 }
 
-.bloomberg .linkIcon {
-	color: white;
+.bloomberg article {
+	margin-bottom: 0.5em;
 }
 
-.bloomberg li {
-	list-style: none;
-}
-
-.bloomberg .smallContainer a {
+.bloomberg .hero-story__headline a {
 	text-decoration: none;
-	color: rgb(0, 0, 0);
-	font-family: akzidenz-grotesk-std-bloom, Arial, Helvetica, sans-serif;
-	margin: 0.5em 0;
-	display: block;
-	font-size: 1em
+	color: rgb(43, 0, 247);
 }
 
-.bloomberg .smallContainer a:hover {
-	color: #555;
-	text-decoration: underline;
+.bloomberg .brief__story-reaction,
+.bloomberg .brief__story-headline,
+.bloomberg .hero-story__headline,
+.bloomberg .more-stories__story-headline,
+.bloomberg .feed-item__headline   {
+	font-size: 1em;
+	margin: 0;
+	font-family: Arial;
+}
+
+.bloomberg .brief__story-reaction a {
+	color: rgb(250, 30, 100);
+	text-decoration: none;
+}
+
+.bloomberg .brief__story-headline a {
+	text-decoration: none;
+	color:rgb(45, 45, 53);;
+}
+
+.bloomberg .more-stories__story-headline a,
+.bloomberg .feed-item__headline a{
+	text-decoration: none;
+	color: #333;
 }
 
 .time .tttitle {
@@ -2272,6 +2267,13 @@ background-position-x: 1em;
 	display: none;
 }
 
+
+.oLive .tttitle {
+	background-image: url('../images/oLive.png');
+	background-color: white;
+	box-shadow: rgba(100, 100, 100, 0.24902) 0px 1px 3px 0px;	
+	background-size: 7em;
+}
 
 .oLive .smallContainer a {
 	font-family: prelo-slab, Tahoma, Geneva, sans-serif;

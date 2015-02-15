@@ -1,6 +1,9 @@
 var test_sites = [
-{"title":"","url":"http://nj.com"},
+
 /*
+{"title":"","url":"http://nj.com"},
+{"title":"","url":"http://oregonlive.com"},
+
 {"title":"","url":"http://accountingtoday.com"},
 {"title":"","url":"http://accountingweb.com"},
 
@@ -24,7 +27,10 @@ var test_sites = [
 {"title":"","url":"http://theguardian.com"},
 {"title":"","url":"http://bbc.com"},
 {"title":"","url":"http://time.com"},
+*/
 {"title":"","url":"http://bloomberg.com"},
+{"title":"","url":"http://businessweek.com"},
+/*
 {"title":"","url":"http://wsj.com"},
 {"title":"","url":"http://cnbc.com"},
 {"title":"","url":"http://businessweek.com"},

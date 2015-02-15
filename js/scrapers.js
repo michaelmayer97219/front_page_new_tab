@@ -67,6 +67,10 @@ scrapers = {
 		{'callback': time,
 		'class': 'time',
 		'maxCache': defaultCache},
+	"producthunt.com":
+		{'callback':pHunt,
+		'class': 'pHunt',
+		'maxCache': defaultCache},
 	"bloomberg.com":
 		{'callback': bloomberg,
 		'class': 'bloomberg',
@@ -82,10 +86,6 @@ scrapers = {
 	"cnbc.com":
 		{'callback': cnbc,
 		'class': 'cnbc',
-		'maxCache': defaultCache},
-	"businessweek.com":
-		{'callback': businessweek,
-		'class': 'businessweek',
 		'maxCache': defaultCache},
 	"hollywoodreporter.com":
 		{'callback': hreporter,
@@ -339,9 +339,9 @@ scrapers = {
 		{'callback': nj,
 		'class': 'nj',
 		'maxCache': defaultCache},
-	"producthunt.com":
-		{'callback':pHunt,
-		'class': 'pHunt',
+	"oregonlive.com":
+		{'callback':oLive,
+		'class': 'oLive',
 		'maxCache': defaultCache}
 }
 
@@ -409,6 +409,13 @@ function mostVis(targetClass) {
 			$linkBox.append("<a class='bookmarkLink' href='"+val+"'><img src='"+favicon(val)+"'/>"+val+"</a>")
 		}
 	})
+
+}
+
+function oLive(response, targetClass) {
+	basicScrape(response, targetClass, '.tcp-item h2 a', 30)
+	basicScrape(response, targetClass, '.tcp-item h3 a', 20)
+	basicScrape(response, targetClass, '.item-text .h2 a', 20)
 
 }
 
@@ -843,11 +850,6 @@ function hreporter(response, targetClass) {
 	unlinkStyle(targetClass)
 }
 
-function businessweek(response, targetClass) {
-	var $html = $.parseHTML(response)
-	basicScrape($html, targetClass, '.tab_panel li a', 30)
-}
-
 function cnbc(response, targetClass) {
 	var $html = $.parseHTML(response)
 	basicScrape($html, targetClass, '#tab_contents_tab_1 .headline a', 20)
@@ -862,8 +864,7 @@ function wsj(response, targetClass) {
 }
 
 function bloomberg(response, targetClass) {
-	basicScrape(response, targetClass, '.icon-article-headline', 20)
-	basicScrape(response, targetClass, '.most_popular_block li', 20)
+	basicScrape(response, targetClass, 'article', 40)
 	universalLinkFix(targetClass, 'http://www.bloomberg.com')
 	removeDupeLinks(targetClass)
 }

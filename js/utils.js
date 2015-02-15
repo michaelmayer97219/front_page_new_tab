@@ -13,7 +13,7 @@ function processInitiatorResult(result, initiator) {
 		    	initiator['sub'] = result['selectedScrapes']['sub']
 		    	initiator['sortOrder'] = result['selectedScrapes']['sortOrder']
 	   		}
-	   		console.log(initiator)
+	   		
 	   		return initiator
 		}
 
@@ -159,7 +159,7 @@ function sortArray(order, origArray) {
 }
 
 function top_sites_callback(obj) {
-	console.log(obj)
+	
 	var newObj = obj.concat(extraSites['add'])
 	var sOrder = extraSites['sortOrder']
 	if (sOrder) {
@@ -191,18 +191,18 @@ function top_sites_callback(obj) {
 		}
 	})
 
-	if (noshow == false) {
+/*	if (noshow == false) {
 		_gaq.push(['_setCustomVar',
-		      1,                // This custom var is set to slot #1.  Required parameter.
-		      'left_out_urls',    // The name of the custom variable.  Required parameter.
-		      String(leftOutLinks),        // The value of the custom variable.  Required parameter.
-		                        //  (possible values might be Free, Bronze, Gold, and Platinum)
-		      1                 // Sets the scope to visitor-level.  Optional parameter.
+		      1,                
+		      'left_out_urls',    
+		      String(leftOutLinks),        
+		                        
+		      1                 
 		 ]); 
-		 console.log(String(leftOutLinks))	
+		 
 	
 	}
-
+*/
 }
 
 function footerfix() {
