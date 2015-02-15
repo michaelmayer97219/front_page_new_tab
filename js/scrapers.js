@@ -338,6 +338,10 @@ scrapers = {
 	"nj.com":
 		{'callback': nj,
 		'class': 'nj',
+		'maxCache': defaultCache},
+	"producthunt.com":
+		{'callback':pHunt,
+		'class': 'pHunt',
 		'maxCache': defaultCache}
 }
 
@@ -406,6 +410,11 @@ function mostVis(targetClass) {
 		}
 	})
 
+}
+
+function pHunt(response, targetClass) {
+	basicScrape(response, targetClass, '.day:nth-child(1) .post--content', 40)
+	universalLinkFix(targetClass, 'http://www.producthunt.com')
 }
 
 function nj(response, targetClass) {
@@ -1007,8 +1016,8 @@ function twitter(response, targetClass) {
 	universalLinkFix(targetClass, 'http://twitter.com')
 
 	$(".tweet").each(function(i, v) {
-		var $this  = $(this)
-		var perma = $this.find('.permalink-link')
+		var $this  = $(v)
+		var perma = $this.find('.js-permalink')
 		var source = perma.attr('href')
 		//alert(source)
 		$this.find('.content').append("<a href='"+source+"' class='pLink'><i class='fa fa-external-link'></i></a>")

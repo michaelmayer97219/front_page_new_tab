@@ -20,6 +20,110 @@
 	content: 'Bookmarks'
 }
 
+.pHunt .tttitle {
+	background-image: url('../images/pHunt.png');
+	background-color: white;
+	background-size: 7em;
+	box-shadow: rgba(100, 100, 100, 0.24902) 0px 1px 3px 0px;	
+}
+
+.pHunt .user-image-holder,
+.pHunt .collections-popover-trigger,
+.pHunt .maker {
+	display: none;
+}
+
+.pHunt .post--content {
+	margin-bottom: 1em;
+display: inline-block;
+width: 97%;
+
+}
+
+.pHunt .upvote {
+	float: left;
+	height: 42px;
+	width: 2.1em;
+	line-height: 17px;
+	text-align: center;
+	position: relative;
+	margin-right: 0.5em;
+	box-shadow: rgba(83, 69, 64, 0.298039) 0px 1px 0px 0px;
+	background-color: rgb(237, 236, 235);
+	border-radius: 3px;
+}
+
+.pHunt .upvote .upvote-link {
+position: relative;
+bottom: 5px;
+display: inline-block;
+bottom: -2px;
+width: 100%;
+font-size: 1.5em;
+}
+
+.pHunt .upvote .upvote-link:before {
+	xfont-family: FontAwesome;
+	xposition: absolute;
+	xcontent: "\f0de";
+	xtop: -0.5em;
+	xleft: 0.5em;
+}
+
+.pHunt .upvote .vote-count {
+font-size: 12px;
+display: block;
+position: relative;
+bottom: 4px;
+font-family: Helvetica;
+font-weight: 600;
+ color: #534540;
+}
+
+.pHunt .url {
+margin-right: 3em;
+margin-left: 3em;
+}
+
+.pHunt .title {
+	display: block;
+		color: rgb(83, 69, 64);
+	text-decoration: none;
+	font-family: Helvetica proxima-nova, 'Proxima Nova', sans-serif;
+	font-weight: 600;
+}
+
+.pHunt .title a {
+	color: rgb(83, 69, 64);
+	text-decoration: none;
+}
+
+.pHunt .post-tagline {
+	font-family: Helvetica, sans-serif;
+	color: rgb(153, 153, 153);;	
+}
+
+.pHunt .post--actions {
+	float: right;
+	color: #999;
+}
+
+.pHunt .post--actions a {
+	color: #999;
+	text-decoration: none;
+}
+
+.pHunt .post--actions--comments {
+	position: relative;
+}
+
+.pHunt .comment-image {
+	height: 100%;
+top: 0;
+right: 1.5em;
+position: absolute;
+}
+
 .nj .tttitle {
 	background-image: url('../images/nj.png');
 	background-color: #E7DCCE;
@@ -2451,7 +2555,9 @@ background-position-x: 1em;
 	margin: 0.1em 0em;
 }
 
-
+.twitter .twitter-emoji {
+	height: 1em;
+}
 
 .twitter .fullname {
 	color: #333;
@@ -2479,6 +2585,7 @@ background-position-x: 1em;
 	color: #ccc;
 	float: right;
 	font-size: 0.9em;
+	line-height: 0.9em;
 }
 
 

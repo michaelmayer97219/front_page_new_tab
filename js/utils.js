@@ -261,14 +261,20 @@ function fixRelativeLinks(targetClass, url, innerClass) {
 }
 
 function universalLinkFix(targetClass, newURL) {
-	var relLinks = $('.'+targetClass+' .smallContainer').find('a')
-	relLinks.each(function(ind) {
-		var $this = $(this)
+	var relLinks = $('.'+targetClass+' .smallContainer a')//.find('a')
+	relLinks.each(function(ind, val) {
+		var $this = $(val)
+		
 		var href = $this.attr('href')
-		var isRel = href.split('//')[0][0] == '/'
-		if (isRel) {
-			$this.attr('href', newURL+href)
+		
+		if (href) {
+			var isRel = href.split('//')[0][0] == '/'
+		
+			if (isRel) {
+				$this.attr('href', newURL+href)
+			}
 		}
+		
 	})
 }
 
