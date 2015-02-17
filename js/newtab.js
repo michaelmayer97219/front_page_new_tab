@@ -23,9 +23,9 @@ $( document ).ready(function() {
    				$('.menuOption').show()
 				$('#prodMode i').css('color', 'rgba(230, 0, 0, 0.8);')
 			} else {
-				top_sites_callback(test_sites)
-				//chrome.topSites.get(top_sites_callback)
-				extraSites['prodMode'] = false
+				//top_sites_callback(test_sites)
+				chrome.topSites.get(top_sites_callback)
+				//extraSites['prodMode'] = false
 			}
 		} else {
 			chrome.topSites.get(top_sites_callback)

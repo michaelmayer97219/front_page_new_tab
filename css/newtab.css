@@ -158,14 +158,15 @@ body, html {
 .smallContainer {
 	margin: 0.5em;
 	width: 95%;
-	padding: 0 .3em;
+	xpadding: 0 .3em;
+	padding-right: 0.75em;
 	padding-top: 2.5em;
 	overflow-x: hidden;
 	-webkit-transition: all 0.6s ease;
 	position: absolute;
 	top: 0em;
-	height: 34.8em;
-	overflow-y: scroll 
+	height: 33.8em;
+	overflow-y: auto; 
 }
 
 .smallContainer a:hover {

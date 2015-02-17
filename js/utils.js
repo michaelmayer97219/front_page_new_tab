@@ -232,7 +232,7 @@ function unHeaderStyle(targetClass) {
 function basicScrape(response, targetClass, scrapeClassString ,scrapeLength) {
 	var $html = $(response)
 	var targetContainer = $('.'+targetClass+' .smallContainer')
-	targetContainer.empty()
+	//targetContainer.empty()
 	var contentContainers = $html.find(scrapeClassString).slice(0,scrapeLength)
 	$.each(contentContainers, function(ind,val) {
 		targetContainer.append(val)

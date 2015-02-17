@@ -534,7 +534,7 @@ function dailymail(response, targetClass) {
 
 function groupon(response, targetClass) {
 	basicScrape(response, targetClass, '.deal-card', 30)
-	universalLinkFix(targetClass, 'http://groupon.com')
+	//universalLinkFix(targetClass, 'http://groupon.com/')
 	unlinkStyle(targetClass)
 }
 
@@ -864,9 +864,10 @@ function wsj(response, targetClass) {
 }
 
 function bloomberg(response, targetClass) {
-	basicScrape(response, targetClass, 'article', 40)
-	universalLinkFix(targetClass, 'http://www.bloomberg.com')
+	basicScrape(response, targetClass, 'article', 30)
+	universalLinkFix(targetClass, 'http://bloomberg.com')
 	removeDupeLinks(targetClass)
+
 }
 
 function time(response, targetClass) {
@@ -911,7 +912,8 @@ function foxnews(response, targetClass) {
 }
 
 function googleNews(response, targetClass) {
-	basicScrape(response, targetClass, '.esc-lead-article-title', 30)
+	basicScrape(response, targetClass, '.story', 20)
+	universalLinkFix(targetClass, 'http://google.com')
 }
 
 function buzzfeed(response, targetClass) {
@@ -925,22 +927,42 @@ function buzzfeed(response, targetClass) {
 
 function cnn(response, targetClass) {
 	$html = $.parseHTML(response)
-	basicScrape($html, targetClass, '.cnn_bulletbin', 2)
+	basicScrape($html, targetClass, '.cd__content', 20)
+	$('.'+'smallContainer a').each(function(ind, val) {
+		var $val = $(val)
+		var href = $val.attr('href')
+		var isVideo = href.indexOf('video') != -1
+		if (isVideo) {
+			$val.addClass('cnn_vid')
+		}
+		var isPhotos = href.indexOf('/gallery/') != -1
+		if (isPhotos) {
+			$val.addClass('cnn_photos')
+		}
+	})
 	universalLinkFix(targetClass, 'http://www.cnn.com')
+	unlinkStyle(targetClass)
+	unHeaderStyle(targetClass)
 }
 
 function huffpo(response, targetClass) {
-	basicScrape(response, targetClass, '.entry h5', 10)
-	basicScrape(response, targetClass, '.entry h4', 10)
-	basicScrape(response, targetClass, '.entry h3', 10)
+	basicScrape(response, targetClass, '.entry h1', 10)
+	basicScrape(response, targetClass, '.entry h2', 20)
+	basicScrape(response, targetClass, '.entry h3', 20)
+	$('.'+'smallContainer a').each(function(ind, val) {
+		$(val).attr('style', '')
+	})
 }
+
 
 function espn(response, targetClass) {
 	basicScrape(response, targetClass, '.headlines', 30)
+	basicScrape(response, targetClass, '.bulletlinks', 30)
+
 }
 
 function nytimes(response, targetClass) {
-	basicScrape(response, targetClass, '.story-heading',   30)
+	basicScrape(response, targetClass, 'article',   30)
 	unHeaderStyle(targetClass)
 }
 
@@ -950,10 +972,11 @@ function blazersEdge(response, targetClass) {
 
 function theAtlantic(response, targetClass)	{
 	//basicContainerScrape(response, targetClass, '#module-most-popular', 'dd', 30)
-	basicScrape(response, targetClass, 'article a', 55)
+	basicScrape(response, targetClass, 'article', 10)
+	basicScrape(response, targetClass, '.headline', 20)
 	universalLinkFix(targetClass, 'http://www.theatlantic.com')
 	removeDupeLinks(targetClass)
-	unlinkStyle(targetClass)
+	//unlinkStyle(targetClass)
 	unHeaderStyle(targetClass)
 }
 

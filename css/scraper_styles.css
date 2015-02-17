@@ -36,8 +36,8 @@
 
 .pHunt .post--content {
 	margin-bottom: 1em;
-display: inline-block;
-width: 97%;
+	display: inline-block;
+	width: 97%;
 
 }
 
@@ -55,40 +55,32 @@ width: 97%;
 }
 
 .pHunt .upvote .upvote-link {
-position: relative;
-bottom: 5px;
-display: inline-block;
-bottom: -2px;
-width: 100%;
-font-size: 1.5em;
-}
-
-.pHunt .upvote .upvote-link:before {
-	xfont-family: FontAwesome;
-	xposition: absolute;
-	xcontent: "\f0de";
-	xtop: -0.5em;
-	xleft: 0.5em;
+	position: relative;
+	bottom: 5px;
+	display: inline-block;
+	bottom: -2px;
+	width: 100%;
+	font-size: 1.5em;
 }
 
 .pHunt .upvote .vote-count {
-font-size: 12px;
-display: block;
-position: relative;
-bottom: 4px;
-font-family: Helvetica;
-font-weight: 600;
- color: #534540;
+	font-size: 12px;
+	display: block;
+	position: relative;
+	bottom: 4px;
+	font-family: Helvetica;
+	font-weight: 600;
+	 color: #534540;
 }
 
 .pHunt .url {
-margin-right: 3em;
-margin-left: 3em;
+	margin-right: 3em;
+	margin-left: 3em;
 }
 
 .pHunt .title {
 	display: block;
-		color: rgb(83, 69, 64);
+	color: rgb(83, 69, 64);
 	text-decoration: none;
 	font-family: Helvetica proxima-nova, 'Proxima Nova', sans-serif;
 	font-weight: 600;
@@ -120,9 +112,9 @@ margin-left: 3em;
 
 .pHunt .comment-image {
 	height: 100%;
-top: 0;
-right: 1.5em;
-position: absolute;
+	top: 0;
+	right: 1.5em;
+	position: absolute;
 }
 
 .nj .tttitle {
@@ -1699,6 +1691,10 @@ background-position-y: -0.4em;
 	background-size: 10em;
 }
 
+.bloomberg .smallFoot {
+	background-color: rgb(40,0,215);
+}
+
 
 .bloomberg .hero-story__image-container,
 .bloomberg .hero-story__published-at,
@@ -1945,6 +1941,7 @@ background-position-y: -0.4em;
 .googleNews .tttitle {
 	background-image: url('../images/googlenews.png');
 background-size: 7em;
+background-color: whitesmoke ;
 background-position-y: 0.4em;
 background-position-x: 1em;
 }
@@ -1955,13 +1952,56 @@ background-position-x: 1em;
 	text-decoration: none;
 }
 
-.googleNews .smallContainer h2 {
-	font-size: 1em;
-	margin: 0.5em 0;
+.googleNews .esc-extension-wrapper,
+.googleNews .esc-thumbnail-image-source {
+	display: none;
 }
 
-.googleNews .smallContainer a:hover {
-	text-decoration: underline;
+.googleNews .esc-lead-snippet-wrapper {
+	line-height: 1.1em;
+}
+
+.googleNews .esc-thumbnail-image {
+	float: left;
+}
+
+.googleNews .esc-layout-thumbnail-cell {
+	vertical-align: top;
+}
+
+.googleNews h2 {
+	margin: 0;
+	font-size: 1.05em
+}
+
+.googleNews p {
+	margin: 0;
+	font-size: 1em;
+	line-height: 1em;
+}
+
+.googleNews .al-attribution {
+	color: #999;
+	font-size: 0.9em;
+}
+
+.googleNews .story {
+	margin-bottom: 0.5em;
+}
+
+.googleNews .esc-layout-article-cell {
+	padding-left: 0.5em;
+}
+
+.googleNews .esc-layout-thumbnail-cell a {
+	color: white;
+	font-size: 0.9em;
+	line-height: 1em;
+	border-radius: 3px;
+}
+
+.googleNews .esc-thumbnail-image-wrapper  img {
+	border-radius: 3px;
 }
 
 .buzzfeed .tttitle {
@@ -2012,9 +2052,6 @@ background-position-x: 1em;
 	text-decoration: underline;
 }
 
-.cnn {
-	border-color: #CA0002;
-}
 
 .cnn .tttitle {
 	background-color: #CA0002;
@@ -2025,32 +2062,34 @@ background-position-x: 1em;
 	background-color: #CA0002;
 }
 
-.cnn .linkIcon {
-	color: white;
+.cnn .smallContainer a {
+	color: rgb(38, 38, 38);
+	font-family: Helvetica;
+	font-weight: 100;
+	font-size: 1.1em;
 }
 
-.cnn .cnn_bulletbin {
-	padding: 0;
-	margin: 0;
+.cnn .smallContainer .cd__description {
+	color: rgb(100,100,100);
+	font-family: Helvetica;
+	padding-left: 1em;
+	margin: 0 0 0.5em 0
 }
 
-.cnn .cnn_bulletbin li {
-	color: rgb(90, 82, 77);
-	font-family: arial;
-	margin: 0.5em 0;
-	font-weight: bold;
+.cnn .cd__auxiliary,
+.cnn .cd__timestamp {
+	display: none;
 }
 
-.cnn .cnn_bulletbin a {
-	text-decoration: none;
-	color: rgb(90, 82, 77);
-	font-family: arial;
-	font-weight: bold;
+.cnn .cnn_vid:after {
+	font-family: FontAwesome;
+	content: " \f03d";
+	color: #999;
 }
 
-.cnn .cnn_bulletbin a:hover {
-	color: darkblue;
-	text-decoration: underline;
+.cnn .cnn_photos:after {
+	font-family: FontAwesome;
+	content: " \f030";
 }
 
 .huffpo .tttitle {
@@ -2070,17 +2109,18 @@ background-position-x: 1em;
 .huffpo h1,
 .huffpo .smallContainer #splash_block {
 	display: block;
-	margin: 0em 0em 0.5em 0em;
+	margin: 0 0 0.5em 0;
 	color: rgb(26, 26, 26);
 	font-family: arial;
 	width: 100% !important;
-
+	line-height: 1em !important;
 }
 
 .huffpo .smallContainer * {
 	font-size: 1em !important;
 	color: rgb(26, 26, 26);
 	text-decoration: none;
+	line-height: 1em !important;
 }
 
 
@@ -2103,11 +2143,14 @@ background-position-x: 1em;
 	color: white;
 }
 
-.espn .headlines {
+.espn .headlines ,
+.espn .bulletlinks {
 	margin: 0;
-	padding: 1em 2em;
+	padding: 0em 1.5em;
 	width: 85%;
 }
+
+
 
 .espn .smallContainer a {
 	font-family: verdana, helvetica, arial, sans-serif;
@@ -2132,6 +2175,61 @@ background-position-x: 1em;
 	background-image: url('../images/nytimes.png')
 }
 
+.nytimes article {
+	margin-bottom: 0.5em;
+}
+
+.nytimes .smallContainer .caption-text {
+	font-family: georgia,"times new roman",times,serif;
+	color: #666;
+	font-size: 0.9em;
+	margin-bottom: 0.5em;
+}
+
+.nytimes .smallContainer h2 {
+	font-family: "times new roman",times,serif;
+	margin: 0;
+	font-size: 1.05em;
+}
+
+.nytimes .smallContainer a {
+	color: #333;
+	text-decoration: none;
+}
+
+.nytimes .smallContainer p {
+	margin: 0;
+	font-family: georgia,"times new roman",times,serif;
+}
+
+.nytimes .smallContainer a:hover {
+	text-decoration: underline;
+}
+
+.nytimes .byline,
+.nytimes .visually-hidden,
+.nytimes .credit,
+.nytimes .kicker,
+.nytimes ul {
+	display: none;
+}
+
+.nytimes figure {
+	margin: 0;
+}
+
+.nytimes img {
+	max-width: 100%;
+}
+
+.nytimes .thumb img,
+.nytimes .small-thumb img {
+	float: right;
+}
+
+/****************************
+***************************
+
 .nytimes .smallContainer h2,
 .nytimes .smallContainer h1,
 .nytimes .smallContainer h3
@@ -2155,6 +2253,9 @@ background-position-x: 1em;
 .nytimes .smallContainer span {
 	display: none;
 }
+
+****************************
+***************************/
 .blazersEdge .smallContainer .article span,
 .blazersEdge .smallContainer .article div p,
 .blazersEdge .smallContainer .article div div,
@@ -2235,6 +2336,59 @@ background-position-x: 1em;
 	background-color: #002B45;
 }
 
+.theAtlantic .smallContainer img,
+.theAtlantic .smallContainer .authors,
+.theAtlantic .smallContainer figcaption,
+.theAtlantic .smallContainer .author,
+.theAtlantic .smallContainer figure,
+.theAtlantic .smallContainer a[rel='author'],
+.theAtlantic .image-cred {
+	display: none;
+}
+
+
+
+.theAtlantic .smallContainer a {
+	display: block;
+	text-decoration: none;
+	line-height: 1em
+}
+
+.theAtlantic .smallContainer a:hover {
+	text-decoration: underline;
+}
+
+.theAtlantic article,
+.theAtlantic .headline {
+	margin-bottom: 0.5em;
+}
+
+.theAtlantic .unHeaderate,
+.theAtlantic .headline {
+	xmargin: 0em 0em 0em 0em;
+	font-family: 'times new roman', times, serif;
+	font-size: 1.1em;
+	line-height: 1.1em;
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+}
+
+.theAtlantic .dek {
+	margin: 0;
+	color: #5c5c5c;
+	font-family: Helvetica;
+	font-size: 1em;
+	line-height: 1em !important;
+}
+
+.theAtlantic .smallFoot {
+	background-color: #002B45;
+}
+
+/****************************
+***************************
+
 .theAtlantic .smallContainer a {
 	margin: 0em 0em 0.5em 0em;
 	font-family: 'times new roman', times, serif;
@@ -2256,16 +2410,10 @@ background-position-x: 1em;
 	text-decoration: underline;
 }
 
-.theAtlantic .smallContainer img,
-.theAtlantic .smallContainer .dek,
-.theAtlantic .smallContainer p,
-.theAtlantic .smallContainer .authors,
-.theAtlantic .smallContainer figcaption,
-.theAtlantic .smallContainer .author,
-.theAtlantic .smallContainer figure,
-.theAtlantic .smallContainer a[rel='author'] {
-	display: none;
-}
+
+
+****************************
+***************************/
 
 
 .oLive .tttitle {
@@ -2494,7 +2642,7 @@ background-position-x: 1em;
 }
 
 .twitter .tweet {
-	padding: 0.6em 0.5em 0.5em 3.5em;
+	padding: 0em 0.5em 0.5em 3.5em;
 	xborder-bottom: 1px solid #ddd	;
 	font-size: 1em;
 }
@@ -2584,6 +2732,7 @@ background-position-x: 1em;
 }
 
 .twitter .time a {
+	display: none;
 	color: #ccc;
 	float: right;
 	font-size: 0.9em;
@@ -2655,9 +2804,6 @@ background-position-x: 1em;
 
 .hackerNews .smallContainer {
 	font-size: .9em;
-	xpadding-top: 2em;
-
-	margin-left: 0.2em;
 	height: 37.5em;
 	background-color: #F6F6EF;
 

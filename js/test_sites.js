@@ -6,8 +6,6 @@ var test_sites = [
 
 {"title":"","url":"http://accountingtoday.com"},
 {"title":"","url":"http://accountingweb.com"},
-
-{"title":"","url":"http://nytimes.com"},
 {"title":"","url":"http://reddit.com"}, 
 {"title":"","url":"http://qz.com"},
 {"title":"","url":"http://politico.com"},
@@ -19,18 +17,18 @@ var test_sites = [
 {"title":"","url":"http://nytimes.com"},
 {"title":"","url":"http://espn.go.com"},
 {"title":"","url":"http://huffingtonpost.com"},
-{"title":"","url":"http://cnn.com"},
+{"title":"","url":"http://cnn.com"},*/
 {"title":"","url":"http://buzzfeed.com"},
 {"title":"","url":"http://news.google.com"},
-{"title":"","url":"http://foxnews.com"},
+{"title":"","url":"http://foxnews.com"},/*
 {"title":"","url":"http://washingtonpost.com"},
 {"title":"","url":"http://theguardian.com"},
 {"title":"","url":"http://bbc.com"},
 {"title":"","url":"http://time.com"},
-*/
+
 {"title":"","url":"http://bloomberg.com"},
 {"title":"","url":"http://businessweek.com"},
-/*
+
 {"title":"","url":"http://wsj.com"},
 {"title":"","url":"http://cnbc.com"},
 {"title":"","url":"http://businessweek.com"},
