@@ -20,6 +20,25 @@
 	content: 'Bookmarks'
 }
 
+.bookFold {
+	padding-left: 1em;
+}
+
+.bookFoldTitle {
+	font-size: 1.1em;
+	color: #333;
+}
+
+.bookFoldTitle:before {
+	font-family: FontAwesome;
+	content: "\f07b  ";
+	color: #666;
+}
+
+.bookFold a {
+	padding-left: 1em;
+}
+
 
 .pHunt .tttitle {
 	background-image: url('../images/pHunt.png');

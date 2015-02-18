@@ -10,7 +10,7 @@ body, html {
 
 #main {
 	width: 90%;
-	padding: 1% 5%;
+	padding: 1em 5%;
 	xheight: 90%;
 	overflow: auto;
 }
@@ -315,9 +315,10 @@ font-size: 0.9em;
 
 #settingBox {
 	position: absolute;
-	top: 2.1%;
+	top: 1%;
 	right: 2%;
 	z-index: 10000;
+	margin-top: 1.1em;
 }
 
 .menuOption {

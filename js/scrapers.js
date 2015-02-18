@@ -367,6 +367,50 @@ function bookmark_box(targetClass) {
 	var $bookmarkLinks = bookMarks.find('.linkBox')
 	chrome.bookmarks.getTree(function(obj) {
 		console.log(obj)
+		
+		function handleFolder (fold) {
+			console.log('fold')
+			console.log(fold.children.length)
+			var title = fold.title
+			$bookmarkLinks.append("<div class='bookFold'>"+
+				"<div class='bookFoldTitle'>"+title+"</div>"+
+				"</div>")
+			$bookmarkLinks = $('.bookFold').last()
+			$.each(fold, function(ind, val) {
+				traverseBookmarks(val)
+			})
+		}
+
+		function handleBook (book) {
+			console.log('book')
+			console.log(book)
+			var $lastFold = $('.bookFold').last()
+			var url = book.url
+			var title = book.title
+			$lastFold.append("<a class='bookmarkLink' href='"+url+"'><img src='"+favicon(url)+"'/>"+title+"</a>")
+
+		}
+
+		function traverseBookmarks (thing) {
+			console.log('traverse')
+			console.log(thing)
+			var isBook = thing.url
+			var isFolder = thing['title']
+			var isNeither = isBook || isFolder
+			if (isBook) {
+				handleBook(thing)
+			} else if (isFolder) {
+				handleFolder(thing)
+			} else {
+				$.each(thing, function(ind, val) {
+					traverseBookmarks(val)
+				})
+			}
+		}
+
+		traverseBookmarks(obj[0])
+
+		/*
 		var used = 0 //iterator to keep track of how many bookmarks displayed
 		$.each(obj[0].children, function(ind, val) {
 			if (val.children.length > 0) {
@@ -381,6 +425,8 @@ function bookmark_box(targetClass) {
 				})
 			} 
 		})
+
+*/
 	})
 
 	var bookContent = $bookmarkLinks.val()
