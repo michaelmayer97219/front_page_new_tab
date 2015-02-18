@@ -30,7 +30,8 @@
 
 .pHunt .user-image-holder,
 .pHunt .collections-popover-trigger,
-.pHunt .maker {
+.pHunt .maker,
+.pHunt .exclusive {
 	display: none;
 }
 
@@ -2770,6 +2771,7 @@ background-position-x: 1em;
 
 .hackerNews .title {
 	sdisplay: none;
+	font-size: 1.05em
 }
 
 .hackerNews tr:nth-child(3n+1) td:nth-child(1),

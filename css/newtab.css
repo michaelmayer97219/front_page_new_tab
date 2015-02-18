@@ -5,6 +5,7 @@ body, html {
 	padding: 0;
 	background-color: #eee;
 	position: absolute;
+
 }
 
 #main {
@@ -12,7 +13,6 @@ body, html {
 	padding: 1% 5%;
 	xheight: 90%;
 	overflow: auto;
-	background-color: #eee;
 }
 
 .slideCon {

@@ -7,11 +7,13 @@ var alreadyScraped = []
 $( document ).ready(function() {
 
 	extraSites = {'add': [], 'sub': [], 'sortOrder': [], 'prodMode': null}//[{'title': 'blah', 'url': 'http://foxnews.com'}]
-	var $body = $('#main')
+	var $main = $('#main')
+	var $body = $('body')
 	leftOutLinks = []
 	//stretch main to window height at a minimum
 
 	var windowHeight = $(window).height()
+
 	$body.css('min-height', windowHeight)
 
 	storage.get('selectedScrapes', function(result) {
@@ -23,8 +25,8 @@ $( document ).ready(function() {
    				$('.menuOption').show()
 				$('#prodMode i').css('color', 'rgba(230, 0, 0, 0.8);')
 			} else {
-				//top_sites_callback(test_sites)
-				chrome.topSites.get(top_sites_callback)
+				top_sites_callback(test_sites)
+				//chrome.topSites.get(top_sites_callback)
 				//extraSites['prodMode'] = false
 			}
 		} else {

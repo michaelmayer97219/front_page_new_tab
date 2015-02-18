@@ -17,10 +17,11 @@ var test_sites = [
 {"title":"","url":"http://nytimes.com"},
 {"title":"","url":"http://espn.go.com"},
 {"title":"","url":"http://huffingtonpost.com"},
-{"title":"","url":"http://cnn.com"},*/
+{"title":"","url":"http://cnn.com"},
 {"title":"","url":"http://buzzfeed.com"},
 {"title":"","url":"http://news.google.com"},
-{"title":"","url":"http://foxnews.com"},/*
+{"title":"","url":"http://feedly.com"},
+{"title":"","url":"http://foxnews.com"},
 {"title":"","url":"http://washingtonpost.com"},
 {"title":"","url":"http://theguardian.com"},
 {"title":"","url":"http://bbc.com"},

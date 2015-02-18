@@ -342,6 +342,10 @@ scrapers = {
 	"oregonlive.com":
 		{'callback':oLive,
 		'class': 'oLive',
+		'maxCache': defaultCache},
+	"feedly.com":
+		{'callback':feedly,
+		'class': 'feedly',
 		'maxCache': defaultCache}
 }
 
@@ -362,14 +366,18 @@ function bookmark_box(targetClass) {
 	bookMarks.children('.smallContainer').append("<div class='linkBox'></div>")
 	var $bookmarkLinks = bookMarks.find('.linkBox')
 	chrome.bookmarks.getTree(function(obj) {
+		console.log(obj)
 		var used = 0 //iterator to keep track of how many bookmarks displayed
 		$.each(obj[0].children, function(ind, val) {
 			if (val.children.length > 0) {
 				$.each(val.children, function(ind, v) {
 					var title = v.title
 					var url = v.url
-					$bookmarkLinks.append("<a class='bookmarkLink' href='"+url+"'><img src='"+favicon(url)+"'/>"+title+"</a>")
-					used = used +1
+					
+						$bookmarkLinks.append("<a class='bookmarkLink' href='"+url+"'><img src='"+favicon(url)+"'/>"+title+"</a>")
+						used = used +1
+					
+					
 				})
 			} 
 		})
@@ -410,6 +418,11 @@ function mostVis(targetClass) {
 		}
 	})
 
+}
+
+function feedly(response, targetClass) {
+	console.log(response)
+	basicScrape(resonse, targetClass, 'a', 10)
 }
 
 function oLive(response, targetClass) {
