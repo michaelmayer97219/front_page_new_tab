@@ -37,11 +37,12 @@
 	font-family: FontAwesome;
 	content: "\f07b  ";
 	content: "\f115  ";
-	color: #333;
+	content: "\f07c  ";
+	color: #666;
 }
 
 .bookFold a {
-	padding-left: 1em;
+	padding-left: 0.75em;
 }
 
 

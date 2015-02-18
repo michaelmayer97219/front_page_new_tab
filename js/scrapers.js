@@ -6,7 +6,6 @@ scrapers = {
 		{'callback': hackerNewsResponse,
 		'class': 'hackerNews',
 		'maxCache': defaultCache},
-
 	"twitter.com": 
 		{'callback': twitter,
 		'class': 'twitter',
@@ -342,23 +341,23 @@ scrapers = {
 	"oregonlive.com":
 		{'callback':oLive,
 		'class': 'oLive',
-		'maxCache': defaultCache},
-	"feedly.com":
-		{'callback':feedly,
-		'class': 'feedly',
 		'maxCache': defaultCache}
+
 }
 
 non_scrapers =  {
 	"history_box":
 		{'callback':history_box,
-		'class': 'historyBox'},
+		'class': 'historyBox',
+		'maxCache': defaultCache},
 	"most_visited":
 		{'class': 'mostVis',
-		'callback': mostVis},
+		'callback': mostVis,
+		'maxCache': defaultCache},
 	"bookmark_box":
 		{'class': 'bookmarkBox',
-		'callback': bookmark_box}
+		'callback': bookmark_box,
+		'maxCache': defaultCache}
 }
 
 function bookmark_box(targetClass) {
@@ -366,10 +365,8 @@ function bookmark_box(targetClass) {
 	bookMarks.children('.smallContainer').append("<div class='linkBox'></div>")
 	var $bookmarkLinks = bookMarks.find('.linkBox')
 	chrome.bookmarks.getTree(function(obj) {
-		console.log(obj)
-		
+
 		function handleFolder (fold) {
-			console.log('fold')
 			var title = fold.title
 			var id = fold.id
 			$bookmarkLinks.append("<div class='bookFold book"+id+"'>"+
@@ -377,26 +374,20 @@ function bookmark_box(targetClass) {
 				"</div>")
 			$bookmarkLinks = $('.bookFold').last()
 			$.each(fold.children, function(ind, val) {
-				console.log('trav from folder')
 				traverseBookmarks(val)
 			})
 		}
 
 		function handleBook (book) {
-			console.log('book')
-			console.log(book)
 			var url = book.url
 			var title = book.title
 			var parentId = book.parentId
-			console.log(parentId)
 			var $lastFold = $('.linkBox').find('.book'+parentId)
 			$lastFold.append("<a class='bookmarkLink' href='"+url+"'><img src='"+favicon(url)+"'/>"+title+"</a>")
 
 		}
 
 		function traverseBookmarks (thing) {
-			//console.log('traverse')
-			//console.log(thing)
 			var isBook = thing.url
 			var isFolder = thing['dateGroupModified'] 
 			var isNeither = isBook || isFolder
@@ -406,31 +397,16 @@ function bookmark_box(targetClass) {
 				handleFolder(thing)
 			} else {
 				$.each(thing, function(ind, val) {
-					console.log(val)
-					traverseBookmarks(val)
+					var type = typeof val == 'object' || 'array'
+					if (type) {
+						traverseBookmarks(val)	
+					}
 				})
 			}
 		}
 
 		traverseBookmarks(obj[0])
 
-		/*
-		var used = 0 //iterator to keep track of how many bookmarks displayed
-		$.each(obj[0].children, function(ind, val) {
-			if (val.children.length > 0) {
-				$.each(val.children, function(ind, v) {
-					var title = v.title
-					var url = v.url
-					
-						$bookmarkLinks.append("<a class='bookmarkLink' href='"+url+"'><img src='"+favicon(url)+"'/>"+title+"</a>")
-						used = used +1
-					
-					
-				})
-			} 
-		})
-
-*/
 	})
 
 	var bookContent = $bookmarkLinks.val()
@@ -439,6 +415,7 @@ function bookmark_box(targetClass) {
 		$bookmarkLinks.find('.smallContainer').val('No bookmarks to add.')
 		
 	}
+	$('.'+targetClass).find('.linkIcon').remove()
 }
 
 function history_box(targetClass) {
@@ -456,6 +433,7 @@ function history_box(targetClass) {
 	    });
 	   // main_contain.append(history) 
 	});
+	$('.'+targetClass).find('.linkIcon').remove()
 }
 
 function mostVis(targetClass) {
@@ -467,7 +445,7 @@ function mostVis(targetClass) {
 			$linkBox.append("<a class='bookmarkLink' href='"+val+"'><img src='"+favicon(val)+"'/>"+val+"</a>")
 		}
 	})
-
+	$('.'+targetClass).find('.linkIcon').remove()
 }
 
 function feedly(response, targetClass) {

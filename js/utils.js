@@ -191,18 +191,12 @@ function top_sites_callback(obj) {
 		}
 	})
 
-/*	if (noshow == false) {
-		_gaq.push(['_setCustomVar',
-		      1,                
-		      'left_out_urls',    
-		      String(leftOutLinks),        
-		                        
-		      1                 
-		 ]); 
-		 
-	
-	}
-*/
+	$('.tttitle').hover(function(){
+		$(this).find('.linkIcon').show()
+	}, function() {
+		$(this).find('.linkIcon').hide()
+	})
+
 }
 
 function footerfix() {
@@ -237,6 +231,12 @@ function basicScrape(response, targetClass, scrapeClassString ,scrapeLength) {
 	$.each(contentContainers, function(ind,val) {
 		targetContainer.append(val)
 	})
+	/*
+	$('.'+targetClass).find('.tttitle').hover(function(){
+		$('.'+targetClass+' .linkIcon').show()
+	},function(){
+		$('.'+targetClass+' .linkIcon').hide()
+	}) */
 }
 
 //basic scrape but using a box instead of whole page
