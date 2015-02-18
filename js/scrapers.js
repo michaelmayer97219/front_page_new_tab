@@ -370,13 +370,14 @@ function bookmark_box(targetClass) {
 		
 		function handleFolder (fold) {
 			console.log('fold')
-			console.log(fold.children.length)
 			var title = fold.title
-			$bookmarkLinks.append("<div class='bookFold'>"+
+			var id = fold.id
+			$bookmarkLinks.append("<div class='bookFold book"+id+"'>"+
 				"<div class='bookFoldTitle'>"+title+"</div>"+
 				"</div>")
 			$bookmarkLinks = $('.bookFold').last()
-			$.each(fold, function(ind, val) {
+			$.each(fold.children, function(ind, val) {
+				console.log('trav from folder')
 				traverseBookmarks(val)
 			})
 		}
@@ -384,18 +385,20 @@ function bookmark_box(targetClass) {
 		function handleBook (book) {
 			console.log('book')
 			console.log(book)
-			var $lastFold = $('.bookFold').last()
 			var url = book.url
 			var title = book.title
+			var parentId = book.parentId
+			console.log(parentId)
+			var $lastFold = $('.linkBox').find('.book'+parentId)
 			$lastFold.append("<a class='bookmarkLink' href='"+url+"'><img src='"+favicon(url)+"'/>"+title+"</a>")
 
 		}
 
 		function traverseBookmarks (thing) {
-			console.log('traverse')
-			console.log(thing)
+			//console.log('traverse')
+			//console.log(thing)
 			var isBook = thing.url
-			var isFolder = thing['title']
+			var isFolder = thing['dateGroupModified'] 
 			var isNeither = isBook || isFolder
 			if (isBook) {
 				handleBook(thing)
@@ -403,6 +406,7 @@ function bookmark_box(targetClass) {
 				handleFolder(thing)
 			} else {
 				$.each(thing, function(ind, val) {
+					console.log(val)
 					traverseBookmarks(val)
 				})
 			}

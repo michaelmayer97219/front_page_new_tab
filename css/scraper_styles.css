@@ -20,6 +20,10 @@
 	content: 'Bookmarks'
 }
 
+.bookmarkBox .linkBox {
+	margin-left: -1em;
+}
+
 .bookFold {
 	padding-left: 1em;
 }
@@ -32,7 +36,8 @@
 .bookFoldTitle:before {
 	font-family: FontAwesome;
 	content: "\f07b  ";
-	color: #666;
+	content: "\f115  ";
+	color: #333;
 }
 
 .bookFold a {
