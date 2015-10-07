@@ -36,16 +36,34 @@ function ajaxCall(url, responseFunction, targetClass, maxCache, now) {
 		if (cleanRespUrl == clean) {
 			if (target.readyState === 4) {
 		    	if (target.status === 200) {
-
 		    		var response = target.response
+		    		responseFunction(response, targetClass)
 			    	var store = {}
 			    	store[targetClass] = {'response': response,
 											'time': now,
 											'maxCache': maxCache
 											}
+			    	
 			    	storage.set(store, function() {
+			    		
+			    		var error = chrome.runtime.lastError
+			    		if (error) {
+			    			var overQuota = error.message == "QUOTA_BYTES quota exceeded"
+			    		
+				    		if (overQuota) {
+				    			console.log('over')
+				    			//loop through all stored targetClass and empty them
+				    			$.each(scrapers, function(ind, val) {
+				    				var tClass = val['class']
+				    				var eStore = {}
+				    				eStore[tClass] = {}
+				    				storage.set(eStore, function(){})
+				    			})
+				    		}
+			    		}
 			    	})
-			  		responseFunction(response, targetClass)
+
+			  		
 		    	} else {
 		    		responseFunction(cacheResponse, targetClass)
 		    	}
@@ -81,6 +99,7 @@ function scrape(url, responseFunction, targetClass, maxCache, noshow) {
 			ajaxCall(url, responseFunction, targetClass, maxCache, now)	
 		}		
 	})
+
 }
 
 //function for filling container
@@ -182,7 +201,7 @@ function top_sites_callback(obj) {
 			if (assClass == null) {
 				var cleanURL = prettyURL(url)
 				//make sure it's not too long
-				leftOutLinks.push(cleanURL)
+				leftOutLinks.push([cleanURL, url])
 				//$('.mostVis .smallContainer .linkBox').append("<a class='bookmarkLink' href='"+url+"'><img src='"+favicon(url)+"'/>"+cleanURL+"</a>")
 			} else {
 				var newContent = newContainer(url,title,assClass)
@@ -225,6 +244,8 @@ function unHeaderStyle(targetClass) {
 //function for the most simple scrapes
 function basicScrape(response, targetClass, scrapeClassString ,scrapeLength) {
 	var $html = $(response)
+	//console.log($html.find('script'))
+	$html.find('script').text('')
 	var targetContainer = $('.'+targetClass+' .smallContainer')
 	//targetContainer.empty()
 	var contentContainers = $html.find(scrapeClassString).slice(0,scrapeLength)

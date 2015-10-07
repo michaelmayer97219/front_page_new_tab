@@ -1,6 +1,9 @@
 var test_sites = [
-
 /*
+
+{"title":"","url":"http://pinterest.com"},
+{"title":"","url":"http://tumblr.com"},
+
 {"title":"","url":"http://nj.com"},
 {"title":"","url":"http://oregonlive.com"},
 
@@ -14,6 +17,8 @@ var test_sites = [
 {"title":"","url":"http://twitter.com"},
 {"title":"","url":"http://fivethirtyeight.com"},
 {"title":"","url":"http://theatlantic.com"},
+
+
 {"title":"","url":"http://nytimes.com"},
 {"title":"","url":"http://espn.go.com"},
 {"title":"","url":"http://huffingtonpost.com"},
@@ -26,6 +31,12 @@ var test_sites = [
 {"title":"","url":"http://theguardian.com"},
 {"title":"","url":"http://bbc.com"},
 {"title":"","url":"http://time.com"},
+
+
+{"title":"","url":"http://crunchyroll.com"},
+{"title":"","url":"http://gamespot.com"},
+
+
 
 {"title":"","url":"http://bloomberg.com"},
 {"title":"","url":"http://businessweek.com"},
@@ -44,6 +55,8 @@ var test_sites = [
 {"title":"","url":"http://mashable.com"},
 {"title":"","url":"http://npr.org"},
 {"title":"","url":"http://theverge.com"},
+
+
 {"title":"","url":"http://drudgereport.com"},
 {"title":"","url":"http://slate.com"},
 {"title":"","url":"http://deadspin.com"},
@@ -61,6 +74,8 @@ var test_sites = [
 {"title":"","url":"http://sfgate.com"},
 {"title":"","url":"http://ft.com"},
 {"title":"","url":"http://latimes.com"},
+
+
 {"title":"","url":"http://nypost.com"},
 {"title":"","url":"http://newyorker.com"},
 {"title":"","url":"http://newsweek.com"},
@@ -75,6 +90,8 @@ var test_sites = [
 {"title":"","url":"http://reuters.com"},
 {"title":"","url":"http://abcnews.go.com"},
 {"title":"","url":"http://nbcnews.com"},
+*/
+
 {"title":"","url":"http://breitbart.com"},
 {"title":"","url":"http://groupon.com"},
 {"title":"","url":"http://dailymail.co.uk"},
@@ -89,7 +106,7 @@ var test_sites = [
 {"title":"","url":"http://mercurynews.com"},
 {"title":"","url":"http://dallasnews.com"},
 {"title":"","url": "http://techmeme.com"},
-{"title":"","url": "http://mentalfloss.com"}*/]
+{"title":"","url": "http://mentalfloss.com"}/**/]
 
 
 /*[

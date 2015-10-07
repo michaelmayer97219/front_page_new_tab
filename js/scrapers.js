@@ -98,10 +98,10 @@ scrapers = {
 		{'callback': gizmodo,
 		'class': 'gizmodo',
 		'maxCache': defaultCache},
-	"bleacherreport.com":
-		{'callback': bleacher,
-		'class': 'bleacher',
-		'maxCache': defaultCache},
+//	"bleacherreport.com":
+//		{'callback': bleacher, // Don't feel like maintaining this
+//		'class': 'bleacher',
+//		'maxCache': defaultCache},
 	"ign.com":
 		{'callback': ign,
 		'class': 'ign',
@@ -218,10 +218,10 @@ scrapers = {
 		{'callback': wired,
 		'class': 'wired',
 		'maxCache': defaultCache},
-	"forbes.com":
-		{'callback': forbes,
-		'class': 'forbes',
-		'maxCache': defaultCache},
+//	"forbes.com":
+//		{'callback': forbes,
+//		'class': 'forbes',
+//		'maxCache': defaultCache}, //don't want to maintin this
 	"rottentomatoes.com":
 		{'callback': rtomatoes,
 		'class': 'rtomatoes',
@@ -341,6 +341,22 @@ scrapers = {
 	"oregonlive.com":
 		{'callback':oLive,
 		'class': 'oLive',
+		'maxCache': defaultCache},
+	"pinterest.com":
+		{'callback':pinterest,
+		'class': 'pinterest',
+		'maxCache': defaultCache},
+	"tumblr.com":
+		{'callback':tumblr,
+		'class': 'tumblr',
+		'maxCache': defaultCache},
+	"gamespot.com":
+		{'callback':gamespot,
+		'class': 'gamespot',
+		'maxCache': defaultCache},
+	"crunchyroll.com":
+		{'callback':crunchyroll,
+		'class': 'croll',
 		'maxCache': defaultCache}
 
 }
@@ -361,79 +377,94 @@ non_scrapers =  {
 }
 
 function bookmark_box(targetClass) {
-	var bookMarks = $('.'+targetClass)
-	bookMarks.children('.smallContainer').append("<div class='linkBox'></div>")
-	var $bookmarkLinks = bookMarks.find('.linkBox')
-	chrome.bookmarks.getTree(function(obj) {
 
-		function handleFolder (fold) {
-			var title = fold.title
-			var id = fold.id
-			$bookmarkLinks.append("<div class='bookFold book"+id+"'>"+
-				"<div class='bookFoldTitle'>"+title+"</div>"+
-				"</div>")
-			$bookmarkLinks = $('.bookFold').last()
-			$.each(fold.children, function(ind, val) {
-				traverseBookmarks(val)
-			})
-		}
+	$(window).ready(function() {
+		
+			var bookMarks = $('.'+targetClass)
+		bookMarks.children('.smallContainer').append("<div class='linkBox'></div>")
+		var $bookmarkLinks = bookMarks.find('.linkBox')
+		chrome.bookmarks.getTree(function(obj) {
 
-		function handleBook (book) {
-			var url = book.url
-			var title = book.title
-			var parentId = book.parentId
-			var $lastFold = $('.linkBox').find('.book'+parentId)
-			$lastFold.append("<a class='bookmarkLink' href='"+url+"'><img src='"+favicon(url)+"'/>"+title+"</a>")
-
-		}
-
-		function traverseBookmarks (thing) {
-			var isBook = thing.url
-			var isFolder = thing['dateGroupModified'] 
-			var isNeither = isBook || isFolder
-			if (isBook) {
-				handleBook(thing)
-			} else if (isFolder) {
-				handleFolder(thing)
-			} else {
-				$.each(thing, function(ind, val) {
-					var type = typeof val == 'object' || 'array'
-					if (type) {
-						traverseBookmarks(val)	
-					}
+			function handleFolder (fold) {
+				var title = fold.title
+				var id = fold.id
+				$bookmarkLinks.append("<div class='bookFold book"+id+"'>"+
+					"<div class='bookFoldTitle'>"+title+"</div>"+
+					"</div>")
+				$bookmarkLinks = $('.bookFold').last()
+				$.each(fold.children, function(ind, val) {
+						var type = typeof val == 'object' || 'array'
+						if (type) {
+							traverseBookmarks(val)	
+						}
 				})
 			}
-		}
 
-		traverseBookmarks(obj[0])
+			function handleBook (book) {
+				var url = book.url
+				var title = book.title
+				var parentId = book.parentId
+				var $lastFold = $('.linkBox').find('.book'+parentId)
+				$lastFold.append("<a class='bookmarkLink' href='"+url+"'><img src='"+favicon(url)+"'/>"+title+"</a>")
+
+			}
+
+			function traverseBookmarks (thing) {
+				var isBook = thing.url
+				var isFolder = thing['dateGroupModified'] 
+				var isNeither = isBook || isFolder
+				if (isBook) {
+					handleBook(thing)
+				} else if (isFolder) {
+					handleFolder(thing)
+				} else {
+					$.each(thing, function(ind, val) {
+						var type = typeof val == 'object' || 'array'
+						if (type) {
+							traverseBookmarks(val)	
+						}
+					})
+				}
+			}
+
+			traverseBookmarks(obj[0])
+
+		})
+
+		var bookContent = $bookmarkLinks.val()
+
+		if (bookContent.length == 0) {
+			$bookmarkLinks.find('.smallContainer').val('No bookmarks to add.')
+			
+		}
+		$('.'+targetClass).find('.linkIcon').remove()
 
 	})
 
-	var bookContent = $bookmarkLinks.val()
-
-	if (bookContent.length == 0) {
-		$bookmarkLinks.find('.smallContainer').val('No bookmarks to add.')
-		
-	}
-	$('.'+targetClass).find('.linkIcon').remove()
 }
 
 function history_box(targetClass) {
-	var	history = $('.'+targetClass)
-	history.children('.smallContainer').append("<div class='linkBox'></div>")
-	var $historyLinks = history.find('.linkBox')
+	$(window).ready(function() {
 
-	chrome.history.search({text: '', maxResults: 30}, function(data) {
-		var i = 0 //iterator for total number of links
-	    data.forEach(function(page) {
-	    	if (page.title && i < 17) {
-	    		$historyLinks.append("<a class='bookmarkLink' href='"+page.url+"'><img src='"+favicon(page.url)+"'/>"+page.title+"</a>")
-	    		i++
-	    	}	        
-	    });
-	   // main_contain.append(history) 
-	});
-	$('.'+targetClass).find('.linkIcon').remove()
+			var	history = $('.'+targetClass)
+		history.children('.smallContainer').append("<div class='linkBox'></div>")
+		var $historyLinks = history.find('.linkBox')
+
+		chrome.history.search({text: '', maxResults: 30}, function(data) {
+			var i = 0 //iterator for total number of links
+		    data.forEach(function(page) {
+		    	if (page.title && i < 17) {
+		    		$historyLinks.append("<a class='bookmarkLink' href='"+page.url+"'><img src='"+favicon(page.url)+"'/>"+page.title+"</a>")
+		    		i++
+		    	}	        
+		    });
+		   // main_contain.append(history) 
+		});
+		$('.'+targetClass).find('.linkIcon').remove()
+
+	})
+
+
 }
 
 function mostVis(targetClass) {
@@ -442,10 +473,40 @@ function mostVis(targetClass) {
 	var $linkBox = $box.find('.linkBox')
 	$.each(leftOutLinks, function(ind, val) {
 		if (val) {
-			$linkBox.append("<a class='bookmarkLink' href='"+val+"'><img src='"+favicon(val)+"'/>"+val+"</a>")
+			$linkBox.append("<a class='bookmarkLink' href='"+val[1]+"'><img src='"+favicon(val[0])+"'/>"+val[0]+"</a>")
 		}
 	})
 	$('.'+targetClass).find('.linkIcon').remove()
+
+}
+
+function gamespot(response, targetClass) {
+	basicScrape(response, targetClass, 'article', 30)
+	
+	universalLinkFix(targetClass, 'http://gamespot.com')
+	unlinkStyle(targetClass)
+	unHeaderStyle(targetClass)	
+}
+
+
+function crunchyroll(response, targetClass) {
+	basicScrape(response, targetClass, '.welcome-crnews-item', 50)
+	unlinkStyle(targetClass)
+	universalLinkFix(targetClass, 'http://crunchyroll.com')
+}
+
+function tumblr(response, targetClass) {
+	//var $response = $(response)
+	//var $response = $response.find('script').remove()
+	basicScrape(response, targetClass, '.post_container', 10)
+	//$('.'+targetClass).hide()
+	//console.log()
+	universalLinkFix(targetClass, 'https://tumblr.com')
+}
+
+function pinterest(response, targetClass) {
+	basicScrape(response, targetClass, '.pinWrapper', 30)
+	universalLinkFix(targetClass, 'http://pinterest.com')
 }
 
 function feedly(response, targetClass) {
@@ -513,11 +574,9 @@ function mercurynews(response, targetClass) {
 }
 
 function seattletimes(response, targetClass) {
-	basicScrape(response, targetClass, '.hed5 a', 10)
-	basicScrape(response, targetClass, '.hed4 a', 10)
-	basicScrape(response, targetClass, '.hed3 a', 10)
-	basicScrape(response, targetClass, '.hed2 a', 10)
-	basicScrape(response, targetClass, '.hed1 a', 10)
+	basicScrape(response, targetClass, '.top-story', 10)
+	basicScrape(response, targetClass, '.story-list a', 10)
+
 	unlinkStyle(targetClass)
 	universalLinkFix(targetClass, 'http://seattletimes.com')
 }
@@ -548,8 +607,8 @@ function telegraph(response, targetClass) {
 }
 
 function cracked(response, targetClass) {
-	basicScrape(response, targetClass, '.metaInfo h3 a', 30)
-	basicScrape(response, targetClass, '.meta h3 a', 30)
+	basicScrape(response, targetClass, '.content-card-content h3 a', 30)
+	//basicScrape(response, targetClass, '.meta h3 a', 30)
 	unlinkStyle(targetClass)
 }
 
@@ -562,7 +621,7 @@ function sbnation(response, targetClass) {
 }
 
 function emgn(response, targetClass) {
-	basicScrape(response, targetClass, '.panel-inner h2 a', 30)
+	basicScrape(response, targetClass, 'article', 30)
 	unlinkStyle(targetClass)
 }
 
@@ -654,12 +713,12 @@ function rtomatoes(response, targetClass) {
 
 function forbes(response, targetClass) {
 	var content = $.parseHTML(response)
-	basicScrape(content, targetClass, '.editable a', 30)
+	basicScrape(content, targetClass, '.editable-hed', 30)
 	unlinkStyle(targetClass)
 }
 
 function wired(response, targetClass) {
-	basicScrape(response, targetClass, '.headline', 30)
+	basicScrape(response, targetClass, "div[role='article']", 30)
 	unHeaderStyle(targetClass)
 	unlinkStyle(targetClass)
 	$('.'+targetClass).find('h5').each(function(ind) {
@@ -771,8 +830,9 @@ function bizinsider(response, targetClass) {
 }
 
 function medium(response, targetClass) {
-	basicScrape(response, targetClass, '.block-title a', 30)
+	basicScrape(response, targetClass, '.section-inner', 30)
 	universalLinkFix(targetClass, 'http://medium.com')
+	unHeaderStyle(targetClass)
 	unlinkStyle(targetClass)
 }
 
@@ -900,13 +960,14 @@ function cnbc(response, targetClass) {
 }
 
 function wsj(response, targetClass) {
-	basicScrape(response, targetClass, '.tipTarget a', 10)
-	basicScrape(response, targetClass, '.trendingNow li h2 a', 30)
+	basicScrape(response, targetClass, '.module.wsj-card', 30)
 }
 
 function bloomberg(response, targetClass) {
 	basicScrape(response, targetClass, 'article', 30)
 	universalLinkFix(targetClass, 'http://bloomberg.com')
+	unlinkStyle(targetClass)
+	unHeaderStyle(targetClass)
 	removeDupeLinks(targetClass)
 
 }
@@ -918,9 +979,7 @@ function time(response, targetClass) {
 
 function bbc(response, targetClass) {
 	var $html = $.parseHTML(response)
-	basicScrape($html, targetClass, '#most_popular_tabs_read', 1)
-	basicScrape($html, targetClass, '#most_popular_tabs_shared', 1)
-	basicScrape($html, targetClass, '.media_link', 20)
+	basicScrape($html, targetClass, '.media__content', 20)
 	removeDupeLinks(targetClass)
 }
 
@@ -945,8 +1004,8 @@ function weather(response, targetClass) {
 
 function foxnews(response, targetClass) {
 	$html = $.parseHTML(response)
-	basicScrape($html, targetClass, '.section-first', 1)
-	basicScrape($html, targetClass, '.dv-item li a', 5)
+	basicScrape($html, targetClass, '.primary', 1)
+	basicScrape($html, targetClass, "li[data-vr-contentbox]", 5)
 	basicScrape($html, targetClass, '.latest-news li a', 20)
 	unlinkStyle(targetClass)
 	
@@ -959,10 +1018,11 @@ function googleNews(response, targetClass) {
 
 function buzzfeed(response, targetClass) {
 	$html = $.parseHTML(response)
-	basicScrape($html, targetClass, '.hot_list', 1)
-	basicScrape($html, targetClass, 'article h2 a', 20)
+	basicScrape($html, targetClass, '.lede', 30)
+	//basicScrape($html, targetClass, 'article h2 a', 20)
 	unlinkStyle(targetClass)
 	//fixRelativeLinks(targetClass, 'http://www.buzzfeed.com', 'a')
+	unHeaderStyle(targetClass)
 	universalLinkFix(targetClass, 'http://buzzfeed.com')
 }
 
@@ -1013,8 +1073,8 @@ function blazersEdge(response, targetClass) {
 
 function theAtlantic(response, targetClass)	{
 	//basicContainerScrape(response, targetClass, '#module-most-popular', 'dd', 30)
-	basicScrape(response, targetClass, 'article', 10)
-	basicScrape(response, targetClass, '.headline', 20)
+	basicScrape(response, targetClass, '.content', 10)
+	//basicScrape(response, targetClass, '.headline', 20)
 	universalLinkFix(targetClass, 'http://www.theatlantic.com')
 	removeDupeLinks(targetClass)
 	//unlinkStyle(targetClass)
@@ -1039,7 +1099,7 @@ function hackerNewsResponse(response, targetClass) {
 
 	$('.hackerNews .smallContainer').find('a').each(function(ind, val) {
 		var attr = $(val).attr('href')
-		if (attr.slice(-1) != '/') {
+		if (attr.indexOf('http') == -1) {
 			$(val).attr('href', 'https://news.ycombinator.com/'+attr)
 		}
 	})

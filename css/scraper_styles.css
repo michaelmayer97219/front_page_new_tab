@@ -9,7 +9,7 @@
 }
 
 .mostVis a:hover {
-	cursor: default;
+	scursor: default;
 }
 
 .historyBox .tttitle:after {
@@ -28,6 +28,7 @@
 	padding-left: 1em;
 }
 
+
 .bookFoldTitle {
 	font-size: 1.1em;
 	color: #333;
@@ -45,6 +46,271 @@
 	padding-left: 0.75em;
 }
 
+.gamespot .tttitle {
+	background-image: url('../images/gamespot.png');
+	background-color: rgb(43,45,49);
+}
+
+.gamespot .smallContainer a {
+	font-family: helvetica;
+	color: #333;
+}	
+
+.gamespot .media-type,
+.gamespot footer  {
+	display: none;
+}
+
+.gamespot .media-figure {
+	margin: 0;
+	max-width: 100%;
+}
+
+.gamespot p {
+	margin: 0;
+}
+
+.gamespot .media-figure img {
+	margin: 0;
+	max-width: 100%;
+}
+
+.croll .tttitle {
+	background-image: url('../images/crunchyroll.png');
+	background-color: white;
+	box-shadow: rgba(0, 0, 0, 0.219608) 0px 1px 2px 0px;
+}
+
+.croll .welcome-crnews-title {
+	color: #333;
+	font-family: helvetica;
+	font-size: 1.1em;
+	font-weight: bold;
+}
+
+.croll .welcome-crnews-item {
+	margin-bottom: 0.5em;
+}
+
+.croll .welcome-crnews-readmore a {
+	color: #DF6300 !important;
+	margin: 0 !important; 
+	display: inline-block;
+	font-weight: bold;
+
+}
+
+.croll p {
+	margin: 0;
+}
+
+.croll .welcome-crnews-subtitle {
+	display: none;
+}
+
+.pinterest .socialItem {
+	text-decoration: none;
+	color: #999;
+	font-style: normal !important;
+}
+
+.pinterest .repinSendButtonWrapper,
+.pinterest .likeEditButtonWrapper,
+.pinterest button,
+.pinterest .Button,
+.pinterest .pinDomain {
+	display: none;
+}
+
+.pinterest .tttitle {
+	box-shadow: none;
+	background-color: rgb(196,34,40);
+	background-image: url('../images/pinterest.png');
+}
+
+.pinterest .smallFoot {
+	background-color: rgb(196,34,40) ;
+	box-shadow: none;
+}
+
+.pinterest .smallContainer {
+	background-color: #e9e9e9;
+}
+
+.pinterest .pinWrapper {
+	margin: 1em;
+	background-color: white;
+	border-radius: 5px;
+	xpadding: 0%;
+	margin-bottom: 1em;
+	xbox-shadow: 2px 2px 7px rgba(100, 100, 100, 0.6);
+	box-shadow: rgba(0, 0, 0, 0.219608) 0px 1px 2px 0px;
+}
+
+.pinterest .pinUiImage {
+	width: auto !important;
+}
+
+.pinterest .pinHolder img {
+	width: 100%;
+	border-radius-left: 5px;
+	border-radius-right:5px; 
+}
+
+.pinterest .richPinMetaLink,
+.pinterest .pinAttribution a,
+.pinterest a {
+	text-decoration: none;
+	color: rgb(113,113,113);
+}
+
+.pinterest .richIconAndAttribution {
+	margin: 0.5em;
+}
+
+.pinterest h3,
+.pinterest p {
+	margin: 0 0.5em;
+}
+
+.pinterest .richPinMeta img,
+.pinterest .pinAttribution img {
+	height: 1.5em;
+	width: 1.5em;
+}
+
+.pinterest .richPinIcon {
+	display: inline-block;
+}
+
+.pinterest .richPinGridAttributionTitle {
+	display: inline-block;
+}
+
+.pinterest .pinMeta {
+	padding: 0.5em;
+}
+
+.pinterest .pinCredits {
+	height: 3.5em;
+	border-top: 1px solid #ccc;
+	padding: 0.5em;
+}
+
+.pinterest .creditImg img {
+	height: 3.5em;
+	width: 3.5em;
+	border-radius: 2px;
+}
+
+.pinterest .creditItem {
+	position: relative;
+}
+
+.pinterest .creditItem a {
+	text-decoration: none;
+
+}
+
+.pinterest .creditImg {
+	float: left;
+	width: 0%;
+}
+
+.pinterest .creditName,
+.pinterest .creditTitle {
+	margin-left: 4em;
+	text-decoration: none;
+	color: rgb(153, 153, 153);;
+}
+
+.pinterest .heightContainer {
+	padding: 0 !important;
+}
+
+.pinterest .likeIconSmall {
+	font-family: FontAwesome;
+}
+
+.pinterest .likeIconSmall:after {
+	content: "\f004";
+}
+
+.pinterest .repinIconSmall {
+	font-family: FontAwesome;
+}
+
+.pinterest .repinIconSmall:after {
+	content: "\f08d"
+}
+
+.tumblr .tttitle {
+	background-color: rgb(54,70,93);
+	background-size: 6em;
+	background-image: url('../images/tumblr.png');
+}
+
+.tumblr .smallFoot {
+	background-color: rgb(54,70,93);
+}
+
+.tumblr .new_post_buttons_container {
+	display: none;
+}
+
+.tumblr .post_wrapper img,
+.tumblr .post_wrapper video,
+.tumblr .photoset_row {
+	width: 100% !important;
+	height: 100% !important;
+}
+
+.tumblr .smallContainer {
+	list-style: none;
+}
+
+.tumblr .reblog_icon {
+	font-family: FontAwesome;
+	content: " ";
+}
+
+.tumblr .reblog_icon:first-line {
+	display: none;
+}
+
+.tumblr .reblog_icon:after {
+	content: "\f079";
+}
+
+.tumblr .post_avatar_image {
+	height: 3em;
+	width: 3em;
+}
+
+.tumblr .post_wrapper {
+	position: relative;
+}
+
+.tumblr .post_avatar_link {
+	background: none !important;
+}
+
+.tumblr .post_header {
+	position: absolute;
+	top: -2.5em;
+	left: 3.5em;
+}
+
+.tumblr .post_body a {
+	color: rgb(68,68,68);
+}
+
+.tumblr .post_tag {
+	color: rgb(161, 161, 161);
+	font-size: 0.9em;
+	text-decoration: none;
+	margin-right: 0.5em;
+}
 
 .pHunt .tttitle {
 	background-image: url('../images/pHunt.png');
@@ -56,7 +322,9 @@
 .pHunt .user-image-holder,
 .pHunt .collections-popover-trigger,
 .pHunt .maker,
-.pHunt .exclusive {
+.pHunt .exclusive,
+.pHunt .post--install-link,
+.pHunt .post--actions {
 	display: none;
 }
 
@@ -353,6 +621,18 @@ background-size: 10em;
 	background-color: white;
 }
 
+.seattletimes .smallContainer img {
+	max-width: 100%;
+}
+
+.seattletimes figure {
+	margin: 0;
+}
+
+.seattletimes ul {
+	display: none;
+}
+
 .seattletimes .smallContainer a {
 	color: rgb(9, 51, 75);
 	font-family: Georgia, Times, serif;
@@ -477,6 +757,10 @@ background-size: 10em;
 	background-color: #EEE;
 	background-position-y: -3px;
 	box-shadow: rgba(100, 100, 100, 0.25) 0px 1px 2px 0px;
+}
+
+.emgn .smallContainer img {
+	max-width: 100%;
 }
 
 .emgn .smallContainer a {
@@ -844,9 +1128,20 @@ display: inline-block;
 	margin-top: 0.8em;
 }
 
+.wired .smallContainer img {
+	max-width: 100%;
+}
+
 .wired .smallFoot {
 	background-color:black;
 }
+
+.wired .row span,
+.wired .row time {
+	color: #aaa;
+}
+
+
 
 .wired .linkIcon {
 	color: white;
@@ -856,9 +1151,9 @@ display: inline-block;
 	margin-bottom: 0.5em;
 }
 
-.wired h2 a {
+.wired h2 {
 	color: rgb(51, 51, 51);
-	font-size: 
+	font-size: 1em;
 }
 
 .wired h5 {
@@ -1271,6 +1566,19 @@ font-size: 1.1em;
 	font-family: Verdana, sans-serif;
 	color: rgba(0, 0, 0, 0.8);
 	font-weight: bold;
+}
+
+.medium .section-inner {
+	margin-bottom: 0.5em;
+}
+
+.medium p {
+	margin: 0;
+}
+
+.medium figure,
+.medium .graf--empty {
+	display: none;
 }
 
 .arstech .tttitle {
@@ -1702,6 +2010,20 @@ background-position-y: -0.4em;
 	color: white;
 }
 
+.wsj .smallContainer div {
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
+
+.wsj .module {
+	dxisplay: none;
+}
+
+.wsj img {
+	max-width: 100%;
+}
+
 .wsj .smallContainer a {
 	display: block;
 	text-decoration: none;
@@ -1727,7 +2049,10 @@ background-position-y: -0.4em;
 .bloomberg .brief__story-decoration,
 .bloomberg time,
 .bloomberg .label-and-timestamp,
-.bloomberg .byline {
+.bloomberg .byline,
+.bloomberg .bb-social-links,
+.bloomberg span,
+.bloomberg .top-news-v3__story {
 	display: none;
 }
 
@@ -1768,6 +2093,11 @@ background-position-y: -0.4em;
 .bloomberg .feed-item__headline a{
 	text-decoration: none;
 	color: #333;
+}
+
+.bloomberg article a {
+	margin-bottom: 0;
+	margin-top: 0.5em;
 }
 
 .time .tttitle {
@@ -1815,7 +2145,16 @@ background-position-y: -0.4em;
 	background-color: rbga(255,255,255,0.95);
 }
 
-.bbc .livestats-icon {
+.bbc h3 {
+	margin: 0.5em 0 0 0;
+}
+
+.bbc p {
+	margin: 0;
+}
+
+.bbc .livestats-icon,
+.bbc .media__tag {
 	display: none;
 }
 
@@ -2060,17 +2399,28 @@ background-position-x: 1em;
 	color: black;
 	text-decoration: none;
 	font-family: ProximaNovaSemibold, Helvetica, Arial, sans-serif;
-	margin: 0em 0em 0.5em 0em;
+	margin-bottom: 0;
 	font-size: 1em;
 }
 
-.buzzfeed ol div {
+.buzzfeed .lede {
+	margin-bottom: 0.5em;
+}
+
+.buzzfeed p {
+	margin: 0;
+}
+
+.buzzfeed ol div,
+.small-meta__item,
+.buzzfeed .media {
 	display: none;
 }
 
-.buzzfeed ol a {
+.buzzfeed h2 {
 	text-decoration: none;
 	color: #333;
+	margin-bottom: 0;
 }
 
 .buzzfeed a:hover {
@@ -2124,7 +2474,8 @@ background-position-x: 1em;
 	box-shadow: rgba(100, 100, 100, 0.2) 0px 1px 2px 0px;
 }
 
-.huffpo .smallContainer h5 div {
+.huffpo .smallContainer h5 div,
+.huffpo img {
 	display: none;
 }
 
@@ -2368,7 +2719,9 @@ background-position-x: 1em;
 .theAtlantic .smallContainer .author,
 .theAtlantic .smallContainer figure,
 .theAtlantic .smallContainer a[rel='author'],
-.theAtlantic .image-cred {
+.theAtlantic .image-cred,
+.theAtlantic .metadata {
+	
 	display: none;
 }
 
@@ -2384,7 +2737,7 @@ background-position-x: 1em;
 	text-decoration: underline;
 }
 
-.theAtlantic article,
+.theAtlantic .content,
 .theAtlantic .headline {
 	margin-bottom: 0.5em;
 }
@@ -2671,6 +3024,7 @@ background-position-x: 1em;
 	padding: 0em 0.5em 0.5em 3.5em;
 	xborder-bottom: 1px solid #ddd	;
 	font-size: 1em;
+	min-height: 4.5em;
 }
 
 .twitter .tweet-context {
@@ -2693,6 +3047,10 @@ background-position-x: 1em;
 .twitter .invisible,
 .twitter button {
 	display: none;
+}
+
+.twitter .has-conversation-module {
+	margin-left: 1.5em;
 }
 
 .twitter .stream-item-header {

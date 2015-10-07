@@ -156,11 +156,12 @@ body, html {
 }
 
 .smallContainer {
-	margin: 0.5em;
+	padding-left: 0.5em;
+	margin-bottom: 0.5em;
 	width: 95%;
 	xpadding: 0 .3em;
 	padding-right: 0.75em;
-	padding-top: 2.5em;
+	padding-top: 3em;
 	overflow-x: hidden;
 	-webkit-transition: all 0.6s ease;
 	position: absolute;
